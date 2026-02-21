@@ -179,7 +179,7 @@ body, html {
     text-align: center;
 }
 
-/* Βασικές ρυθμίσεις τίτλου */
+/* Στα κινητά: Κρύβουμε το br του desktop και δείχνουμε το κενό */
 .main-title {
     font-family: 'Playfair Display', serif;
     font-size: 28px; 
@@ -188,10 +188,8 @@ body, html {
     color: #1a1a1a;
     margin-bottom: 12px;
 }
-
-/* Στα κινητά φαίνεται ο mobile-title και κρύβεται ο desktop-title */
-.mobile-title { display: block; }
-.desktop-title { display: none; }
+.desktop-br { display: none; }
+.mobile-space { display: inline; }
 
 .hero-description {
     font-size: 14px; 
@@ -337,7 +335,7 @@ body, html {
     }
 
     .hero-content {
-        max-width: 850px; 
+        max-width: 900px; /* ΠΟΛΥ ΠΕΡΙΣΣΟΤΕΡΟΣ ΧΩΡΟΣ */
         justify-content: flex-start;
         align-items: flex-start; 
         
@@ -355,14 +353,14 @@ body, html {
         text-align: left;
     }
 
-    .main-title { font-size: 58px; margin-bottom: 15px; }
-
-    /* ΕΝΑΛΛΑΓΗ ΤΙΤΛΩΝ: Εμφανίζουμε τον Desktop, Κρύβουμε τον Mobile */
-    .mobile-title { display: none; }
-    .desktop-title { 
-        display: block; 
-        white-space: nowrap; /* ΑΠΑΓΟΡΕΥΕΙ ΑΥΣΤΗΡΑ ΤΟ ΑΥΤΟΜΑΤΟ ΣΠΑΣΙΜΟ */
+    /* Στο desktop: Εφαρμόζουμε nowrap, δείχνουμε το br και κρύβουμε το κενό */
+    .main-title { 
+        font-size: 58px; 
+        margin-bottom: 15px; 
+        white-space: nowrap; /* ΑΠΑΓΟΡΕΥΕΙ ΤΟ ΑΥΤΟΜΑΤΟ ΣΠΑΣΙΜΟ */
     }
+    .desktop-br { display: block; }
+    .mobile-space { display: none; }
 
     .hero-description { font-size: 18px; line-height: 1.6; }
     
