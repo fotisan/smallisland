@@ -14,6 +14,32 @@ body, html {
 }
 
 /* =========================================
+   ΕΦΕ ΕΙΣΟΔΟΥ (GLOBAL ANIMATIONS)
+   ========================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-entry {
+    opacity: 0; /* Ξεκινάει κρυμμένο */
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Διαδοχικές καθυστερήσεις για ωραία ροή (staggered effect) */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.5s; }
+.delay-4 { animation-delay: 0.7s; }
+
+
+/* =========================================
    HEADER & NAVIGATION
    ========================================= */
 .main-header {
@@ -69,9 +95,14 @@ body, html {
     outline: none;
 }
 
-/* Μενού Κινητών (Dropdown) */
+/* Εφέ στο εικονίδιο */
+#menu-icon {
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+/* Μενού Κινητών (Τώρα ανοίγει με ομαλό Fade & Slide) */
 .top-nav {
-    display: none; 
+    display: flex; 
     flex-direction: column;
     position: absolute;
     top: 65px; 
@@ -84,10 +115,18 @@ body, html {
     border-radius: 20px;
     padding: 10px 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    /* Ρυθμίσεις για το εφέ */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: all 0.3s ease;
 }
 
 .top-nav.active {
-    display: flex; 
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .nav-item {
@@ -129,8 +168,6 @@ body, html {
 
 .hero-content {
     width: 100%;
-    /* Προσθήκη για να "σπρώξει" τα κουμπιά προς τα κάτω */
-    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -163,10 +200,9 @@ body, html {
     margin-bottom: 4px;
 }
 
-/* --- Διακριτικά Tags (Νέα δομή γραμμών) --- */
 .destination-tags {
     display: flex;
-    flex-direction: column; /* Στοιβάζει τις γραμμές κάθετα */
+    flex-direction: column;
     align-items: center;
     gap: 8px;
     margin-top: 15px;
@@ -193,14 +229,14 @@ body, html {
     text-align: center;
 }
 
-/* Περιοχή Κουμπιών - Στο κάτω μέρος της οθόνης */
+/* Περιοχή Κουμπιών - Ανέβηκαν ελαφρώς πιο πάνω στα κινητά */
 .cta-group {
     display: flex;
     flex-direction: column;
     align-items: center; 
     gap: 12px;
-    /* Αυτόματα σπρώχνει το div στο τέλος του hero-content! */
-    margin-top: auto; 
+    /* Η αλλαγή: Ένα σταθερό κενό, αντί να τα στέλνει στο τέρμα κάτω */
+    margin-top: 35px; 
     width: 100%; 
     max-width: 360px;
 }
@@ -275,6 +311,7 @@ body, html {
     .logo-text { font-size: 13px; }
     .hamburger-btn { display: none; }
 
+    /* Επαναφορά του μενού σε οριζόντια και μόνιμα ορατή κατάσταση στο desktop */
     .top-nav {
         display: flex; 
         flex-direction: row;
@@ -287,6 +324,11 @@ body, html {
         padding: 0;
         box-shadow: none;
         gap: 15px;
+        
+        /* Καταργούμε το κρύψιμο που είχε στα κινητά */
+        visibility: visible;
+        opacity: 1;
+        transform: none;
     }
 
     .nav-item {
@@ -311,15 +353,12 @@ body, html {
         max-width: 650px;
         align-items: flex-start;
         text-align: left;
-        /* Αφαιρούμε το flex-grow του mobile για να κάτσουν ψηλά τα στοιχεία */
-        flex-grow: 0; 
         padding-bottom: 120px;
     }
 
     .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
-    /* Επαναφορά των tags σε οριζόντια διάταξη στο Desktop */
     .destination-tags { 
         flex-direction: row;
         flex-wrap: wrap;
@@ -329,16 +368,14 @@ body, html {
         margin-top: 18px; 
     }
     
-    /* "Απελευθερώνει" τα tags από τις γραμμές για να απλώσουν */
     .tag-row { display: contents; }
 
     .dest-tag { font-size: 13px; padding: 4px 12px; background-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;}
 
-    /* Επαναφορά των κουμπιών ακριβώς κάτω από τα κείμενα */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
-        margin-top: 35px; /* Καταργεί το margin-top: auto; του mobile */
+        margin-top: 35px; 
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .ghost-btn { background-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
