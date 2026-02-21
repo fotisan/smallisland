@@ -9,7 +9,7 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f6f4f0; /* Το βασικό μπεζ χρώμα του φόντου */
+    background-color: #f6f4f0;
 }
 
 /* --- Κεντρικό Container & Φόντο --- */
@@ -19,20 +19,15 @@ body, html {
     height: 100vh;
     min-height: 700px;
     
-    /* ΣΗΜΑΝΤΙΚΗ ΑΛΛΑΓΗ: Διπλό background */
-    /* 1. Ένα ντεγκραντέ που ξεκινάει με το μπεζ χρώμα (#f6f4f0) από αριστερά και γίνεται διαφανές προς τα δεξιά */
-    /* 2. Η εικόνα hero.webp από κάτω */
-    background-image: 
-        linear-gradient(to right, #f6f4f0 0%, #f6f4f0 45%, rgba(246, 244, 240, 0) 100%),
-        url('hero.webp');
-        
-    background-size: cover; /* Καλύπτει όλο τον χώρο */
+    /* Αφαιρέθηκε το linear-gradient, έμεινε μόνο η εικόνα */
+    background-image: url('hero.webp');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
     display: flex;
     flex-direction: column;
-    padding: 30px 5%; /* Γενικό περιθώριο δεξιά-αριστερά */
+    padding: 30px 5%;
 }
 
 /* --- Header / Λογότυπο (Πάνω Αριστερά) --- */
@@ -40,7 +35,7 @@ body, html {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    z-index: 2; /* Πάνω από το gradient */
+    z-index: 2;
 }
 
 .logo-wrapper {
@@ -69,7 +64,7 @@ body, html {
     margin-top: 15vh;
     max-width: 650px;
     text-align: left;
-    z-index: 2; /* Πάνω από το gradient */
+    z-index: 2;
 }
 
 .main-title {
