@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -26,53 +26,53 @@
 
         <main class="hero-content">
             <h1 class="main-title">
-                Small Island Transfer:<br>
-                Η Ολοκληρωμένη Εμπειρία<br>
-                Μετακίνησης στα Δωδεκάνησα
+                Your Private Getaway.<br>
+                Instant Quote.
             </h1>
             <p class="hero-description">
-                Premium μεταφορές από Αεροδρόμιο & Λιμάνια Ρόδου.<br>
-                Απευθείας σύνδεση με Χάλκη, Σύμη, Τήλο, Καστελλόριζο.<br>
-                Μία κράτηση, ξέγνοιαστο ταξίδι.
+                Rhodes & Dodecanese. Premium, trusted transfers.
             </p>
         </main>
 
-        <div class="cta-container">
-            <a href="#" class="whatsapp-btn-style" onclick="openWhatsApp(); return false;">
-                <span class="btn-text">Λήψη Προσφοράς & Κράτηση μέσω WhatsApp</span>
-                <span class="wa-icon-circle">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </span>
-            </a>
-            <p class="trust-text">Ασφαλής & Άμεση. Visa/Mastercard.</p>
-        </div>
+        <div class="bottom-area">
+            
+            <div class="cta-wrapper">
+                <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;">
+                    <span class="btn-text">Get Instant Estimate & Book on WhatsApp</span>
+                    <span class="wa-icon-circle">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </span>
+                </a>
+                <p class="trust-text">Secured & Direct. Visa/Mastercard.</p>
+            </div>
 
-        <nav class="bottom-nav">
-            <a href="#" class="nav-item active">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Routes</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fa-regular fa-star"></i>
-                <span>Reviews (4.9&#9733;)</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fa-regular fa-comment"></i>
-                <span>Chat</span>
-            </a>
-        </nav>
+            <nav class="bottom-nav">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Routes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-star"></i>
+                    <span>Reviews (4.9&#9733;)</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-comment"></i>
+                    <span>Chat</span>
+                </a>
+            </nav>
+
+        </div>
 
     </section>
 
     <script>
         function openWhatsApp() {
-            // Αντικαταστήστε το παρακάτω με τον πραγματικό αριθμό σας (π.χ., 306912345678)
             const phoneNumber = "306900000000"; 
-            const message = encodeURIComponent("Γεια σας από το site! Ενδιαφέρομαι για προσφορά μετακίνησης.");
+            const message = encodeURIComponent("Hello! I'm interested in getting an instant quote for a private transfer.");
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
