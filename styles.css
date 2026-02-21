@@ -86,6 +86,7 @@ body, html {
 
 #menu-icon { transition: opacity 0.2s ease, transform 0.2s ease; }
 
+/* Το νέο γλυκό εφέ του μενού (ελαστικό slide down) */
 .top-nav {
     display: flex; 
     flex-direction: column;
@@ -135,40 +136,45 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (App Bottom Sheet)
+   MOBILE STYLES (Η Λύση "App Bottom Sheet")
    ========================================= */
 .hero-section {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
-    min-height: 100svh; 
+    min-height: 100svh; /* Γεμίζει 100% την οθόνη */
 }
 
-/* Πεντακάθαρη εικόνα στο πάνω μέρος. Άλλαξα το position στο 20% για να φαίνεται και το καράβι! */
+/* Πεντακάθαρη εικόνα στο πάνω 50% της οθόνης */
 .mobile-hero-image {
     width: 100%;
-    height: 52vh; /* Έδωσα ένα 'κλικ' περισσότερο ύψος για ασφάλεια */
+    height: 50vh; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center 20%; /* ΕΣΩΣΕ ΤΟ ΚΑΡΑΒΙ: Τραβάει την εικόνα ελαφρώς προς τα κάτω */
+    background-position: center bottom;
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
 }
 
+/* Η "Κάρτα" που φιλοξενεί τα κείμενα κάτω από την εικόνα */
 .hero-content {
     background-color: #f6f4f0;
+    /* Στρογγυλεμένες γωνίες που ανεβαίνουν ΕΠΑΝΩ στην εικόνα */
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
     padding: 30px 20px 30px 20px;
+    
     position: relative;
     z-index: 10;
-    min-height: calc(48vh + 30px); 
+    /* Παίρνει όλο τον υπόλοιπο χώρο της οθόνης */
+    min-height: calc(50vh + 30px); 
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Απαλή σκιά που τονίζει την κάρτα */
 }
 
 .top-content {
@@ -177,10 +183,6 @@ body, html {
     align-items: center;
     text-align: center;
 }
-
-/* Ρυθμίσεις για τον εναλλακτικό τίτλο Desktop / Mobile */
-.desktop-title-text { display: none; }
-.mobile-title-text { display: block; }
 
 .main-title {
     font-family: 'Playfair Display', serif;
@@ -200,6 +202,7 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
+/* Tags Τοποθεσιών - Φυσική ροή σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
@@ -223,7 +226,7 @@ body, html {
     margin-bottom: 4px; 
 }
 
-/* CTAs */
+/* CTAs - Κλειδωμένα στο κάτω μέρος της κάρτας */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -263,7 +266,7 @@ body, html {
     font-size: 18px;
 }
 
-/* Trust Blue */
+/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Trust Blue - Φωτεινό, επαγγελματικό και απόλυτα Facebook */
 .primary-btn {
     background-color: #0066cc; 
     border: 2px solid #0066cc;
@@ -324,14 +327,11 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
+    /* Καταργούμε το layout του κινητού (Image/Card) για τους υπολογιστές */
     .mobile-hero-image { display: none; } 
 
-    /* Εναλλαγή τίτλου για το Desktop */
-    .mobile-title-text { display: none; }
-    .desktop-title-text { display: block; }
-
     .hero-section {
-        display: flex; 
+        display: flex; /* Επαναφορά της κλασικής διάταξης */
         height: auto;
         min-height: 750px;
         background-color: transparent;
@@ -344,11 +344,14 @@ body, html {
         max-width: 650px;
         justify-content: flex-start;
         align-items: flex-start; 
+        
+        /* Καταργούμε τα στρογγυλέματα και τις σκιές του κινητού */
         border-radius: 0;
         margin-top: 0;
         box-shadow: none;
         background-color: transparent;
         min-height: auto;
+        
         padding: 160px 5% 60px 5%; 
     }
 
@@ -369,11 +372,12 @@ body, html {
         margin-top: 18px; 
     }
     
-    /* Αναγκάζει τη Χάλκη να πάει στη 2η γραμμή στο Desktop */
+    /* Εδώ είναι ο κόφτης που στέλνει τη Χάλκη στη 2η γραμμή στο Desktop */
     .desktop-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0;}
 
+    /* Στοίχιση CTAs αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
