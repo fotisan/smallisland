@@ -77,7 +77,7 @@ body, html {
 }
 
 .hero-description {
-    font-size: clamp(15px, 2vw, 18px); /* Λίγο μικρότερο για να χωράνε οι μεγάλες γραμμές */
+    font-size: clamp(15px, 2vw, 18px); 
     font-weight: 400;
     color: #2a2a2a;
     line-height: 1.6;
@@ -89,6 +89,26 @@ body, html {
     color: #111;
     display: inline-block;
     margin-bottom: 4px;
+}
+
+/* --- Διακριτικά Tags (Τοποθεσίες) --- */
+.destination-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    max-width: 500px; /* Για να αναδιπλώνονται ομαλά σε μεγάλες οθόνες */
+}
+
+.dest-tag {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    border: 1px solid rgba(26, 26, 26, 0.3);
+    border-radius: 30px;
+    padding: 4px 12px;
+    background-color: transparent;
+    cursor: default; /* Επειδή είναι tags, όχι clickables */
 }
 
 /* --- Περιοχή Κουμπιών --- */
