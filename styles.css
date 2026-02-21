@@ -20,11 +20,13 @@ body, html {
     position: relative;
     width: 100%;
     min-height: 100vh; 
-    background-image: url('hero.webp');
+    
+    /* Φορτώνει την ΚΑΘΕΤΗ εικόνα για τα κινητά */
+    background-image: url('hero-mobile.webp');
     background-size: cover;
-    /* Η λύση για να φαίνεται το αμάξι και το καράβι στα κινητά */
-    background-position: 75% bottom; 
+    background-position: center bottom; /* Κεντράρει κάτω για να μη χάνεται το αμάξι */
     background-repeat: no-repeat;
+    
     display: flex;
     flex-direction: column;
     padding: 20px 15px; 
@@ -240,7 +242,9 @@ body, html {
     .hero-section {
         padding: 30px 5%;
         min-height: 750px;
-        /* Στο desktop η εικόνα κεντράρεται κανονικά γιατί χωράνε όλα */
+        
+        /* ΑΛΛΑΓΗ ΓΙΑ DESKTOP: Φορτώνει την ΟΡΙΖΟΝΤΙΑ εικόνα και κεντράρει */
+        background-image: url('hero.webp');
         background-position: center; 
     }
 
