@@ -12,18 +12,32 @@
 </head>
 <body>
 
+    <header class="main-header animate-entry">
+        
+        <div class="logo-wrapper">
+            <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
+            <div class="logo-text">
+                <span>SMALL ISLAND</span>
+                <span>TRANSFER</span>
+            </div>
+        </div>
+
+        <button class="hamburger-btn" onclick="toggleMenu(event)">
+            <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </button>
+
+        <nav class="top-nav" id="topNav">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#services" class="nav-item">Services</a>
+            <a href="#transfers" class="nav-item">Transfers</a>
+            <a href="#about" class="nav-item">About me</a>
+            <a href="#contact" class="nav-item active">Contact</a>
+        </nav>
+
+    </header>
+
     <section class="hero-section">
         
-        <header class="top-header animate-entry">
-            <div class="logo-wrapper">
-                <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
-                <div class="logo-text">
-                    <span>SMALL ISLAND</span>
-                    <span>TRANSFER</span>
-                </div>
-            </div>
-        </header>
-
         <main class="hero-content">
             <h1 class="main-title animate-entry delay-1">
                 Rhodes to Halki,<br>
@@ -68,25 +82,6 @@
             </div>
         </main>
 
-        <nav class="bottom-nav animate-entry delay-4">
-            <a href="#home" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </a>
-            <a href="#routes" class="nav-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Routes</span>
-            </a>
-            <a href="#reviews" class="nav-item">
-                <i class="fa-regular fa-star"></i>
-                <span>Reviews</span>
-            </a>
-            <a href="#contact" class="nav-item active">
-                <i class="fa-regular fa-comment"></i>
-                <span>Contact</span>
-            </a>
-        </nav>
-
     </section>
 
     <script>
@@ -95,6 +90,39 @@
             const message = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
+
+        function toggleMenu(event) {
+            if (event) event.stopPropagation(); 
+            
+            const nav = document.getElementById('topNav');
+            const icon = document.getElementById('menu-icon');
+            
+            nav.classList.toggle('active');
+            
+            icon.style.transform = "scale(0.5) rotate(90deg)";
+            icon.style.opacity = "0";
+            
+            setTimeout(() => {
+                if(nav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+                icon.style.transform = "scale(1) rotate(0deg)";
+                icon.style.opacity = "1";
+            }, 150);
+        }
+
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('topNav');
+            const hamburger = document.querySelector('.hamburger-btn');
+            
+            if (nav.classList.contains('active') && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                toggleMenu(); 
+            }
+        });
     </script>
 
 </body>
