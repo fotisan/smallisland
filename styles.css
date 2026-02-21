@@ -134,16 +134,17 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Η Λύση "Glass Panel")
+   MOBILE STYLES
    ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
-    /* Εξασφαλίζει ότι πιάνει πάντα όλη την οθόνη */
     height: 100vh;
     height: 100svh; 
     min-height: 650px; 
     
+    /* Χρώμα ασφαλείας: Αν δεις αυτό το γκριζο-μπεζ, το αρχείο hero-mobile.webp ΔΕΝ βρέθηκε! */
+    background-color: #e3dec9; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
@@ -162,7 +163,6 @@ body, html {
     z-index: 2;
 }
 
-/* Το γυάλινο πάνελ μαζεύει όλα τα γράμματα πάνω, αφήνοντας το αμάξι καθαρό! */
 .glass-panel {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(12px);
@@ -170,7 +170,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 24px;
     padding: 20px 15px;
-    margin: 85px 15px 0 15px; /* Κάθεται ακριβώς κάτω από το header */
+    margin: 85px 15px 0 15px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,7 +196,6 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags Τοποθεσιών - Διπλώνουν αυτόματα σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
@@ -219,7 +218,7 @@ body, html {
     cursor: default;
 }
 
-/* CTAs - Κάθονται στο τέρμα κάτω μέρος της οθόνης (πάντα ορατά) */
+/* CTAs */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -228,7 +227,7 @@ body, html {
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    padding: 0 15px 25px 15px; /* 25px απόσταση ασφαλείας από το κάτω μέρος */
+    padding: 0 15px 25px 15px; 
 }
 
 .primary-btn, .ghost-btn {
@@ -259,14 +258,13 @@ body, html {
     font-size: 18px;
 }
 
-/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Deep Nautical Navy */
+/* Deep Nautical Navy */
 .primary-btn {
     background-color: #112A46; 
     border: 2px solid #112A46;
     box-shadow: 0 4px 15px rgba(17, 42, 70, 0.3);
 }
 .primary-btn .btn-text { color: #ffffff; }
-/* Λευκός κύκλος με Navy γράμμα για τέλεια αντίθεση */
 .fb-icon-bg { background-color: #ffffff; color: #112A46; }
 
 .ghost-btn {
@@ -326,19 +324,19 @@ body, html {
     .hero-section {
         height: auto;
         min-height: 750px;
+        background-color: transparent;
         background-image: url('hero.webp');
         background-position: center; 
     }
 
     .hero-content {
-        max-width: 650px;
+        max-width: 800px; /* Λίγο περισσότερος χώρος για να απλώσουν τα tags */
         justify-content: flex-start;
         align-items: flex-start; 
-        padding-top: 150px; /* Χώρος από το header στο desktop */
+        padding-top: 150px; 
         padding-left: 5%;
     }
 
-    /* Στο desktop "σπάμε" το γυάλινο κουτί και αφήνουμε τα γράμματα ελεύθερα αριστερά */
     .glass-panel {
         background: transparent;
         backdrop-filter: none;
@@ -354,20 +352,27 @@ body, html {
     .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
+    /* ΝΕΟ: Ελεύθερο πλάτος για να χωράνε άνετα στην 1η σειρά τα 3 πρώτα νησιά */
     .destination-tags { 
         flex-direction: row;
+        flex-wrap: wrap; /* Απαραίτητο για να δουλέψει ο κόφτης */
         justify-content: flex-start;
-        max-width: 500px; 
+        width: 100%; 
+        max-width: 100%; 
         gap: 8px; 
         margin-top: 18px; 
     }
     
-    /* Αναγκάζει τη Χάλκη να πάει στη δεύτερη γραμμή */
-    .desktop-break { display: block; flex-basis: 100%; height: 0; }
+    /* Εδώ είναι το "μαγικό" που σπρώχνει τη Χάλκη κάτω στο Desktop */
+    .desktop-break { 
+        display: block; 
+        width: 100%; 
+        height: 0; 
+        margin: 0; 
+    }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; }
 
-    /* Εξασφαλίζουμε ότι τα CTAs είναι στοιχισμένα αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
