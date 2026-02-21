@@ -84,7 +84,7 @@ body, html {
     outline: none;
 }
 
-/* Διακριτικό fade transition για το X του μενού */
+/* Το νέο, πιο απαλό transition για το χάμπουργκερ */
 #menu-icon { transition: opacity 0.2s ease; }
 
 .top-nav {
@@ -136,25 +136,25 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Split Screen - Η Απόλυτη Λύση)
+   MOBILE STYLES (Idea 1 - Split Screen)
    ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     min-height: 100svh; 
-    background-color: #f6f4f0; /* Το χρώμα της "κάρτας" μας */
+    background-color: #f6f4f0; /* Συμπαγές μπεζ φόντο από πίσω */
     display: flex;
     flex-direction: column;
-    padding: 0; /* Μηδενίζουμε το padding για να απλώσει η εικόνα */
 }
 
-/* Το πάνω μισό της οθόνης: Καθαρή Εικόνα */
-.hero-bg-mobile {
+/* Το πάνω 45% της οθόνης είναι ΜΟΝΟ η φωτογραφία */
+.hero-image-mobile {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 46vh; /* Πιάνει σχεδόν τη μισή οθόνη */
+    height: 45vh; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
@@ -162,20 +162,17 @@ body, html {
     z-index: 1;
 }
 
-/* Το κάτω μισό της οθόνης: Η "Κάρτα" του Περιεχομένου */
+/* Το κάτω μέρος όπου κάθονται τα κείμενα (Ξεκινάει κάτω από την εικόνα) */
 .hero-content {
-    position: relative;
-    z-index: 2;
     width: 100%;
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
-    margin-top: 42vh; /* Ανεβαίνει ελαφρώς πάνω στην εικόνα */
-    background-color: #f6f4f0; /* Συμπαγές χρώμα, τέλος οι διαφάνειες */
-    padding: 35px 20px 80px 20px;
-    border-radius: 35px 35px 0 0; /* Στρογγυλεμένες γωνίες στην κορυφή */
-    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.06); 
+    justify-content: space-between; 
+    z-index: 2;
+    /* Σπρώχνουμε το content κάτω από τη φωτογραφία (45vh) και προσθέτουμε padding */
+    margin-top: 45vh;
+    padding: 25px 15px 30px 15px;
 }
 
 .top-content {
@@ -185,14 +182,14 @@ body, html {
     text-align: center;
 }
 
+/* Τα γράμματα τώρα πέφτουν στο μπεζ, οπότε έβγαλα τις σκιές */
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 34px; 
+    font-size: 32px; 
     font-weight: 600;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 15px;
-    text-shadow: none; /* Δεν χρειάζεται σκιά πάνω στο μπεζ φόντο! */
+    margin-bottom: 12px;
 }
 
 .hero-description {
@@ -204,18 +201,19 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags */
+/* Tags (Διπλώνουν φυσικά σε γραμμές στο κινητό) */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 15px;
     width: 100%;
-    max-width: 380px; 
 }
 
-.tag-break { display: none; } /* Κρυφό στα κινητά */
+.desktop-break {
+    display: none; /* Στα κινητά ο κόφτης αγνοείται */
+}
 
 .dest-tag {
     font-size: 13px; 
@@ -223,11 +221,11 @@ body, html {
     color: #1a1a1a;
     border: 1px solid rgba(26, 26, 26, 0.3);
     border-radius: 30px;
-    padding: 6px 14px;
-    /* Λευκό γεμάτο φόντο για να ξεχωρίζουν πάνω στην μπεζ κάρτα */
-    background-color: #ffffff; 
+    padding: 5px 12px;
+    background-color: rgba(255, 255, 255, 0.5); 
     cursor: default;
     text-align: center;
+    margin-bottom: 4px; 
 }
 
 /* CTAs */
@@ -239,7 +237,7 @@ body, html {
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    margin-top: 30px; /* Φυσιολογικό κενό, όχι πια margin-top: auto */
+    margin-top: auto; 
 }
 
 .primary-btn, .ghost-btn {
@@ -252,7 +250,7 @@ body, html {
     height: 52px; 
     width: 100%; 
     padding: 0 45px 0 15px; 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
@@ -270,27 +268,22 @@ body, html {
     font-size: 18px;
 }
 
-/* ΝΕΟ: Premium σκούρο CTA αντί για Facebook Blue */
+/* 1000% Ταιριαστό Premium Dark CTA (Αντί για Facebook Blue) */
 .primary-btn {
     background-color: #1a1a1a; 
     border: 2px solid #1a1a1a;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Βαθιά, πολυτελής σκιά */
+    box-shadow: 0 4px 15px rgba(26, 26, 26, 0.2);
 }
 .primary-btn .btn-text { color: #ffffff; }
+/* Λευκό εικονίδιο για τέλεια αντίθεση */
+.primary-btn .icon-circle { color: #ffffff; }
 
-/* Ο κύκλος του Facebook γίνεται ημιδιαφανής μέσα στο μαύρο κουμπί */
-.fb-icon-bg { 
-    background-color: rgba(255, 255, 255, 0.15); 
-    color: #ffffff; 
-}
-
-/* WhatsApp Ghost Button (Λευκό πάνω στην μπεζ κάρτα) */
 .ghost-btn {
-    background-color: #ffffff; 
+    background-color: rgba(255, 255, 255, 0.6); 
     border: 2px solid #1a1a1a; 
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
-.wa-bg { background-color: #25D366; color: white; }
+.wa-bg { background-color: #25D366; color: white; border: none; }
 .ghost-btn:hover { background-color: rgba(26, 26, 26, 0.05); }
 
 
@@ -298,9 +291,6 @@ body, html {
    DESKTOP & TABLET STYLES (Από 768px και πάνω)
    ========================================= */
 @media (min-width: 768px) {
-    
-    /* Κρύβουμε την ειδική εικόνα των κινητών */
-    .hero-bg-mobile { display: none; }
     
     .main-header {
         top: 25px;
@@ -326,7 +316,6 @@ body, html {
         padding: 0;
         box-shadow: none;
         gap: 15px;
-        
         visibility: visible !important;
         opacity: 1 !important;
         pointer-events: auto !important;
@@ -341,26 +330,25 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-    /* Επαναφορά εικόνας φόντου για Desktop */
+    /* Επαναφορά εικόνας φόντου στο Desktop */
+    .hero-image-mobile { display: none; } /* Κρύβουμε την κομμένη εικόνα του κινητού */
+
     .hero-section {
-        background-color: transparent;
-        background-image: url('hero.webp');
-        background-position: center; 
-        background-size: cover;
         min-height: 750px;
-        padding: 140px 5% 40px 5%;
+        background-image: url('hero.webp');
+        background-size: cover;
+        background-position: center; 
+        background-color: transparent;
+        padding: 0; /* Καθαρίζουμε τα mobile paddings */
     }
 
-    /* Καταργούμε την "κάρτα" του κινητού */
     .hero-content {
-        margin-top: 0;
-        padding: 0;
-        background-color: transparent;
-        border-radius: 0;
-        box-shadow: none;
         max-width: 650px;
         justify-content: flex-start;
         align-items: flex-start; 
+        margin-top: 0;
+        padding: 160px 5% 60px 5%; /* Άφθονος χώρος από το header */
+        background-color: transparent;
     }
 
     .top-content {
@@ -368,25 +356,27 @@ body, html {
         text-align: left;
     }
 
-    .main-title { font-size: 58px; margin-bottom: 15px; }
+    .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
     .destination-tags { 
         flex-direction: row;
         justify-content: flex-start;
-        max-width: none; /* Απελευθερώνουμε το πλάτος */
+        max-width: 100%; /* Τους δίνουμε χώρο στο desktop */
         gap: 8px; 
         margin-top: 18px; 
     }
     
-    /* ΝΕΟ: Ενεργοποιούμε το break για να πάει η Χάλκη από κάτω (δεύτερη σειρά) */
-    .tag-break {
+    /* Ο "αόρατος" κόφτης ενεργοποιείται και στέλνει τη Χάλκη στη 2η γραμμή! */
+    .desktop-break {
         display: block;
-        flex-basis: 100%; /* Πιάνει όλο το πλάτος και αναγκάζει τα επόμενα να πέσουν */
+        flex-basis: 100%;
         height: 0;
     }
+    
+    .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0; }
 
-    /* Στοίχιση CTAs αριστερά στο desktop */
+    /* Εξασφαλίζουμε ότι τα CTAs είναι στοιχισμένα αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
@@ -395,11 +385,4 @@ body, html {
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; text-align: left; }
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
-    
-    /* Στο desktop επαναφέρουμε το ελαφρύ blur στα ghost buttons επειδή δεν έχουν μπεζ φόντο από πίσω */
-    .dest-tag, .ghost-btn {
-        background-color: rgba(255, 255, 255, 0.6); 
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-    }
 }
