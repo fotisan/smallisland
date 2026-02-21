@@ -97,11 +97,10 @@
             
             nav.classList.toggle('active');
             
-            // Εφέ περιστροφής και σβησίματος
-            icon.style.transform = "scale(0.5) rotate(90deg)";
+            // Πιο διακριτική κίνηση: απλή περιστροφή και γρήγορο fade out
+            icon.style.transform = "rotate(90deg) scale(0.8)";
             icon.style.opacity = "0";
             
-            // Αυξήσαμε ελάχιστα τον χρόνο για πιο γλυκό εφέ (250ms)
             setTimeout(() => {
                 if(nav.classList.contains('active')) {
                     icon.classList.remove('fa-bars');
@@ -110,9 +109,9 @@
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
                 }
-                icon.style.transform = "scale(1) rotate(0deg)";
+                icon.style.transform = "rotate(0deg) scale(1)";
                 icon.style.opacity = "1";
-            }, 250); 
+            }, 150); // Ταχύτερη εναλλαγή του εικονιδίου
         }
 
         document.addEventListener('click', function(event) {
