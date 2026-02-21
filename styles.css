@@ -14,7 +14,7 @@ body, html {
 }
 
 /* =========================================
-   ΕΦΕ ΕΙΣΟΔΟΥ (Μόνο για τα κείμενα/κουμπιά)
+   ΕΦΕ ΕΙΣΟΔΟΥ
    ========================================= */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -84,9 +84,8 @@ body, html {
     outline: none;
 }
 
-/* Μενού Κινητών - Η καθαρή, παλιά έκδοση που δούλευε χωρίς bugs */
 .top-nav {
-    display: none; /* Κρυμμένο στα κινητά μέχρι να πατηθεί */
+    display: none; 
     flex-direction: column;
     position: absolute;
     top: 65px; 
@@ -101,9 +100,7 @@ body, html {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.top-nav.active {
-    display: flex; /* Εμφανίζεται με το κλικ στο JS */
-}
+.top-nav.active { display: flex; }
 
 .nav-item {
     text-decoration: none;
@@ -124,12 +121,11 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Hero & CTA Positioning)
+   MOBILE STYLES (Hero & CTA)
    ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
-    /* Δυναμικό ύψος για να κλειδώνει τα CTAs κάτω */
     min-height: 100vh;
     min-height: 100svh; 
     
@@ -140,7 +136,6 @@ body, html {
     
     display: flex;
     flex-direction: column;
-    /* Αφήνουμε αρκετό χώρο πάνω για το header (110px) και ελάχιστο κενό κάτω (25px) */
     padding: 110px 15px 25px 15px; 
 }
 
@@ -149,7 +144,6 @@ body, html {
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    /* Η εντολή που σπρώχνει τα κείμενα τέρμα πάνω και τα κουμπιά τέρμα κάτω */
     justify-content: space-between; 
     z-index: 2;
 }
@@ -163,7 +157,7 @@ body, html {
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 38px; 
+    font-size: 34px; /* Προσαρμοσμένο για τον μεγαλύτερο τίτλο */
     font-weight: 600;
     line-height: 1.15;
     color: #1a1a1a;
@@ -180,7 +174,6 @@ body, html {
 
 .highlight-text { font-weight: 500; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags Τοποθεσιών */
 .destination-tags {
     display: flex;
     flex-direction: column;
@@ -206,7 +199,7 @@ body, html {
     text-align: center;
 }
 
-/* Περιοχή Κουμπιών (Κλειδωμένη στο κάτω μέρος) */
+/* CTAs */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -215,7 +208,7 @@ body, html {
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    margin-top: auto; /* Το κλειδώνει απολύτως κάτω */
+    margin-top: auto; 
 }
 
 .primary-btn, .ghost-btn {
@@ -246,7 +239,6 @@ body, html {
     font-size: 18px;
 }
 
-/* Κύριο Κουμπί (Facebook - Επίσημο Μπλε) */
 .primary-btn {
     background-color: #1877F2; 
     border: 2px solid #1877F2;
@@ -255,7 +247,6 @@ body, html {
 .primary-btn .btn-text { color: #ffffff; }
 .fb-icon-bg { background-color: #ffffff; color: #1877F2; }
 
-/* WhatsApp Ghost Button */
 .ghost-btn {
     background-color: rgba(255, 255, 255, 0.6); 
     backdrop-filter: blur(4px);
@@ -281,11 +272,10 @@ body, html {
     .logo-img { height: 45px; max-height: 45px; }
     .logo-text { font-size: 13px; }
     
-    .hamburger-btn { display: none; } /* Κρύβουμε το χάμπουργκερ */
+    .hamburger-btn { display: none; } 
 
-    /* Επαναφορά του μενού οριζόντια */
     .top-nav {
-        display: flex; 
+        display: flex !important; 
         flex-direction: row;
         position: static; 
         width: auto;
@@ -308,7 +298,6 @@ body, html {
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
     .hero-section {
-        /* Στο desktop δεν πιέζουμε τα κουμπιά προς τα κάτω */
         height: auto;
         min-height: 750px;
         padding: 140px 5% 40px 5%;
@@ -326,6 +315,7 @@ body, html {
         text-align: left;
     }
 
+    /* Στο desktop ο τίτλος έχει άφθονο χώρο, άρα μένει μεγάλος */
     .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
@@ -344,7 +334,7 @@ body, html {
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
-        margin-top: 35px; /* Απόσταση από τα κείμενα */
+        margin-top: 35px; 
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; }
