@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap');
-
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -9,168 +8,184 @@
 body, html {
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f7f5f0;
+    /* Χρώμα φόντου για fallback */
+    background-color: #f4f1ea; 
 }
 
-/* Hero Section Wrapper */
+/* === Hero Section Styling === */
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    height: 100vh; /* Καταλαμβάνει όλο το ύψος της οθόνης */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    /* ΑΛΛΑΓΗ: Χρήση του hero.webp */
+    justify-content: space-between; /* Σπρώχνει το header πάνω και το CTA κάτω */
+    align-items: center;
+    padding: 20px 20px 100px 20px; /* Padding κάτω για χώρο στο nav menu */
+    
+    /* Ρύθμιση της εικόνας background */
     background-image: url('hero.webp'); 
     background-size: cover;
     background-position: center bottom;
-    padding-top: 30px;
-    color: #1a1a1a;
+    background-repeat: no-repeat;
 }
 
-/* Λογότυπο (Header) */
+/* === Header & Logo Styling === */
 .top-header {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-top: 15px;
 }
 
-.logo-container {
+.logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px; /* Αυξήθηκε λίγο το κενό */
-    text-align: left;
+    gap: 12px;
 }
 
-/* ΑΛΛΑΓΗ: Στυλ για την εικόνα του λογοτύπου */
 .logo-img {
-    height: 36px; /* Ρύθμιση ύψους για να ταιριάζει με το κείμενο */
+    height: 40px; /* Ρύθμιση μεγέθους λογοτύπου */
     width: auto;
-    display: block;
 }
 
 .logo-text {
-    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: 0.5px;
-    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #1a1a1a; /* Σκούρο χρώμα για να φαίνεται στον ουρανό */
 }
 
-/* Κεντρικό Κείμενο (Hero Content) */
+/* === Main Content (Titles) Styling === */
 .hero-content {
     text-align: center;
-    padding: 0 20px;
+    margin-top: -40px; /* Ελαφριά μετατόπιση προς τα πάνω για οπτική ισορροπία */
+    padding: 0 15px;
 }
 
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
+.main-title {
+    font-family: 'Playfair Display', serif; /* Η κομψή γραμματοσειρά του τίτλου */
     font-size: 28px;
     font-weight: 500;
-    line-height: 1.25;
-    margin-bottom: 15px;
-    color: #111;
+    line-height: 1.3;
+    color: #0a0a0a; /* Πολύ σκούρο γκρι/μαύρο */
+    margin-bottom: 20px;
 }
 
-.hero-content p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #222;
+.hero-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
     font-weight: 400;
-    max-width: 320px;
-    margin: 0 auto;
+    color: #2a2a2a;
+    max-width: 340px;
+    margin: 0 auto; /* Κεντράρισμα */
 }
 
-/* Κουμπί & Κείμενο Εμπιστοσύνης */
-.cta-wrapper {
-    margin-top: auto;
-    margin-bottom: 100px;
+/* === CTA Button & Trust Text Styling === */
+.cta-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
+    margin-bottom: 20px;
 }
 
-.whatsapp-button {
+/* Το στυλ του ειδικού κουμπιού */
+.whatsapp-btn-style {
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fdfbf7;
-    border: 2px solid #e0d5c1;
-    border-radius: 50px;
-    padding: 6px 6px 6px 20px;
     width: 100%;
-    max-width: 340px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 360px; /* Μέγιστο πλάτος όπως στην εικόνα */
+    
+    /* Χρώματα και Περιγράμματα βάσει της εικόνας */
+    background-color: #f9f6ee; /* Το ανοιχτό μπεζ φόντο του κουμπιού */
+    border: 2px solid #cfaa6d; /* Το χρυσό/μπρονζέ περίγραμμα */
+    border-radius: 50px; /* Οβάλ σχήμα */
+    padding: 8px 8px 8px 25px; /* Περισσότερο padding αριστερά για το κείμενο */
+    
+    /* Η χρυσή "λάμψη" γύρω από το κουμπί */
+    box-shadow: 0 0 15px rgba(207, 170, 109, 0.4); 
+    transition: transform 0.2s ease;
 }
 
-.whatsapp-button:active {
-    transform: scale(0.98);
+.whatsapp-btn-style:active {
+    transform: scale(0.98); /* Εφέ πατήματος */
 }
 
 .btn-text {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: #1a1a1a;
 }
 
-.wa-icon-wrapper {
-    background-color: #25D366;
-    color: white;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
+/* Το πράσινο κυκλάκι για το εικονίδιο */
+.wa-icon-circle {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #4FCE5D; /* Το πράσινο του WhatsApp στην εικόνα */
+    border-radius: 50%;
+    color: white;
+    font-size: 22px;
 }
 
 .trust-text {
     margin-top: 12px;
     font-size: 12px;
-    color: #ffffff;
+    color: #333; /* Σκούρο χρώμα για να διαβάζεται στο δρόμο */
     font-weight: 400;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-/* Κάτω Μπάρα Πλοήγησης (Glassmorphism) */
+/* === Bottom Navigation Bar Styling === */
 .bottom-nav {
     position: fixed;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
+    transform: translateX(-50%); /* Κεντράρισμα */
+    width: 90%;
     max-width: 400px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 40px;
+    
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.8); /* Ημιδιαφανές λευκό */
+    backdrop-filter: blur(10px); /* Θόλωμα φόντου */
+    -webkit-backdrop-filter: blur(10px); /* Για υποστήριξη Safari */
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    
     display: flex;
-    justify-content: space-around;
-    padding: 12px 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    justify-content: space-between;
+    padding: 12px 25px;
+    z-index: 10;
 }
 
 .nav-item {
     text-decoration: none;
-    color: #666;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 11px;
-    gap: 4px;
-    transition: color 0.3s;
+    color: #888; /* Ανενεργό χρώμα */
+    font-size: 10px;
+    font-weight: 500;
+    gap: 5px;
 }
 
 .nav-item i {
     font-size: 20px;
+    margin-bottom: 2px;
 }
 
+/* Στυλ για το ενεργό tab (Home) */
 .nav-item.active {
-    color: #1a1a1a;
-    font-weight: 600;
+    color: #1a1a1a; /* Ενεργό σκούρο χρώμα */
 }
