@@ -28,8 +28,6 @@ body, html {
 
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.3s; }
-.delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.7s; }
 
 /* =========================================
    HEADER & NAVIGATION
@@ -84,9 +82,10 @@ body, html {
     outline: none;
 }
 
-/* Πιο ομαλό transition για το εικονίδιο του μενού */
-#menu-icon { transition: transform 0.2s ease, opacity 0.2s ease; }
+/* Μαλακότερο transition στο εικονίδιο */
+#menu-icon { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease; }
 
+/* Γλυκό εφέ στο άνοιγμα του μενού */
 .top-nav {
     display: flex; 
     flex-direction: column;
@@ -102,12 +101,11 @@ body, html {
     padding: 10px 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     
-    /* ΝΕΟ: Γλυκό και σύγχρονο εφέ εμφάνισης του μενού */
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
     transform-origin: top center;
-    transform: translateY(-10px) scaleY(0.95);
+    transform: translateY(-10px) scale(0.98);
     transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
@@ -115,7 +113,7 @@ body, html {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0) scaleY(1);
+    transform: translateY(0) scale(1);
 }
 
 .nav-item {
@@ -137,35 +135,44 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Hero & CTA)
+   MOBILE STYLES (Split Screen - 50/50 Layout)
    ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
     min-height: 100svh; 
-    
-    /* Αφαιρέθηκε το άσχημο λευκό gradient, επαναφορά στην καθαρή εικόνα */
+    background-color: #f6f4f0; /* Μπεζ φόντο για το κάτω μέρος */
+    display: flex;
+    flex-direction: column;
+    padding: 0; 
+}
+
+/* Η εικόνα πιάνει το πάνω 55% της οθόνης */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 55vh; 
+    min-height: 380px;
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
-    background-repeat: no-repeat;
-    
-    display: flex;
-    flex-direction: column;
-    padding: 110px 15px 25px 15px; 
+    z-index: 0;
 }
 
 .hero-content {
-    width: 100%;
-    flex-grow: 1; 
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
-    z-index: 2;
+    min-height: 100svh;
 }
 
+/* Το Top Box για τον τίτλο - Ύψος ακριβώς όσο και η εικόνα */
 .top-content {
+    height: 55vh; 
+    min-height: 380px;
+    padding: 110px 15px 20px 15px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,34 +185,42 @@ body, html {
     font-weight: 600;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 15px;
-    /* Έντονη σκιά για να ξεχωρίζει ο τίτλος από τον ουρανό */
     text-shadow: 0 2px 15px rgba(255, 255, 255, 0.9); 
 }
 
-/* ΝΕΟ: Glass-box γύρω από την περιγραφή για να μην χάνεται στο καράβι */
+/* Το Bottom Box για το κείμενο και τα κουμπιά - Σε καθαρό μπεζ φόντο */
+.bottom-content {
+    background-color: #f6f4f0;
+    flex-grow: 1; 
+    padding: 25px 15px 35px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Στρογγυλεμένες γωνίες που αγκαλιάζουν την εικόνα από πάνω */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    margin-top: -20px; /* Ανεβαίνει ελάχιστα πάνω στην εικόνα για ομαλή ένωση */
+    z-index: 3;
+}
+
 .hero-description {
     font-size: 15px; 
     font-weight: 400;
     color: #2a2a2a;
     line-height: 1.5;
-    background: rgba(255, 255, 255, 0.6); /* Ημιδιαφανές λευκό */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 12px 18px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
+/* Tags Τοποθεσιών - Αυτόματα σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 18px;
     width: 100%;
     max-width: 380px; 
 }
@@ -214,15 +229,12 @@ body, html {
     font-size: 13px; 
     font-weight: 500;
     color: #1a1a1a;
-    border: 1px solid rgba(26, 26, 26, 0.3);
+    border: 1px solid rgba(26, 26, 26, 0.2);
     border-radius: 30px;
     padding: 5px 12px;
-    background-color: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background-color: #ffffff; 
     cursor: default;
     text-align: center;
-    margin-bottom: 4px; 
 }
 
 /* CTAs */
@@ -234,7 +246,7 @@ body, html {
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    margin-top: auto; 
+    margin-top: 25px; 
 }
 
 .primary-btn, .ghost-btn {
@@ -274,9 +286,7 @@ body, html {
 .fb-icon-bg { background-color: #ffffff; color: #1877F2; }
 
 .ghost-btn {
-    background-color: rgba(255, 255, 255, 0.6); 
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: transparent; 
     border: 2px solid #1a1a1a; 
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
@@ -328,13 +338,17 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
+    /* Επαναφορά της πλήρους εικόνας φόντου στο Desktop */
     .hero-section {
         height: auto;
         min-height: 750px;
-        padding: 140px 5% 40px 5%;
+        background-color: transparent;
         background-image: url('hero.webp');
+        background-size: cover;
         background-position: center; 
+        padding: 140px 5% 40px 5%;
     }
+    .hero-section::before { display: none; } /* Κρύβουμε την εικόνα του κινητού */
 
     .hero-content {
         max-width: 650px;
@@ -342,26 +356,29 @@ body, html {
         align-items: flex-start; 
     }
 
+    /* Ακύρωση του Split Screen για το Desktop */
     .top-content {
+        height: auto;
+        min-height: auto;
+        padding: 0;
         align-items: flex-start;
         text-align: left;
     }
 
-    .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
-    
-    /* Στο desktop αφαιρούμε το γυάλινο κουτάκι από την περιγραφή, δεν χρειάζεται */
-    .hero-description { 
-        font-size: 18px; 
-        line-height: 1.6; 
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+    .bottom-content {
+        background-color: transparent;
         padding: 0;
-        border: none;
+        border-radius: 0;
         box-shadow: none;
+        margin-top: 15px;
+        align-items: flex-start;
+        text-align: left;
     }
+
+    .main-title { font-size: 58px; margin-bottom: 0; text-shadow: none; }
+    .hero-description { font-size: 18px; line-height: 1.6; }
     
-    /* ΝΕΟ: Περιορίζουμε το πλάτος στα 440px για να σπάσουν τα tags σε 2 γραμμές υποχρεωτικά */
+    /* Νησιά σε 2 γραμμές (Λόγω του max-width: 440px) */
     .destination-tags { 
         flex-direction: row;
         justify-content: flex-start;
@@ -370,15 +387,21 @@ body, html {
         margin-top: 18px; 
     }
     
-    .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0; }
+    .dest-tag { 
+        font-size: 13px; 
+        padding: 4px 12px; 
+        background-color: transparent; 
+        backdrop-filter: none; 
+        -webkit-backdrop-filter: none; 
+    }
 
-    /* Εξασφαλίζουμε ότι τα κουμπιά πάνε αριστερά στο desktop */
+    /* Απόλυτη στοίχιση CTAs στα αριστερά στο Desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
         margin: 35px 0 0 0; 
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
-    .btn-text { font-size: 15px; text-align: left; }
+    .btn-text { font-size: 15px; text-align: left; width: 100%; } 
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
 }
