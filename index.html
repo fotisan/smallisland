@@ -38,19 +38,21 @@
 
     <section class="hero-section">
         
+        <div class="mobile-hero-image"></div>
+        
         <main class="hero-content">
             
-            <div class="glass-panel animate-entry delay-1">
-                <h1 class="main-title">
+            <div class="top-content">
+                <h1 class="main-title animate-entry delay-1">
                     Your Private Transfer across<br>Rhodes & The Islands.
                 </h1>
                 
-                <p class="hero-description">
+                <p class="hero-description animate-entry delay-2">
                     <span class="highlight-text">One message and it's sorted.</span><br>
                     Anywhere in Rhodes and the Dodecanese — with a driver who knows every harbour, every ferry, every island.
                 </p>
 
-                <div class="destination-tags">
+                <div class="destination-tags animate-entry delay-3">
                     <span class="dest-tag">Rhodes Airport</span>
                     <span class="dest-tag">Rhodes Harbour</span>
                     <span class="dest-tag">Kamiros Skala</span>
@@ -64,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="cta-group animate-entry delay-3">
+            <div class="cta-group animate-entry delay-4">
                 
                 <a href="https://www.facebook.com/" target="_blank" class="primary-btn">
                     <span class="btn-text">Check My Route & Price</span>
@@ -100,7 +102,9 @@
             
             nav.classList.toggle('active');
             
+            // Το νέο, εξαιρετικά διακριτικό και "γλυκό" εφέ του εικονιδίου
             icon.style.opacity = "0";
+            icon.style.transform = "scale(0.8)";
             
             setTimeout(() => {
                 if(nav.classList.contains('active')) {
@@ -111,7 +115,8 @@
                     icon.classList.add('fa-bars');
                 }
                 icon.style.opacity = "1";
-            }, 150); 
+                icon.style.transform = "scale(1)";
+            }, 200); 
         }
 
         document.addEventListener('click', function(event) {
