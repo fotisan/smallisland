@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <header class="main-header animate-entry">
+    <header class="main-header">
         
         <div class="logo-wrapper">
             <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
@@ -94,6 +94,7 @@
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
 
+        // Λειτουργία Χάμπουργκερ (Απλή, σταθερή, χωρίς bugs)
         function toggleMenu(event) {
             if (event) event.stopPropagation(); 
             
@@ -102,22 +103,16 @@
             
             nav.classList.toggle('active');
             
-            icon.style.transform = "scale(0.5) rotate(90deg)";
-            icon.style.opacity = "0";
-            
-            setTimeout(() => {
-                if(nav.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                } else {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-                icon.style.transform = "scale(1) rotate(0deg)";
-                icon.style.opacity = "1";
-            }, 150);
+            if(nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         }
 
+        // Κλείσιμο μενού με κλικ σε άσχετο σημείο
         document.addEventListener('click', function(event) {
             const nav = document.getElementById('topNav');
             const hamburger = document.querySelector('.hamburger-btn');
