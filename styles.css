@@ -84,11 +84,11 @@ body, html {
     outline: none;
 }
 
-/* Πιο ομαλό transition για το εικονίδιο */
-#menu-icon { transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out; }
+/* Πιο ομαλό transition για το εικονίδιο του μενού */
+#menu-icon { transition: transform 0.2s ease, opacity 0.2s ease; }
 
 .top-nav {
-    display: none; 
+    display: flex; 
     flex-direction: column;
     position: absolute;
     top: 65px; 
@@ -101,9 +101,22 @@ body, html {
     border-radius: 20px;
     padding: 10px 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    
+    /* ΝΕΟ: Γλυκό και σύγχρονο εφέ εμφάνισης του μενού */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: top center;
+    transform: translateY(-10px) scaleY(0.95);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
-.top-nav.active { display: flex; }
+.top-nav.active { 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scaleY(1);
+}
 
 .nav-item {
     text-decoration: none;
@@ -132,10 +145,8 @@ body, html {
     min-height: 100vh;
     min-height: 100svh; 
     
-    /* ΝΕΟ: Gradient Overlay για να διαβάζονται τα γράμματα */
-    background-image: 
-        linear-gradient(to top, rgba(246, 244, 240, 1) 0%, rgba(246, 244, 240, 0.7) 25%, rgba(246, 244, 240, 0) 50%),
-        url('hero-mobile.webp');
+    /* Αφαιρέθηκε το άσχημο λευκό gradient, επαναφορά στην καθαρή εικόνα */
+    background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
     background-repeat: no-repeat;
@@ -167,34 +178,37 @@ body, html {
     font-weight: 600;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); 
+    margin-bottom: 15px;
+    /* Έντονη σκιά για να ξεχωρίζει ο τίτλος από τον ουρανό */
+    text-shadow: 0 2px 15px rgba(255, 255, 255, 0.9); 
 }
 
+/* ΝΕΟ: Glass-box γύρω από την περιγραφή για να μην χάνεται στο καράβι */
 .hero-description {
     font-size: 15px; 
     font-weight: 400;
     color: #2a2a2a;
     line-height: 1.5;
-    /* Ελαφρύ text-shadow για έξτρα ευκρίνεια */
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6); /* Ημιδιαφανές λευκό */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 12px 18px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.highlight-text { font-weight: 500; color: #111; display: inline-block; margin-bottom: 4px; }
+.highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* ΝΕΑ ΔΟΜΗ TAGS: Flex wrap για αυτόματες γραμμές */
 .destination-tags {
     display: flex;
-    flex-wrap: wrap; /* Επιτρέπει στα tags να "διπλώσουν" σε νέες γραμμές */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 8px;
     margin-top: 15px;
     width: 100%;
-    max-width: 380px; /* Έλεγχος πλάτους για να σπάσει ωραία σε 2 γραμμές */
+    max-width: 380px; 
 }
-
-/* Το tag-row δεν χρειάζεται πια, αλλά το αφήνω για ασφάλεια αν ξέμεινε κάτι */
-.tag-row { display: contents; } 
 
 .dest-tag {
     font-size: 13px; 
@@ -208,7 +222,7 @@ body, html {
     -webkit-backdrop-filter: blur(2px);
     cursor: default;
     text-align: center;
-    margin-bottom: 4px; /* Μικρό κενό για όταν διπλώνουν */
+    margin-bottom: 4px; 
 }
 
 /* CTAs */
@@ -299,6 +313,11 @@ body, html {
         padding: 0;
         box-shadow: none;
         gap: 15px;
+        
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
     }
 
     .nav-item {
@@ -319,7 +338,6 @@ body, html {
 
     .hero-content {
         max-width: 650px;
-        /* Στοίχιση αριστερά στο desktop */
         justify-content: flex-start;
         align-items: flex-start; 
     }
@@ -330,25 +348,37 @@ body, html {
     }
 
     .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
-    .hero-description { font-size: 18px; line-height: 1.6; text-shadow: none; }
     
+    /* Στο desktop αφαιρούμε το γυάλινο κουτάκι από την περιγραφή, δεν χρειάζεται */
+    .hero-description { 
+        font-size: 18px; 
+        line-height: 1.6; 
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    /* ΝΕΟ: Περιορίζουμε το πλάτος στα 440px για να σπάσουν τα tags σε 2 γραμμές υποχρεωτικά */
     .destination-tags { 
         flex-direction: row;
         justify-content: flex-start;
-        max-width: 600px; 
+        max-width: 440px; 
         gap: 8px; 
         margin-top: 18px; 
     }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0; }
 
-    /* Στοίχιση CTAs αριστερά στο desktop */
+    /* Εξασφαλίζουμε ότι τα κουμπιά πάνε αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
         margin: 35px 0 0 0; 
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
-    .btn-text { font-size: 15px; text-align: left; } /* Κείμενο κουμπιών αριστερά */
+    .btn-text { font-size: 15px; text-align: left; }
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
 }
