@@ -86,7 +86,6 @@ body, html {
 
 #menu-icon { transition: opacity 0.2s ease, transform 0.2s ease; }
 
-/* Το νέο γλυκό εφέ του μενού (ελαστικό slide down) */
 .top-nav {
     display: flex; 
     flex-direction: column;
@@ -136,45 +135,48 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Η Λύση "App Bottom Sheet")
+   MOBILE STYLES 
    ========================================= */
 .hero-section {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
-    min-height: 100svh; /* Γεμίζει 100% την οθόνη */
+    min-height: 100svh; 
+    position: relative; /* Βοηθάει στο καρφίτσωμα της εικόνας */
 }
 
-/* Πεντακάθαρη εικόνα στο πάνω 50% της οθόνης */
+/* Η ΛΥΣΗ ΓΙΑ ΤΗΝ ΕΙΚΟΝΑ: Απόλυτη θέση για να μην αφήνει κενά! */
 .mobile-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50vh; 
+    height: 55vh; /* Λίγο πιο ψηλή για να δώσει χώρο στο καράβι */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center bottom;
+    /* Με το 30% καδράρουμε ιδανικά, κατεβάζοντας τη θάλασσα και δείχνοντας το πλοίο */
+    background-position: center 30%; 
     background-repeat: no-repeat;
-    position: relative;
     z-index: 1;
 }
 
-/* Η "Κάρτα" που φιλοξενεί τα κείμενα κάτω από την εικόνα */
 .hero-content {
     background-color: #f6f4f0;
-    /* Στρογγυλεμένες γωνίες που ανεβαίνουν ΕΠΑΝΩ στην εικόνα */
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    margin-top: -30px; 
+    
+    /* Σπρώχνουμε την κάρτα χαμηλά (50vh) για να αφήσει 55vh χώρο για την εικόνα (με μικρή επικάλυψη) */
+    margin-top: 50vh; 
     padding: 30px 20px 30px 20px;
     
     position: relative;
     z-index: 10;
-    /* Παίρνει όλο τον υπόλοιπο χώρο της οθόνης */
-    min-height: calc(50vh + 30px); 
+    min-height: 50vh; 
     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Απαλή σκιά που τονίζει την κάρτα */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
 .top-content {
@@ -183,6 +185,10 @@ body, html {
     align-items: center;
     text-align: center;
 }
+
+/* Εναλλαγή Τίτλων */
+.desktop-title { display: none; }
+.mobile-title { display: block; }
 
 .main-title {
     font-family: 'Playfair Display', serif;
@@ -202,7 +208,6 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags Τοποθεσιών - Φυσική ροή σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
@@ -226,7 +231,6 @@ body, html {
     margin-bottom: 4px; 
 }
 
-/* CTAs - Κλειδωμένα στο κάτω μέρος της κάρτας */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -266,7 +270,7 @@ body, html {
     font-size: 18px;
 }
 
-/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Trust Blue - Φωτεινό, επαγγελματικό και απόλυτα Facebook */
+/* Trust Blue Facebook CTA */
 .primary-btn {
     background-color: #0066cc; 
     border: 2px solid #0066cc;
@@ -285,7 +289,7 @@ body, html {
 
 
 /* =========================================
-   DESKTOP & TABLET STYLES (Από 768px και πάνω)
+   DESKTOP & TABLET STYLES 
    ========================================= */
 @media (min-width: 768px) {
     
@@ -327,11 +331,11 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-    /* Καταργούμε το layout του κινητού (Image/Card) για τους υπολογιστές */
+    /* Καταργούμε το Mobile Image στο Desktop */
     .mobile-hero-image { display: none; } 
 
     .hero-section {
-        display: flex; /* Επαναφορά της κλασικής διάταξης */
+        display: flex; 
         height: auto;
         min-height: 750px;
         background-color: transparent;
@@ -345,7 +349,7 @@ body, html {
         justify-content: flex-start;
         align-items: flex-start; 
         
-        /* Καταργούμε τα στρογγυλέματα και τις σκιές του κινητού */
+        /* Καθάρισμα από στυλ της κινητής "κάρτας" */
         border-radius: 0;
         margin-top: 0;
         box-shadow: none;
@@ -360,6 +364,10 @@ body, html {
         text-align: left;
     }
 
+    /* Εναλλαγή Τίτλων για Desktop */
+    .desktop-title { display: block; }
+    .mobile-title { display: none; }
+
     .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
@@ -372,12 +380,10 @@ body, html {
         margin-top: 18px; 
     }
     
-    /* Εδώ είναι ο κόφτης που στέλνει τη Χάλκη στη 2η γραμμή στο Desktop */
     .desktop-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0;}
 
-    /* Στοίχιση CTAs αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
