@@ -1,236 +1,119 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Island Transfer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-body, html {
-    width: 100%;
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f6f4f0;
-}
+    <section class="hero-section">
+        
+        <header class="top-header">
+            <div class="logo-wrapper">
+                <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
+                <div class="logo-text">
+                    <span>SMALL ISLAND</span>
+                    <span>TRANSFER</span>
+                </div>
+            </div>
+        </header>
 
-/* --- Κεντρικό Container & Φόντο --- */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 750px; 
-    
-    background-image: url('hero.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    display: flex;
-    flex-direction: column;
-    padding: 30px 5%;
-}
+        <main class="hero-content">
+            <h1 class="main-title">
+                Rhodes to Halki,<br>
+                Symi & Beyond.
+            </h1>
+            
+            <p class="hero-description">
+                <span class="highlight-text">Premium Transfers. Zero Stress.</span><br>
+                Private vehicle. Best price. On time — always.
+            </p>
 
-/* --- Header / Λογότυπο (Πάνω Αριστερά) --- */
-.top-header {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    z-index: 2;
-}
+            <div class="destination-tags">
+                <span class="dest-tag">Airport & port pickups</span>
+                <span class="dest-tag">Halki</span>
+                <span class="dest-tag">Symi</span>
+                <span class="dest-tag">Tilos</span>
+                <span class="dest-tag">Kastellorizo</span>
+            </div>
 
-.logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+            <div class="cta-group">
+                
+                <a href="https://www.facebook.com/" target="_blank" class="primary-btn">
+                    <span class="btn-text">Check My Route & Price</span>
+                    <span class="icon-circle fb-bg">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </span>
+                </a>
 
-.logo-img {
-    height: 45px;
-    width: auto;
-}
+                <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+                    <span class="btn-text">Check Price via WhatsApp</span>
+                    <span class="icon-circle wa-bg">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </span>
+                </a>
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.1;
-    color: #111;
-    letter-spacing: 0.5px;
-}
+                <div class="payment-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 12" width="45" height="auto" title="Visa">
+                        <defs>
+                            <linearGradient id="visaGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#1434CB" />
+                                <stop offset="50%" style="stop-color:#2962FF" />
+                                <stop offset="100%" style="stop-color:#F79E1B" />
+                            </linearGradient>
+                        </defs>
+                        <path fill="url(#visaGradient)" d="M15.76 0l-2.46 11.85h3.95L20.2 0h-4.44zm7.67 11.55c3.24 0 5.5-1.66 5.54-4.06-.03-1.75-1.72-2.72-3.04-3.35-1.35-.64-1.8-1.06-1.8-1.63.01-.89 1.1-1.29 2.14-1.29 1.78 0 2.75.26 4.22.9l.61-2.76c-1.48-.66-3.5-1.2-5.62-1.22-3.48 0-5.7 1.66-5.73 4.21-.04 1.38.9 2.43 2.9 3.39 1.2.58 1.95 1.01 1.93 1.61-.02.56-.65 1.16-2.05 1.16-1.4 0-2.41-.27-3.19-.6l-.44 2.16c1.19.53 3.37.98 4.53.98zm-9.66-11.55h-3.05l-1.9 7.7c-.09.42-.44.77-.92.9h-3.31l-.03.16h5.64c.67 0 1.25-.5 1.39-1.24L13.77 0zm24.04 0h-3.01l-2.9 9.65h-2.39c-.6 0-1.08-.29-1.33.86L24.38 11.85h4.06l.64-1.76h4.01l.37 1.76h3.54L37.81 0zM32.1 7.55L33.71 3.18l1.29 4.37h-2.9z"/>
+                    </svg>
 
-/* --- Κείμενα & CTA (Αριστερή Στοίχιση) --- */
-.hero-content {
-    margin-top: 10vh; 
-    max-width: 650px;
-    text-align: left;
-    z-index: 2;
-    padding-bottom: 120px; 
-}
+                    <svg viewBox="0 0 36 22" width="38" title="Mastercard">
+                        <circle cx="11" cy="11" r="11" fill="#EB001B"/>
+                        <circle cx="25" cy="11" r="11" fill="#F79E1B"/>
+                        <path d="M18 21.46c2.8-2.1 4.6-5.4 4.6-9.46 0-4.06-1.8-7.36-4.6-9.46-2.8 2.1-4.6 5.4-4.6 9.46 0 4.06 1.8 7.36 4.6 9.46z" fill="#FF5F00"/>
+                    </svg>
+                    <svg viewBox="0 0 36 22" width="38" title="Maestro">
+                        <circle cx="11" cy="11" r="11" fill="#0064C8"/>
+                        <circle cx="25" cy="11" r="11" fill="#EB001B"/>
+                        <path d="M18 21.46c2.8-2.1 4.6-5.4 4.6-9.46 0-4.06-1.8-7.36-4.6-9.46-2.8 2.1-4.6 5.4-4.6 9.46 0 4.06 1.8 7.36 4.6 9.46z" fill="#7D1979"/>
+                    </svg>
+                </div>
 
-.main-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(34px, 5vw, 64px);
-    font-weight: 600;
-    line-height: 1.15;
-    color: #1a1a1a;
-    margin-bottom: 15px;
-}
+            </div>
+        </main>
 
-.hero-description {
-    font-size: clamp(15px, 2vw, 18px); 
-    font-weight: 400;
-    color: #2a2a2a;
-    line-height: 1.6;
-}
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Routes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-star"></i>
+                <span>Reviews (4.9&#9733;)</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-comment"></i>
+                <span>Chat</span>
+            </a>
+        </nav>
 
-/* Έμφαση στην πρώτη γραμμή του description */
-.highlight-text {
-    font-weight: 500;
-    color: #111;
-    display: inline-block;
-    margin-bottom: 4px;
-}
+    </section>
 
-/* --- Διακριτικά Tags (Τοποθεσίες) --- */
-.destination-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-    max-width: 500px; /* Για να αναδιπλώνονται ομαλά σε μεγάλες οθόνες */
-}
+    <script>
+        function openWhatsApp() {
+            const phoneNumber = "306900000000"; 
+            const message = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+    </script>
 
-.dest-tag {
-    font-size: 13px;
-    font-weight: 500;
-    color: #1a1a1a;
-    border: 1px solid rgba(26, 26, 26, 0.3);
-    border-radius: 30px;
-    padding: 4px 12px;
-    background-color: transparent;
-    cursor: default; /* Επειδή είναι tags, όχι clickables */
-}
-
-/* --- Περιοχή Κουμπιών --- */
-.cta-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 30px;
-    width: 100%;
-    max-width: 400px; 
-}
-
-/* Κοινά Στυλ Κουμπιών */
-.primary-btn, .ghost-btn {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-radius: 50px;
-    height: 54px; 
-    padding: 0 55px 0 20px; 
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.primary-btn:active, .ghost-btn:active {
-    transform: scale(0.98);
-}
-
-.btn-text {
-    font-size: 15px;
-    font-weight: 500;
-    text-align: center;
-}
-
-/* Εικονίδιο 'καρφιτσωμένο' δεξιά */
-.icon-circle {
-    position: absolute;
-    right: 7px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 20px;
-}
-
-.fb-bg { background-color: #1877F2; }
-.wa-bg { background-color: #25D366; }
-
-/* Ειδικά Στυλ: Κύριο Κουμπί (Facebook) */
-.primary-btn {
-    background-color: #1a1a1a; 
-    border: 2px solid #1a1a1a;
-}
-.primary-btn .btn-text {
-    color: #ffffff;
-}
-
-/* Ειδικά Στυλ: Ghost Button (WhatsApp) */
-.ghost-btn {
-    background-color: transparent; 
-    border: 2px solid #1a1a1a; 
-}
-.ghost-btn .btn-text {
-    color: #1a1a1a;
-}
-.ghost-btn:hover {
-    background-color: rgba(26, 26, 26, 0.05); 
-}
-
-/* --- Εικονίδια Πληρωμών (SVGs) --- */
-.payment-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px; 
-}
-
-.payment-icons svg {
-    height: 20px; 
-    width: auto;
-}
-
-/* --- Bottom Navigation --- */
-.bottom-nav {
-    position: fixed; 
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 90%;
-    max-width: 500px;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 40px;
-    z-index: 10;
-}
-
-.nav-item {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #555;
-    font-size: 12px;
-    font-weight: 500;
-    gap: 6px;
-}
-
-.nav-item i {
-    font-size: 22px;
-}
-
-.nav-item.active {
-    color: #111;
-}
+</body>
+</html>
