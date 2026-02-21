@@ -86,7 +86,6 @@ body, html {
 
 #menu-icon { transition: opacity 0.2s ease, transform 0.2s ease; }
 
-/* Το νέο γλυκό εφέ του μενού (ελαστικό slide down) */
 .top-nav {
     display: flex; 
     flex-direction: column;
@@ -136,16 +135,15 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Η Λύση "App Bottom Sheet")
+   MOBILE STYLES 
    ========================================= */
 .hero-section {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
-    min-height: 100svh; /* Γεμίζει 100% την οθόνη */
+    min-height: 100svh; 
 }
 
-/* Πεντακάθαρη εικόνα στο πάνω 50% της οθόνης */
 .mobile-hero-image {
     width: 100%;
     height: 50vh; 
@@ -157,10 +155,8 @@ body, html {
     z-index: 1;
 }
 
-/* Η "Κάρτα" που φιλοξενεί τα κείμενα κάτω από την εικόνα */
 .hero-content {
     background-color: #f6f4f0;
-    /* Στρογγυλεμένες γωνίες που ανεβαίνουν ΕΠΑΝΩ στην εικόνα */
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
@@ -168,13 +164,12 @@ body, html {
     
     position: relative;
     z-index: 10;
-    /* Παίρνει όλο τον υπόλοιπο χώρο της οθόνης */
     min-height: calc(50vh + 30px); 
     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Απαλή σκιά που τονίζει την κάρτα */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
 .top-content {
@@ -183,10 +178,6 @@ body, html {
     align-items: center;
     text-align: center;
 }
-
-/* --- Responsive Title Breaks (Mobile Default) --- */
-.desktop-br-title { display: none; }
-.mobile-space-title { display: inline; }
 
 .main-title {
     font-family: 'Playfair Display', serif;
@@ -197,6 +188,10 @@ body, html {
     margin-bottom: 12px;
 }
 
+/* Βοηθητικές κλάσεις για τον τίτλο (Mobile πρώτα) */
+.desktop-br { display: none; }
+.desktop-hide { display: inline; }
+
 .hero-description {
     font-size: 14px; 
     font-weight: 400;
@@ -206,7 +201,6 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags Τοποθεσιών - Φυσική ροή σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
@@ -230,7 +224,6 @@ body, html {
     margin-bottom: 4px; 
 }
 
-/* CTAs - Κλειδωμένα στο κάτω μέρος της κάρτας */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -270,14 +263,14 @@ body, html {
     font-size: 18px;
 }
 
-/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Premium Dark Blue - Σκούρο και κομψό, ταιριάζει 1000% */
+/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Ναυτικό Μπλε (Navy Blue) - Πιο σκούρο και εναρμονισμένο */
 .primary-btn {
-    background-color: #1a365d; 
-    border: 2px solid #1a365d;
-    box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3); /* Προσάρμοσα και τη σκιά στο ίδιο χρώμα */
+    background-color: #1A365D; 
+    border: 2px solid #1A365D;
+    box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
 }
 .primary-btn .btn-text { color: #ffffff; }
-.fb-icon-bg { background-color: #ffffff; color: #1a365d; }
+.fb-icon-bg { background-color: #ffffff; color: #1A365D; }
 
 .ghost-btn {
     background-color: rgba(255, 255, 255, 1); 
@@ -331,11 +324,10 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-    /* Καταργούμε το layout του κινητού (Image/Card) για τους υπολογιστές */
     .mobile-hero-image { display: none; } 
 
     .hero-section {
-        display: flex; /* Επαναφορά της κλασικής διάταξης */
+        display: flex; 
         height: auto;
         min-height: 750px;
         background-color: transparent;
@@ -349,7 +341,6 @@ body, html {
         justify-content: flex-start;
         align-items: flex-start; 
         
-        /* Καταργούμε τα στρογγυλέματα και τις σκιές του κινητού */
         border-radius: 0;
         margin-top: 0;
         box-shadow: none;
@@ -364,11 +355,12 @@ body, html {
         text-align: left;
     }
 
-    /* --- Responsive Title Breaks (Desktop Override) --- */
-    .desktop-br-title { display: block; }
-    .mobile-space-title { display: none; }
-
     .main-title { font-size: 58px; margin-bottom: 15px; }
+
+    /* Ενεργοποίηση των σωστών αλλαγών γραμμής στο Desktop */
+    .desktop-br { display: inline; }
+    .desktop-hide { display: none; }
+
     .hero-description { font-size: 18px; line-height: 1.6; }
     
     .destination-tags { 
@@ -380,12 +372,10 @@ body, html {
         margin-top: 18px; 
     }
     
-    /* Εδώ είναι ο κόφτης που στέλνει τη Χάλκη στη 2η γραμμή στο Desktop */
     .desktop-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0;}
 
-    /* Στοίχιση CTAs αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
