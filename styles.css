@@ -184,6 +184,10 @@ body, html {
     text-align: center;
 }
 
+/* --- Responsive Title Breaks (Mobile Default) --- */
+.desktop-br-title { display: none; }
+.mobile-space-title { display: inline; }
+
 .main-title {
     font-family: 'Playfair Display', serif;
     font-size: 28px; 
@@ -191,11 +195,6 @@ body, html {
     line-height: 1.15;
     color: #1a1a1a;
     margin-bottom: 12px;
-}
-
-/* Κρύβουμε το break στο κινητό */
-.desktop-only-br {
-    display: none;
 }
 
 .hero-description {
@@ -253,7 +252,7 @@ body, html {
     height: 50px; 
     width: 100%; 
     padding: 0 45px 0 15px; 
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
@@ -271,14 +270,14 @@ body, html {
     font-size: 18px;
 }
 
-/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Trust Blue - Βαθύ, επαγγελματικό, ταιριάζει με το design */
+/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Premium Dark Blue - Σκούρο και κομψό, ταιριάζει 1000% */
 .primary-btn {
-    background-color: #003366; 
-    border: 2px solid #003366;
-    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+    background-color: #1a365d; 
+    border: 2px solid #1a365d;
+    box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3); /* Προσάρμοσα και τη σκιά στο ίδιο χρώμα */
 }
 .primary-btn .btn-text { color: #ffffff; }
-.fb-icon-bg { background-color: #ffffff; color: #003366; }
+.fb-icon-bg { background-color: #ffffff; color: #1a365d; }
 
 .ghost-btn {
     background-color: rgba(255, 255, 255, 1); 
@@ -365,13 +364,11 @@ body, html {
         text-align: left;
     }
 
-    .main-title { font-size: 58px; margin-bottom: 15px; }
-    
-    /* Εμφανίζουμε την αλλαγή γραμμής στο Desktop */
-    .desktop-only-br {
-        display: initial;
-    }
+    /* --- Responsive Title Breaks (Desktop Override) --- */
+    .desktop-br-title { display: block; }
+    .mobile-space-title { display: none; }
 
+    .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
     .destination-tags { 
