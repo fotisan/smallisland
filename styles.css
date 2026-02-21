@@ -10,7 +10,7 @@ body, html {
     height: 100%;
     font-family: 'Roboto', sans-serif;
     background-color: #f6f4f0;
-    overflow-x: hidden; /* Αποτρέπει το οριζόντιο σκρολ στα κινητά */
+    overflow-x: hidden; 
 }
 
 /* =========================================
@@ -26,7 +26,7 @@ body, html {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 40px; /* Κρατάμε το σχήμα "χαπιού" (pill) */
+    border-radius: 40px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,10 +71,10 @@ body, html {
 
 /* Μενού Κινητών (Dropdown) */
 .top-nav {
-    display: none; /* Κρυφό αρχικά */
+    display: none; 
     flex-direction: column;
     position: absolute;
-    top: 65px; /* Εμφανίζεται ακριβώς κάτω από το header */
+    top: 65px; 
     left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
@@ -87,7 +87,7 @@ body, html {
 }
 
 .top-nav.active {
-    display: flex; /* Εμφανίζεται όταν πατηθεί το χάμπουργκερ */
+    display: flex; 
 }
 
 .nav-item {
@@ -105,6 +105,7 @@ body, html {
     border-bottom: none;
 }
 
+/* Το active effect (μαύρο έντονο γράμμα + ελαφρύ φόντο) που εφαρμόζεται πλέον στο Contact */
 .nav-item.active, .nav-item:hover {
     color: #111;
     font-weight: 600;
@@ -119,7 +120,6 @@ body, html {
     width: 100%;
     min-height: 100vh; 
     
-    /* Εικόνα για τα κινητά */
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
@@ -127,11 +127,9 @@ body, html {
     
     display: flex;
     flex-direction: column;
-    /* Αυξήσαμε το padding-top για να μην κρύβονται τα γράμματα κάτω από το header */
     padding: 110px 15px 40px 15px; 
 }
 
-/* Κεντράρισμα περιεχομένου στα κινητά */
 .hero-content {
     width: 100%;
     display: flex;
@@ -165,28 +163,30 @@ body, html {
     margin-bottom: 4px;
 }
 
-/* Διακριτικά Tags - Κεντραρισμένα */
+/* --- Διακριτικά Tags (Πλήρως Στοιχισμένα για κινητά) --- */
 .destination-tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
-    gap: 6px;
+    justify-content: center; /* Κεντράρει απόλυτα όλα τα στοιχεία */
+    align-items: center;
+    gap: 8px; /* Ομοιόμορφο κενό μεταξύ των κουμπιών */
     margin-top: 15px;
     width: 100%;
-    max-width: 350px;
+    max-width: 360px;
 }
 
 .dest-tag {
-    font-size: 12px; 
+    font-size: 13px; /* Ελαφρώς μεγαλύτερα για καλύτερη ανάγνωση */
     font-weight: 500;
     color: #1a1a1a;
     border: 1px solid rgba(26, 26, 26, 0.3);
     border-radius: 30px;
-    padding: 4px 10px;
+    padding: 5px 12px;
     background-color: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     cursor: default;
+    text-align: center;
 }
 
 /* Περιοχή Κουμπιών - Κεντραρισμένα */
@@ -268,7 +268,6 @@ body, html {
     width: auto;
 }
 
-
 /* =========================================
    DESKTOP & TABLET STYLES (Από 768px και πάνω)
    ========================================= */
@@ -277,19 +276,15 @@ body, html {
     /* Header προσαρμογές για μεγάλες οθόνες */
     .main-header {
         top: 25px;
-        max-width: 1200px; /* Απλώνεται όμορφα στο desktop */
+        max-width: 1200px; 
         padding: 10px 25px;
     }
 
     .logo-img { height: 45px; }
     .logo-text { font-size: 13px; }
 
-    /* Κρύβουμε το χάμπουργκερ */
-    .hamburger-btn {
-        display: none; 
-    }
+    .hamburger-btn { display: none; }
 
-    /* Το μενού γίνεται οριζόντιο στο δεξί μέρος του header */
     .top-nav {
         display: flex; 
         flex-direction: row;
@@ -308,11 +303,11 @@ body, html {
         font-size: 14px;
         padding: 8px 16px;
         border-bottom: none;
-        border-radius: 30px; /* Μικρά "χαπάκια" για κάθε λινκ */
+        border-radius: 30px; 
     }
 
     .nav-item.active, .nav-item:hover {
-        background-color: rgba(0, 0, 0, 0.05); /* Ελαφρύ γκρι hover */
+        background-color: rgba(0, 0, 0, 0.05); 
     }
 
     /* Hero Section προσαρμογές */
