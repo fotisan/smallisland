@@ -51,21 +51,13 @@
                 </p>
 
                 <div class="destination-tags animate-entry delay-3">
-                    <div class="tag-row">
-                        <span class="dest-tag">Rhodes Airport</span>
-                    </div>
-                    <div class="tag-row">
-                        <span class="dest-tag">Rhodes Harbour</span>
-                        <span class="dest-tag">Kamiros Skala</span>
-                    </div>
-                    <div class="tag-row">
-                        <span class="dest-tag">Halki</span>
-                        <span class="dest-tag">Symi</span>
-                    </div>
-                    <div class="tag-row">
-                        <span class="dest-tag">Tilos</span>
-                        <span class="dest-tag">Kastellorizo</span>
-                    </div>
+                    <span class="dest-tag">Rhodes Airport</span>
+                    <span class="dest-tag">Rhodes Harbour</span>
+                    <span class="dest-tag">Kamiros Skala</span>
+                    <span class="dest-tag">Halki</span>
+                    <span class="dest-tag">Symi</span>
+                    <span class="dest-tag">Tilos</span>
+                    <span class="dest-tag">Kastellorizo</span>
                 </div>
             </div>
 
@@ -105,13 +97,22 @@
             
             nav.classList.toggle('active');
             
-            if(nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
+            // Εφέ περιστροφής και σβησίματος
+            icon.style.transform = "scale(0.5) rotate(90deg)";
+            icon.style.opacity = "0";
+            
+            // Αυξήσαμε ελάχιστα τον χρόνο για πιο γλυκό εφέ (250ms)
+            setTimeout(() => {
+                if(nav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+                icon.style.transform = "scale(1) rotate(0deg)";
+                icon.style.opacity = "1";
+            }, 250); 
         }
 
         document.addEventListener('click', function(event) {
