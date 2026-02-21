@@ -188,9 +188,10 @@ body, html {
     margin-bottom: 12px;
 }
 
-/* Βοηθητικές κλάσεις για τον τίτλο (Mobile πρώτα) */
-.desktop-br { display: none; }
-.desktop-hide { display: inline; }
+/* Συμπεριφορά τίτλου στα κινητά */
+.title-line { display: inline; }
+.title-space { display: inline; }
+.mobile-only-br { display: block; }
 
 .hero-description {
     font-size: 14px; 
@@ -263,7 +264,6 @@ body, html {
     font-size: 18px;
 }
 
-/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Ναυτικό Μπλε (Navy Blue) - Πιο σκούρο και εναρμονισμένο */
 .primary-btn {
     background-color: #1A365D; 
     border: 2px solid #1A365D;
@@ -337,7 +337,7 @@ body, html {
     }
 
     .hero-content {
-        max-width: 650px;
+        max-width: 850px; /* <--- ΕΔΩ ΛΥΘΗΚΕ ΤΟ ΠΡΟΒΛΗΜΑ, ΔΩΣΑΜΕ ΠΕΡΙΣΣΟΤΕΡΟ ΧΩΡΟ */
         justify-content: flex-start;
         align-items: flex-start; 
         
@@ -357,9 +357,13 @@ body, html {
 
     .main-title { font-size: 58px; margin-bottom: 15px; }
 
-    /* Ενεργοποίηση των σωστών αλλαγών γραμμής στο Desktop */
-    .desktop-br { display: inline; }
-    .desktop-hide { display: none; }
+    /* Συμπεριφορά τίτλου στους υπολογιστές */
+    .title-line { 
+        display: block; /* Κάθε κομμάτι μπαίνει σε δική του γραμμή */
+        white-space: nowrap; /* Απαγορεύει το αυτόματο σπάσιμο */
+    }
+    .title-space { display: none; } /* Κρύβουμε τα κενά αφού έχουμε αλλαγή γραμμής */
+    .mobile-only-br { display: none; } /* Κρύβουμε το br του κινητού */
 
     .hero-description { font-size: 18px; line-height: 1.6; }
     
