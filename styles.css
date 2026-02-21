@@ -89,7 +89,7 @@ body, html {
     gap: 12px;
     margin-top: 30px;
     width: 100%;
-    max-width: 400px; /* Μέγιστο πλάτος κουμπιών */
+    max-width: 400px; 
 }
 
 /* Κοινά Στυλ Κουμπιών με κεντραρισμένο κείμενο */
@@ -100,8 +100,8 @@ body, html {
     justify-content: center; /* Κεντράρει το περιεχόμενο */
     position: relative; /* Απαραίτητο για να 'κολλήσει' το εικονίδιο δεξιά */
     border-radius: 50px;
-    height: 54px; /* Σταθερό ύψος για τέλεια συμμετρία */
-    padding: 0 55px 0 20px; /* Αφήνει χώρο δεξιά για το εικονίδιο */
+    height: 54px; /* Σταθερό ύψος */
+    padding: 0 55px 0 20px; /* Χώρος δεξιά για το εικονίδιο */
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -118,7 +118,7 @@ body, html {
 /* Το εικονίδιο "καρφιτσώνεται" απόλυτα στα δεξιά του κουμπιού */
 .icon-circle {
     position: absolute;
-    right: 7px; /* Απόσταση από τη δεξιά άκρη του κουμπιού */
+    right: 7px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -157,14 +157,14 @@ body, html {
 .payment-icons {
     display: flex;
     align-items: center;
-    justify-content: center; /* Κεντράρισμα και των καρτών κάτω από τα κουμπιά */
+    justify-content: center;
     gap: 15px;
-    margin-top: 15px;
+    margin-top: 20px; /* Λίγο περισσότερο κενό από πάνω */
 }
 
 .payment-icons svg {
-    opacity: 0.95;
-    height: 18px; /* Ελαφρώς μεγαλύτερο μέγεθος για καλύτερη ευκρίνεια */
+    /* Ρύθμιση ύψους για οπτική ισορροπία */
+    height: 20px; 
     width: auto;
 }
 
