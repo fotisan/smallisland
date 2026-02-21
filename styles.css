@@ -135,28 +135,24 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES 
+   MOBILE STYLES (App Bottom Sheet)
    ========================================= */
 .hero-section {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
     min-height: 100svh; 
-    position: relative; /* Βοηθάει στο καρφίτσωμα της εικόνας */
 }
 
-/* Η ΛΥΣΗ ΓΙΑ ΤΗΝ ΕΙΚΟΝΑ: Απόλυτη θέση για να μην αφήνει κενά! */
+/* Πεντακάθαρη εικόνα στο πάνω μέρος. Άλλαξα το position στο 20% για να φαίνεται και το καράβι! */
 .mobile-hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 55vh; /* Λίγο πιο ψηλή για να δώσει χώρο στο καράβι */
+    height: 52vh; /* Έδωσα ένα 'κλικ' περισσότερο ύψος για ασφάλεια */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    /* Με το 30% καδράρουμε ιδανικά, κατεβάζοντας τη θάλασσα και δείχνοντας το πλοίο */
-    background-position: center 30%; 
+    background-position: center 20%; /* ΕΣΩΣΕ ΤΟ ΚΑΡΑΒΙ: Τραβάει την εικόνα ελαφρώς προς τα κάτω */
     background-repeat: no-repeat;
+    position: relative;
     z-index: 1;
 }
 
@@ -164,15 +160,11 @@ body, html {
     background-color: #f6f4f0;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    
-    /* Σπρώχνουμε την κάρτα χαμηλά (50vh) για να αφήσει 55vh χώρο για την εικόνα (με μικρή επικάλυψη) */
-    margin-top: 50vh; 
+    margin-top: -30px; 
     padding: 30px 20px 30px 20px;
-    
     position: relative;
     z-index: 10;
-    min-height: 50vh; 
-    
+    min-height: calc(48vh + 30px); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -186,9 +178,9 @@ body, html {
     text-align: center;
 }
 
-/* Εναλλαγή Τίτλων */
-.desktop-title { display: none; }
-.mobile-title { display: block; }
+/* Ρυθμίσεις για τον εναλλακτικό τίτλο Desktop / Mobile */
+.desktop-title-text { display: none; }
+.mobile-title-text { display: block; }
 
 .main-title {
     font-family: 'Playfair Display', serif;
@@ -231,6 +223,7 @@ body, html {
     margin-bottom: 4px; 
 }
 
+/* CTAs */
 .cta-group {
     display: flex;
     flex-direction: column;
@@ -270,7 +263,7 @@ body, html {
     font-size: 18px;
 }
 
-/* Trust Blue Facebook CTA */
+/* Trust Blue */
 .primary-btn {
     background-color: #0066cc; 
     border: 2px solid #0066cc;
@@ -289,7 +282,7 @@ body, html {
 
 
 /* =========================================
-   DESKTOP & TABLET STYLES 
+   DESKTOP & TABLET STYLES (Από 768px και πάνω)
    ========================================= */
 @media (min-width: 768px) {
     
@@ -331,8 +324,11 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-    /* Καταργούμε το Mobile Image στο Desktop */
     .mobile-hero-image { display: none; } 
+
+    /* Εναλλαγή τίτλου για το Desktop */
+    .mobile-title-text { display: none; }
+    .desktop-title-text { display: block; }
 
     .hero-section {
         display: flex; 
@@ -348,14 +344,11 @@ body, html {
         max-width: 650px;
         justify-content: flex-start;
         align-items: flex-start; 
-        
-        /* Καθάρισμα από στυλ της κινητής "κάρτας" */
         border-radius: 0;
         margin-top: 0;
         box-shadow: none;
         background-color: transparent;
         min-height: auto;
-        
         padding: 160px 5% 60px 5%; 
     }
 
@@ -363,10 +356,6 @@ body, html {
         align-items: flex-start;
         text-align: left;
     }
-
-    /* Εναλλαγή Τίτλων για Desktop */
-    .desktop-title { display: block; }
-    .mobile-title { display: none; }
 
     .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
@@ -380,6 +369,7 @@ body, html {
         margin-top: 18px; 
     }
     
+    /* Αναγκάζει τη Χάλκη να πάει στη 2η γραμμή στο Desktop */
     .desktop-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     
     .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0;}
