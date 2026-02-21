@@ -38,8 +38,8 @@
 
     <section class="hero-section">
         
-        <div class="hero-bg-mobile"></div>
-        
+        <div class="hero-image-mobile"></div>
+
         <main class="hero-content">
             
             <div class="top-content">
@@ -57,7 +57,7 @@
                     <span class="dest-tag">Rhodes Harbour</span>
                     <span class="dest-tag">Kamiros Skala</span>
                     
-                    <span class="tag-break"></span>
+                    <div class="desktop-break"></div>
                     
                     <span class="dest-tag">Halki</span>
                     <span class="dest-tag">Symi</span>
@@ -70,7 +70,7 @@
                 
                 <a href="https://www.facebook.com/" target="_blank" class="primary-btn">
                     <span class="btn-text">Check My Route & Price</span>
-                    <span class="icon-circle fb-icon-bg">
+                    <span class="icon-circle">
                         <i class="fa-brands fa-facebook-f"></i>
                     </span>
                 </a>
@@ -102,7 +102,7 @@
             
             nav.classList.toggle('active');
             
-            // Τέλος οι σβούρες. Μόνο ένα πολύ απαλό, "ακριβό" fade-out/fade-in.
+            // Διακριτική κίνηση: Απλό σβήσιμο (fade) χωρίς περιστροφές
             icon.style.opacity = "0";
             
             setTimeout(() => {
@@ -113,6 +113,7 @@
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
                 }
+                // Επανεμφάνιση
                 icon.style.opacity = "1";
             }, 150); 
         }
