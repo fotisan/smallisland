@@ -179,6 +179,7 @@ body, html {
     text-align: center;
 }
 
+/* Βασικές ρυθμίσεις τίτλου */
 .main-title {
     font-family: 'Playfair Display', serif;
     font-size: 28px; 
@@ -188,10 +189,9 @@ body, html {
     margin-bottom: 12px;
 }
 
-/* Συμπεριφορά τίτλου στα κινητά */
-.title-line { display: inline; }
-.title-space { display: inline; }
-.mobile-only-br { display: block; }
+/* Στα κινητά φαίνεται ο mobile-title και κρύβεται ο desktop-title */
+.mobile-title { display: block; }
+.desktop-title { display: none; }
 
 .hero-description {
     font-size: 14px; 
@@ -337,7 +337,7 @@ body, html {
     }
 
     .hero-content {
-        max-width: 850px; /* <--- ΕΔΩ ΛΥΘΗΚΕ ΤΟ ΠΡΟΒΛΗΜΑ, ΔΩΣΑΜΕ ΠΕΡΙΣΣΟΤΕΡΟ ΧΩΡΟ */
+        max-width: 850px; 
         justify-content: flex-start;
         align-items: flex-start; 
         
@@ -357,13 +357,12 @@ body, html {
 
     .main-title { font-size: 58px; margin-bottom: 15px; }
 
-    /* Συμπεριφορά τίτλου στους υπολογιστές */
-    .title-line { 
-        display: block; /* Κάθε κομμάτι μπαίνει σε δική του γραμμή */
-        white-space: nowrap; /* Απαγορεύει το αυτόματο σπάσιμο */
+    /* ΕΝΑΛΛΑΓΗ ΤΙΤΛΩΝ: Εμφανίζουμε τον Desktop, Κρύβουμε τον Mobile */
+    .mobile-title { display: none; }
+    .desktop-title { 
+        display: block; 
+        white-space: nowrap; /* ΑΠΑΓΟΡΕΥΕΙ ΑΥΣΤΗΡΑ ΤΟ ΑΥΤΟΜΑΤΟ ΣΠΑΣΙΜΟ */
     }
-    .title-space { display: none; } /* Κρύβουμε τα κενά αφού έχουμε αλλαγή γραμμής */
-    .mobile-only-br { display: none; } /* Κρύβουμε το br του κινητού */
 
     .hero-description { font-size: 18px; line-height: 1.6; }
     
