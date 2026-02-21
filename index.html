@@ -44,13 +44,16 @@
                 <h1 class="main-title animate-entry delay-1">
                     Your Private Transfer across<br>Rhodes & The Islands.
                 </h1>
+            </div>
+
+            <div class="bottom-content animate-entry delay-2">
                 
-                <p class="hero-description animate-entry delay-2">
+                <p class="hero-description">
                     <span class="highlight-text">One message and it's sorted.</span><br>
                     Anywhere in Rhodes and the Dodecanese — with a driver who knows every harbour, every ferry, every island.
                 </p>
 
-                <div class="destination-tags animate-entry delay-3">
+                <div class="destination-tags">
                     <span class="dest-tag">Rhodes Airport</span>
                     <span class="dest-tag">Rhodes Harbour</span>
                     <span class="dest-tag">Kamiros Skala</span>
@@ -59,23 +62,22 @@
                     <span class="dest-tag">Tilos</span>
                     <span class="dest-tag">Kastellorizo</span>
                 </div>
-            </div>
 
-            <div class="cta-group animate-entry delay-4">
-                
-                <a href="https://www.facebook.com/" target="_blank" class="primary-btn">
-                    <span class="btn-text">Check My Route & Price</span>
-                    <span class="icon-circle fb-icon-bg">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </span>
-                </a>
+                <div class="cta-group">
+                    <a href="https://www.facebook.com/" target="_blank" class="primary-btn">
+                        <span class="btn-text">Check My Route & Price</span>
+                        <span class="icon-circle fb-icon-bg">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </span>
+                    </a>
 
-                <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
-                    <span class="btn-text">Check Price via WhatsApp</span>
-                    <span class="icon-circle wa-bg">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </span>
-                </a>
+                    <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+                        <span class="btn-text">Check Price via WhatsApp</span>
+                        <span class="icon-circle wa-bg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </span>
+                    </a>
+                </div>
 
             </div>
 
@@ -89,6 +91,7 @@
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
 
+        // Ομαλότατο εφέ στο Hamburger
         function toggleMenu(event) {
             if (event) event.stopPropagation(); 
             
@@ -97,8 +100,7 @@
             
             nav.classList.toggle('active');
             
-            // Πιο διακριτική κίνηση: απλή περιστροφή και γρήγορο fade out
-            icon.style.transform = "rotate(90deg) scale(0.8)";
+            icon.style.transform = "rotate(180deg) scale(0.5)";
             icon.style.opacity = "0";
             
             setTimeout(() => {
@@ -111,7 +113,7 @@
                 }
                 icon.style.transform = "rotate(0deg) scale(1)";
                 icon.style.opacity = "1";
-            }, 150); // Ταχύτερη εναλλαγή του εικονιδίου
+            }, 200); 
         }
 
         document.addEventListener('click', function(event) {
