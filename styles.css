@@ -160,7 +160,7 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 30px 20px 30px 20px;
+    padding: 20px 20px 30px 20px; /* Μειώσαμε το top padding από 30px σε 20px για να ανέβουν τα στοιχεία */
     
     position: relative;
     z-index: 10;
@@ -191,12 +191,16 @@ body, html {
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
+/* Έλεγχος παραγράφου περιγραφής στα κινητά */
 .hero-description {
     font-size: 14px; 
     font-weight: 400;
     color: #444;
     line-height: 1.5;
 }
+.desktop-comma { display: none; }
+.desktop-br-desc { display: none; }
+.mobile-dash { display: inline; }
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
@@ -335,7 +339,7 @@ body, html {
     }
 
     .hero-content {
-        max-width: 900px; /* ΠΟΛΥ ΠΕΡΙΣΣΟΤΕΡΟΣ ΧΩΡΟΣ */
+        max-width: 900px; 
         justify-content: flex-start;
         align-items: flex-start; 
         
@@ -345,7 +349,7 @@ body, html {
         background-color: transparent;
         min-height: auto;
         
-        padding: 160px 5% 60px 5%; 
+        padding: 120px 5% 60px 5%; /* ΑΝΕΒΑΣΑΜΕ ΤΑ ΚΕΙΜΕΝΑ: Μειώσαμε το top padding από 160px σε 120px */
     }
 
     .top-content {
@@ -353,16 +357,20 @@ body, html {
         text-align: left;
     }
 
-    /* Στο desktop: Εφαρμόζουμε nowrap, δείχνουμε το br και κρύβουμε το κενό */
+    /* Στο desktop: Εφαρμόζουμε nowrap στον τίτλο, δείχνουμε το br και κρύβουμε το κενό */
     .main-title { 
         font-size: 58px; 
         margin-bottom: 15px; 
-        white-space: nowrap; /* ΑΠΑΓΟΡΕΥΕΙ ΤΟ ΑΥΤΟΜΑΤΟ ΣΠΑΣΙΜΟ */
+        white-space: nowrap; 
     }
     .desktop-br { display: block; }
     .mobile-space { display: none; }
 
+    /* Έλεγχος παραγράφου περιγραφής στο Desktop */
     .hero-description { font-size: 18px; line-height: 1.6; }
+    .desktop-comma { display: inline; } /* Εμφανίζουμε το κόμμα */
+    .desktop-br-desc { display: block; } /* Αλλάζουμε γραμμή στο 'with a driver...' */
+    .mobile-dash { display: none; } /* Κρύβουμε την παύλα */
     
     .destination-tags { 
         flex-direction: row;
