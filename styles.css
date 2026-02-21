@@ -1,3 +1,4 @@
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,30 +9,38 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f6f4f0;
+    background-color: #f6f4f0; /* Το βασικό μπεζ χρώμα του φόντου */
 }
 
-/* --- Κεντρικό Container --- */
+/* --- Κεντρικό Container & Φόντο --- */
 .hero-section {
     position: relative;
     width: 100%;
     height: 100vh;
     min-height: 700px;
-    background-image: url('hero.webp');
-    background-size: cover;
+    
+    /* ΣΗΜΑΝΤΙΚΗ ΑΛΛΑΓΗ: Διπλό background */
+    /* 1. Ένα ντεγκραντέ που ξεκινάει με το μπεζ χρώμα (#f6f4f0) από αριστερά και γίνεται διαφανές προς τα δεξιά */
+    /* 2. Η εικόνα hero.webp από κάτω */
+    background-image: 
+        linear-gradient(to right, #f6f4f0 0%, #f6f4f0 45%, rgba(246, 244, 240, 0) 100%),
+        url('hero.webp');
+        
+    background-size: cover; /* Καλύπτει όλο τον χώρο */
     background-position: center;
     background-repeat: no-repeat;
     
     display: flex;
     flex-direction: column;
-    padding: 30px 5%; /* Γενικό περιθώριο */
+    padding: 30px 5%; /* Γενικό περιθώριο δεξιά-αριστερά */
 }
 
 /* --- Header / Λογότυπο (Πάνω Αριστερά) --- */
 .top-header {
     display: flex;
-    justify-content: flex-start; /* Στοίχιση αριστερά */
+    justify-content: flex-start;
     width: 100%;
+    z-index: 2; /* Πάνω από το gradient */
 }
 
 .logo-wrapper {
@@ -57,14 +66,15 @@ body, html {
 
 /* --- Κείμενα (Μέση Αριστερά) --- */
 .hero-content {
-    margin-top: 15vh; /* Σπρώχνει το κείμενο πιο κάτω από το header */
+    margin-top: 15vh;
     max-width: 650px;
-    text-align: left; /* Στοίχιση αυστηρά αριστερά */
+    text-align: left;
+    z-index: 2; /* Πάνω από το gradient */
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5vw, 64px); /* Responsive μέγεθος γραμματοσειράς */
+    font-size: clamp(36px, 5vw, 64px);
     font-weight: 600;
     line-height: 1.15;
     color: #1a1a1a;
@@ -79,12 +89,13 @@ body, html {
 
 /* --- Κάτω Περιοχή (CTA & Menu - Κεντραρισμένα) --- */
 .bottom-area {
-    margin-top: auto; /* Σπρώχνει όλο το block στο κάτω μέρος της οθόνης */
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Κεντράρει το κουμπί και το μενού */
+    align-items: center;
     width: 100%;
     padding-bottom: 20px;
+    z-index: 2;
 }
 
 /* --- CTA WhatsApp Button --- */
@@ -101,14 +112,12 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fcf9f2; /* Ανοιχτό μπεζ της εικόνας */
-    border: 2px solid #d4af37; /* Χρυσό περίγραμμα */
+    background-color: #fcf9f2;
+    border: 2px solid #d4af37;
     border-radius: 50px;
     padding: 8px 8px 8px 30px;
     width: 90%;
     max-width: 480px;
-    
-    /* Το εφέ λάμψης γύρω από το κουμπί */
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
     transition: transform 0.2s ease;
 }
@@ -150,8 +159,6 @@ body, html {
     width: 90%;
     max-width: 500px;
     padding: 15px 20px;
-    
-    /* Glassmorphism εφέ για να φαίνεται ο δρόμος από πίσω */
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
