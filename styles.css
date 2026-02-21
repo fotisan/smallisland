@@ -36,7 +36,6 @@ body, html {
    ========================================= */
 .main-header {
     position: fixed;
-    /* ΑΛΛΑΓΗ: Ξεκάθαρη απόσταση 20px από πάνω για να μην κόβεται! */
     top: 20px; 
     left: 50%;
     transform: translateX(-50%);
@@ -50,7 +49,6 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* ΑΛΛΑΓΗ: Μεγαλύτερο padding για να "ανασαίνει" το λογότυπο */
     padding: 12px 22px; 
     z-index: 999;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -62,7 +60,6 @@ body, html {
     gap: 10px;
 }
 
-/* Περιορισμός ύψους για να μην "φουσκώνει" το header */
 .logo-img { height: 40px; width: auto; max-height: 40px; }
 
 .logo-text {
@@ -94,7 +91,7 @@ body, html {
     display: flex; 
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Ανοίγει ακριβώς κάτω από το header */
+    top: 100%; 
     left: 0;
     width: 100%;
     margin-top: 10px;
@@ -108,6 +105,7 @@ body, html {
     
     visibility: hidden;
     opacity: 0;
+    pointer-events: none;
     transform: translateY(-15px);
     transition: all 0.3s ease;
 }
@@ -115,6 +113,7 @@ body, html {
 .top-nav.active {
     visibility: visible;
     opacity: 1;
+    pointer-events: auto;
     transform: translateY(0);
 }
 
@@ -142,9 +141,9 @@ body, html {
 .hero-section {
     position: relative;
     width: 100%;
-    /* Εγγυημένο ελάχιστο ύψος όλης της οθόνης */
-    min-height: 100vh;
-    min-height: 100svh; /* Σύγχρονη εντολή για κινητά (αγνοεί την μπάρα URL) */
+    height: 100vh;
+    height: 100svh; /* 1000% fix για Safari/Chrome mobile */
+    min-height: 600px;
     
     background-image: url('hero-mobile.webp');
     background-size: cover;
@@ -153,8 +152,8 @@ body, html {
     
     display: flex;
     flex-direction: column;
-    /* Αφήνουμε αρκετό χώρο πάνω για το header (130px) και κάτω για ασφάλεια (30px) */
-    padding: 130px 15px 30px 15px; 
+    /* 25px κάτω padding: το ακριβές σημείο που τελειώνει η οθόνη */
+    padding: 110px 15px 25px 15px; 
 }
 
 .hero-content {
@@ -162,12 +161,10 @@ body, html {
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    /* ΤΟ ΜΥΣΤΙΚΟ: Σπρώχνει την πάνω ομάδα (κείμενα) τέρμα πάνω, και τα CTA τέρμα κάτω */
     justify-content: space-between; 
     z-index: 2;
 }
 
-/* Ομάδα Κειμένων & Tags */
 .top-content {
     display: flex;
     flex-direction: column;
@@ -227,8 +224,8 @@ body, html {
     gap: 12px;
     width: 100%; 
     max-width: 360px;
-    margin: 0 auto; /* Κεντράρισμα οριζόντια */
-    margin-top: 30px; /* Ελάχιστη απόσταση από τα κείμενα αν η οθόνη είναι πολύ μικρή */
+    margin: 0 auto; 
+    margin-top: auto; 
 }
 
 .primary-btn, .ghost-btn {
@@ -259,7 +256,7 @@ body, html {
     font-size: 18px;
 }
 
-/* Κύριο Κουμπί (Facebook - Επίσημο Μπλε) */
+/* Κύριο Κουμπί (Facebook) */
 .primary-btn {
     background-color: #1877F2; 
     border: 2px solid #1877F2;
@@ -296,23 +293,27 @@ body, html {
     
     .hamburger-btn { display: none; }
 
-    /* ΕΓΓΥΗΜΕΝΗ εμφάνιση των links στο Desktop */
+    /* ΕΔΩ ΗΤΑΝ ΤΟ ΛΑΘΟΣ - Διορθώθηκε με !important */
     .top-nav {
-        display: flex !important; /* Ακυρώνει το "κρύψιμο" των κινητών */
-        flex-direction: row;
-        position: static; 
-        width: auto;
-        margin-top: 0;
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-        padding: 0;
-        box-shadow: none;
+        display: flex !important; 
+        flex-direction: row !important;
+        position: relative !important; 
+        top: auto !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
         gap: 15px;
+        
+        /* 1000% ορατότητα */
         visibility: visible !important;
         opacity: 1 !important;
         transform: none !important;
+        pointer-events: auto !important;
     }
 
     .nav-item {
@@ -324,15 +325,14 @@ body, html {
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
     .hero-section {
-        padding: 150px 5% 50px 5%; /* Μεγάλο περιθώριο πάνω για το header */
-        min-height: 750px;
+        height: 100vh;
+        padding: 150px 5% 50px 5%; 
         background-image: url('hero.webp');
         background-position: center; 
     }
 
     .hero-content {
         max-width: 650px;
-        /* Στο desktop δεν χρειαζόμαστε space-between, τα θέλουμε όλα πάνω */
         justify-content: flex-start;
     }
 
@@ -353,13 +353,13 @@ body, html {
         margin-top: 18px; 
     }
     
-    .tag-row { display: contents; } /* Απελευθερώνει τις γραμμές */
+    .tag-row { display: contents; } 
     .dest-tag { font-size: 13px; padding: 4px 12px; }
 
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
-        margin: 35px 0 0 0; /* Ακυρώνει το auto margin του κινητού */
+        margin: 35px 0 0 0; 
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; }
