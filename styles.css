@@ -29,6 +29,7 @@ body, html {
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.3s; }
 .delay-3 { animation-delay: 0.5s; }
+.delay-4 { animation-delay: 0.7s; }
 
 /* =========================================
    HEADER & NAVIGATION
@@ -83,8 +84,9 @@ body, html {
     outline: none;
 }
 
-#menu-icon { transition: opacity 0.2s ease; }
+#menu-icon { transition: opacity 0.2s ease, transform 0.2s ease; }
 
+/* Το νέο γλυκό εφέ του μενού (ελαστικό slide down) */
 .top-nav {
     display: flex; 
     flex-direction: column;
@@ -104,7 +106,7 @@ body, html {
     opacity: 0;
     pointer-events: none;
     transform-origin: top center;
-    transform: translateY(-10px) scaleY(0.95);
+    transform: translateY(-15px) scaleY(0.95);
     transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
@@ -134,68 +136,73 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES
+   MOBILE STYLES (Η Λύση "App Bottom Sheet")
    ========================================= */
 .hero-section {
-    position: relative;
+    display: block; 
     width: 100%;
-    height: 100vh;
-    height: 100svh; 
-    min-height: 650px; 
-    
-    /* Χρώμα ασφαλείας: Αν δεις αυτό το γκριζο-μπεζ, το αρχείο hero-mobile.webp ΔΕΝ βρέθηκε! */
-    background-color: #e3dec9; 
+    background-color: #f6f4f0;
+    min-height: 100svh; /* Γεμίζει 100% την οθόνη */
+}
+
+/* Πεντακάθαρη εικόνα στο πάνω 50% της οθόνης */
+.mobile-hero-image {
+    width: 100%;
+    height: 50vh; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: 75% bottom; 
+    background-position: center bottom;
     background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+/* Η "Κάρτα" που φιλοξενεί τα κείμενα κάτω από την εικόνα */
+.hero-content {
+    background-color: #f6f4f0;
+    /* Στρογγυλεμένες γωνίες που ανεβαίνουν ΕΠΑΝΩ στην εικόνα */
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -30px; 
+    padding: 30px 20px 30px 20px;
+    
+    position: relative;
+    z-index: 10;
+    /* Παίρνει όλο τον υπόλοιπο χώρο της οθόνης */
+    min-height: calc(50vh + 30px); 
     
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Απαλή σκιά που τονίζει την κάρτα */
 }
 
-.hero-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    z-index: 2;
-}
-
-.glass-panel {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 24px;
-    padding: 20px 15px;
-    margin: 85px 15px 0 15px; 
+.top-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 30px; 
+    font-size: 28px; 
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .hero-description {
     font-size: 14px; 
     font-weight: 400;
-    color: #333;
+    color: #444;
     line-height: 1.5;
 }
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
+/* Tags Τοποθεσιών - Φυσική ροή σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
@@ -214,20 +221,21 @@ body, html {
     border: 1px solid rgba(26, 26, 26, 0.2);
     border-radius: 30px;
     padding: 5px 10px;
-    background-color: rgba(255, 255, 255, 0.6); 
+    background-color: rgba(255, 255, 255, 0.8); 
     cursor: default;
+    margin-bottom: 4px; 
 }
 
-/* CTAs */
+/* CTAs - Κλειδωμένα στο κάτω μέρος της κάρτας */
 .cta-group {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 10px;
+    gap: 12px;
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    padding: 0 15px 25px 15px; 
+    margin-top: auto; 
 }
 
 .primary-btn, .ghost-btn {
@@ -258,19 +266,17 @@ body, html {
     font-size: 18px;
 }
 
-/* Deep Nautical Navy */
+/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Trust Blue - Φωτεινό, επαγγελματικό και απόλυτα Facebook */
 .primary-btn {
-    background-color: #112A46; 
-    border: 2px solid #112A46;
-    box-shadow: 0 4px 15px rgba(17, 42, 70, 0.3);
+    background-color: #0066cc; 
+    border: 2px solid #0066cc;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
 }
 .primary-btn .btn-text { color: #ffffff; }
-.fb-icon-bg { background-color: #ffffff; color: #112A46; }
+.fb-icon-bg { background-color: #ffffff; color: #0066cc; }
 
 .ghost-btn {
-    background-color: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 1); 
     border: 2px solid #1a1a1a; 
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
@@ -321,30 +327,35 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
+    /* Καταργούμε το layout του κινητού (Image/Card) για τους υπολογιστές */
+    .mobile-hero-image { display: none; } 
+
     .hero-section {
+        display: flex; /* Επαναφορά της κλασικής διάταξης */
         height: auto;
         min-height: 750px;
         background-color: transparent;
         background-image: url('hero.webp');
+        background-size: cover;
         background-position: center; 
     }
 
     .hero-content {
-        max-width: 800px; /* Λίγο περισσότερος χώρος για να απλώσουν τα tags */
+        max-width: 650px;
         justify-content: flex-start;
         align-items: flex-start; 
-        padding-top: 150px; 
-        padding-left: 5%;
+        
+        /* Καταργούμε τα στρογγυλέματα και τις σκιές του κινητού */
+        border-radius: 0;
+        margin-top: 0;
+        box-shadow: none;
+        background-color: transparent;
+        min-height: auto;
+        
+        padding: 160px 5% 60px 5%; 
     }
 
-    .glass-panel {
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
+    .top-content {
         align-items: flex-start;
         text-align: left;
     }
@@ -352,10 +363,8 @@ body, html {
     .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
-    /* ΝΕΟ: Ελεύθερο πλάτος για να χωράνε άνετα στην 1η σειρά τα 3 πρώτα νησιά */
     .destination-tags { 
         flex-direction: row;
-        flex-wrap: wrap; /* Απαραίτητο για να δουλέψει ο κόφτης */
         justify-content: flex-start;
         width: 100%; 
         max-width: 100%; 
@@ -363,16 +372,12 @@ body, html {
         margin-top: 18px; 
     }
     
-    /* Εδώ είναι το "μαγικό" που σπρώχνει τη Χάλκη κάτω στο Desktop */
-    .desktop-break { 
-        display: block; 
-        width: 100%; 
-        height: 0; 
-        margin: 0; 
-    }
+    /* Εδώ είναι ο κόφτης που στέλνει τη Χάλκη στη 2η γραμμή στο Desktop */
+    .desktop-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     
-    .dest-tag { font-size: 13px; padding: 4px 12px; }
+    .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0;}
 
+    /* Στοίχιση CTAs αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
