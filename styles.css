@@ -19,7 +19,7 @@ body, html {
     height: 100vh;
     min-height: 700px;
     
-    /* Αφαιρέθηκε το linear-gradient, έμεινε μόνο η εικόνα */
+    /* ΕΔΩ ΕΙΝΑΙ ΤΟ ΜΥΣΤΙΚΟ: Φορτώνει ΜΟΝΟ την εικόνα, κανένα εφέ από πάνω */
     background-image: url('hero.webp');
     background-size: cover;
     background-position: center;
