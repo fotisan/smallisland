@@ -29,19 +29,18 @@ body, html {
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.3s; }
 .delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.7s; }
 
 /* =========================================
    HEADER & NAVIGATION
    ========================================= */
 .main-header {
     position: fixed;
-    top: 20px; 
+    top: 15px; 
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 30px);
     max-width: 1200px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -84,7 +83,6 @@ body, html {
     outline: none;
 }
 
-/* Το νέο, πιο απαλό transition για το χάμπουργκερ */
 #menu-icon { transition: opacity 0.2s ease; }
 
 .top-nav {
@@ -136,108 +134,101 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES (Idea 1 - Split Screen)
+   MOBILE STYLES (Η Λύση "Glass Panel")
    ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100svh; 
-    background-color: #f6f4f0; /* Συμπαγές μπεζ φόντο από πίσω */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Το πάνω 45% της οθόνης είναι ΜΟΝΟ η φωτογραφία */
-.hero-image-mobile {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 45vh; 
+    /* Εξασφαλίζει ότι πιάνει πάντα όλη την οθόνη */
+    height: 100vh;
+    height: 100svh; 
+    min-height: 650px; 
+    
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: 75% bottom; 
     background-repeat: no-repeat;
-    z-index: 1;
+    
+    display: flex;
+    flex-direction: column;
 }
 
-/* Το κάτω μέρος όπου κάθονται τα κείμενα (Ξεκινάει κάτω από την εικόνα) */
 .hero-content {
     width: 100%;
-    flex-grow: 1; 
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
     z-index: 2;
-    /* Σπρώχνουμε το content κάτω από τη φωτογραφία (45vh) και προσθέτουμε padding */
-    margin-top: 45vh;
-    padding: 25px 15px 30px 15px;
 }
 
-.top-content {
+/* Το γυάλινο πάνελ μαζεύει όλα τα γράμματα πάνω, αφήνοντας το αμάξι καθαρό! */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 20px 15px;
+    margin: 85px 15px 0 15px; /* Κάθεται ακριβώς κάτω από το header */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
-/* Τα γράμματα τώρα πέφτουν στο μπεζ, οπότε έβγαλα τις σκιές */
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 32px; 
-    font-weight: 600;
+    font-size: 30px; 
+    font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .hero-description {
-    font-size: 15px; 
+    font-size: 14px; 
     font-weight: 400;
-    color: #2a2a2a;
+    color: #333;
     line-height: 1.5;
 }
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Tags (Διπλώνουν φυσικά σε γραμμές στο κινητό) */
+/* Tags Τοποθεσιών - Διπλώνουν αυτόματα σε 2 γραμμές */
 .destination-tags {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     margin-top: 15px;
     width: 100%;
 }
 
-.desktop-break {
-    display: none; /* Στα κινητά ο κόφτης αγνοείται */
-}
+.desktop-break { display: none; } 
 
 .dest-tag {
-    font-size: 13px; 
+    font-size: 12px; 
     font-weight: 500;
     color: #1a1a1a;
-    border: 1px solid rgba(26, 26, 26, 0.3);
+    border: 1px solid rgba(26, 26, 26, 0.2);
     border-radius: 30px;
-    padding: 5px 12px;
-    background-color: rgba(255, 255, 255, 0.5); 
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.6); 
     cursor: default;
-    text-align: center;
-    margin-bottom: 4px; 
 }
 
-/* CTAs */
+/* CTAs - Κάθονται στο τέρμα κάτω μέρος της οθόνης (πάντα ορατά) */
 .cta-group {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 12px;
+    gap: 10px;
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
-    margin-top: auto; 
+    padding: 0 15px 25px 15px; /* 25px απόσταση ασφαλείας από το κάτω μέρος */
 }
 
 .primary-btn, .ghost-btn {
@@ -247,10 +238,10 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 52px; 
+    height: 50px; 
     width: 100%; 
     padding: 0 45px 0 15px; 
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
@@ -258,7 +249,7 @@ body, html {
 
 .icon-circle {
     position: absolute;
-    right: 6px;
+    right: 5px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -268,18 +259,20 @@ body, html {
     font-size: 18px;
 }
 
-/* 1000% Ταιριαστό Premium Dark CTA (Αντί για Facebook Blue) */
+/* ΤΟ ΝΕΟ ΧΡΩΜΑ: Deep Nautical Navy */
 .primary-btn {
-    background-color: #1a1a1a; 
-    border: 2px solid #1a1a1a;
-    box-shadow: 0 4px 15px rgba(26, 26, 26, 0.2);
+    background-color: #112A46; 
+    border: 2px solid #112A46;
+    box-shadow: 0 4px 15px rgba(17, 42, 70, 0.3);
 }
 .primary-btn .btn-text { color: #ffffff; }
-/* Λευκό εικονίδιο για τέλεια αντίθεση */
-.primary-btn .icon-circle { color: #ffffff; }
+/* Λευκός κύκλος με Navy γράμμα για τέλεια αντίθεση */
+.fb-icon-bg { background-color: #ffffff; color: #112A46; }
 
 .ghost-btn {
-    background-color: rgba(255, 255, 255, 0.6); 
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border: 2px solid #1a1a1a; 
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
@@ -330,57 +323,56 @@ body, html {
     }
     .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-    /* Επαναφορά εικόνας φόντου στο Desktop */
-    .hero-image-mobile { display: none; } /* Κρύβουμε την κομμένη εικόνα του κινητού */
-
     .hero-section {
+        height: auto;
         min-height: 750px;
         background-image: url('hero.webp');
-        background-size: cover;
         background-position: center; 
-        background-color: transparent;
-        padding: 0; /* Καθαρίζουμε τα mobile paddings */
     }
 
     .hero-content {
         max-width: 650px;
         justify-content: flex-start;
         align-items: flex-start; 
-        margin-top: 0;
-        padding: 160px 5% 60px 5%; /* Άφθονος χώρος από το header */
-        background-color: transparent;
+        padding-top: 150px; /* Χώρος από το header στο desktop */
+        padding-left: 5%;
     }
 
-    .top-content {
+    /* Στο desktop "σπάμε" το γυάλινο κουτί και αφήνουμε τα γράμματα ελεύθερα αριστερά */
+    .glass-panel {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
         align-items: flex-start;
         text-align: left;
     }
 
-    .main-title { font-size: 58px; margin-bottom: 15px; text-shadow: none; }
+    .main-title { font-size: 58px; margin-bottom: 15px; }
     .hero-description { font-size: 18px; line-height: 1.6; }
     
     .destination-tags { 
         flex-direction: row;
         justify-content: flex-start;
-        max-width: 100%; /* Τους δίνουμε χώρο στο desktop */
+        max-width: 500px; 
         gap: 8px; 
         margin-top: 18px; 
     }
     
-    /* Ο "αόρατος" κόφτης ενεργοποιείται και στέλνει τη Χάλκη στη 2η γραμμή! */
-    .desktop-break {
-        display: block;
-        flex-basis: 100%;
-        height: 0;
-    }
+    /* Αναγκάζει τη Χάλκη να πάει στη δεύτερη γραμμή */
+    .desktop-break { display: block; flex-basis: 100%; height: 0; }
     
-    .dest-tag { font-size: 13px; padding: 4px 12px; margin-bottom: 0; }
+    .dest-tag { font-size: 13px; padding: 4px 12px; }
 
     /* Εξασφαλίζουμε ότι τα CTAs είναι στοιχισμένα αριστερά στο desktop */
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
         margin: 35px 0 0 0; 
+        padding: 0;
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; text-align: left; }
