@@ -144,12 +144,13 @@ body, html {
     min-height: 100svh; 
 }
 
+/* --- ΔΙΟΡΘΩΣΗ ΕΙΚΟΝΑΣ ΚΙΝΗΤΟΥ ΕΔΩ --- */
 .mobile-hero-image {
     width: 100%;
-    height: 50vh; 
+    height: 55vh; /* Αυξήσαμε ελαφρώς το ύψος */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center bottom;
+    background-position: center 75%; /* Κεντράρει πιο ψηλά για να φανεί το καράβι, θυσιάζοντας λίγες πέτρες κάτω */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -160,11 +161,11 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 20px 20px 30px 20px; /* Μειώσαμε το top padding από 30px σε 20px για να ανέβουν τα στοιχεία */
+    padding: 20px 20px 30px 20px; 
     
     position: relative;
     z-index: 10;
-    min-height: calc(50vh + 30px); 
+    min-height: calc(45vh + 30px); /* Προσαρμόστηκε για να ταιριάζει με το νέο ύψος της εικόνας */
     
     display: flex;
     flex-direction: column;
@@ -179,7 +180,6 @@ body, html {
     text-align: center;
 }
 
-/* Στα κινητά: Κρύβουμε το br του desktop και δείχνουμε το κενό */
 .main-title {
     font-family: 'Playfair Display', serif;
     font-size: 28px; 
@@ -191,7 +191,6 @@ body, html {
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
-/* Έλεγχος παραγράφου περιγραφής στα κινητά */
 .hero-description {
     font-size: 14px; 
     font-weight: 400;
@@ -349,7 +348,7 @@ body, html {
         background-color: transparent;
         min-height: auto;
         
-        padding: 120px 5% 60px 5%; /* ΑΝΕΒΑΣΑΜΕ ΤΑ ΚΕΙΜΕΝΑ: Μειώσαμε το top padding από 160px σε 120px */
+        padding: 120px 5% 60px 5%; 
     }
 
     .top-content {
@@ -357,7 +356,6 @@ body, html {
         text-align: left;
     }
 
-    /* Στο desktop: Εφαρμόζουμε nowrap στον τίτλο, δείχνουμε το br και κρύβουμε το κενό */
     .main-title { 
         font-size: 58px; 
         margin-bottom: 15px; 
@@ -366,11 +364,10 @@ body, html {
     .desktop-br { display: block; }
     .mobile-space { display: none; }
 
-    /* Έλεγχος παραγράφου περιγραφής στο Desktop */
     .hero-description { font-size: 18px; line-height: 1.6; }
-    .desktop-comma { display: inline; } /* Εμφανίζουμε το κόμμα */
-    .desktop-br-desc { display: block; } /* Αλλάζουμε γραμμή στο 'with a driver...' */
-    .mobile-dash { display: none; } /* Κρύβουμε την παύλα */
+    .desktop-comma { display: inline; } 
+    .desktop-br-desc { display: block; } 
+    .mobile-dash { display: none; } 
     
     .destination-tags { 
         flex-direction: row;
