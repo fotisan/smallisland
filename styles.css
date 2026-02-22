@@ -141,15 +141,15 @@ body, html {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
-    min-height: 100svh; 
+    min-height: 100svh; /* Χρήση svh για να αγνοεί την μπάρα του browser */
 }
 
 .mobile-hero-image {
     width: 100%;
-    height: 48vh; 
+    height: 42svh; /* Δώσαμε το 42% του καθαρού ύψους */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center 60%;
+    background-position: center bottom; /* Κρίσιμη αλλαγή: Το Audi κάθεται τέλεια κάτω */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -160,14 +160,15 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 25px 20px 30px 20px; 
+    padding: 20px 15px 15px 15px; /* Πιο σφιχτά περιθώρια */
     
     position: relative;
     z-index: 10;
-    min-height: calc(52vh + 30px); 
+    min-height: calc(58svh + 30px); /* Το υπόλοιπο 58% του καθαρού ύψους */
     
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Κεντράρει όλο το μπλοκ στον διαθέσιμο χώρο */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
@@ -177,24 +178,25 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: 12px; /* Σπρώχνει τα κουμπιά ελαφρώς προς τα κάτω */
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 26px; 
+    font-size: 24px; /* Ελαφρώς μικρότερο για να γλιτώσουμε χώρο */
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
 .hero-description {
-    font-size: 14px; 
+    font-size: 13.5px; 
     font-weight: 400;
     color: #444;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 .desktop-comma { display: none; }
 .desktop-br-desc { display: none; }
@@ -202,17 +204,16 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* CTAs (Μπαίνουν στη μέση για Mobile) */
+/* CTAs (Στη μέση) */
 .cta-group {
     order: 2; 
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 12px;
+    gap: 10px;
     width: 100%; 
     max-width: 360px;
-    /* Μικρύναμε το κάτω margin για να έρθει η λίστα πιο κοντά στα κουμπιά */
-    margin: 25px auto 15px auto; 
+    margin: 0 auto 15px auto; /* Σταθερό κενό πριν τις περιοχές */
 }
 
 .primary-btn, .ghost-btn {
@@ -222,7 +223,7 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 50px; 
+    height: 48px; /* Λίγο πιο κομψά για να εξοικονομήσουν χώρο */
     width: 100%; 
     padding: 0 45px 0 15px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -234,8 +235,8 @@ body, html {
 .icon-circle {
     position: absolute;
     right: 5px;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -259,11 +260,10 @@ body, html {
 .wa-bg { background-color: #25D366; color: white; border: none; }
 .ghost-btn:hover { background-color: rgba(26, 26, 26, 0.05); }
 
-/* ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ (Πάει στο τέλος για Mobile) */
+/* ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ (Στο τέλος) */
 .destination-list {
     order: 3; 
     width: 100%;
-    /* Βγάλαμε το auto, ώστε να στέκεται ακριβώς κάτω από τα CTAs */
     margin-top: 0; 
 }
 
@@ -291,7 +291,6 @@ body, html {
     margin-right: 2px;
     font-size: 10px;
 }
-
 
 /* =========================================
    DESKTOP & TABLET STYLES (Από 768px και πάνω)
