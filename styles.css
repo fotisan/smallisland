@@ -146,7 +146,7 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 55vh; /* Επανήλθε στο αρχικό για να έχει αέρα */
+    height: 50vh; /* Επανήλθε ο "αέρας" στη φωτογραφία! */
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: center 60%;
@@ -160,33 +160,58 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 20px 20px 30px 20px; /* Επανήλθε στο αρχικό */
+    padding: 25px 20px 20px 20px; 
     
     position: relative;
     z-index: 10;
-    min-height: calc(45vh + 30px); /* Επανήλθε στο αρχικό */
+    min-height: calc(50vh + 30px); 
     
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    /* Αφαίρεσα το justify-content: space-between για να αναλάβει το Flex Order */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
+/* FLEX ORDER ΓΙΑ ΚΙΝΗΤΑ: Τίτλος (1), Κουμπιά (2), Λίστα (3) */
 .top-content {
-    order: 1; /* Πρώτο στοιχείο στα κινητά */
+    order: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
+.cta-group {
+    order: 2; /* Τα CTAs ανεβαίνουν πάνω από τη λίστα */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px;
+    width: 100%; 
+    max-width: 360px;
+    margin: 20px auto 10px auto; /* Απόσταση από το κείμενο και τη λίστα από κάτω */
+}
+
+.destination-inline-list {
+    order: 3; /* Η λίστα πάει στο τέλος */
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin-top: 15px; 
+    margin-bottom: 20px; /* Αέρας στο τέλος της οθόνης */
+    line-height: 2;
+    padding: 0 10px;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 28px; /* Επανήλθε στο αρχικό */
+    font-size: 26px; 
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
@@ -204,16 +229,18 @@ body, html {
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
 
-/* --- CTA GROUP (Μπαίνει 2ο στα κινητά) --- */
-.cta-group {
-    order: 2; /* Δεύτερο στοιχείο στα κινητά, αμέσως κάτω από το κείμενο */
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    gap: 12px;
-    width: 100%; 
-    max-width: 360px;
-    margin: 25px auto 0 auto; /* Κενό ανάμεσα στο description και στα κουμπιά */
+.loc-item {
+    display: inline-block;
+    margin-right: 12px;
+    white-space: nowrap; 
+}
+
+.loc-item:last-child { margin-right: 0; }
+
+.loc-item i {
+    color: #1A365D; 
+    margin-right: 4px;
+    font-size: 11px;
 }
 
 .primary-btn, .ghost-btn {
@@ -223,7 +250,7 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 50px; /* Επανήλθε στο αρχικό */
+    height: 50px; /* Το επαναφέραμε στο κανονικό του ύψος αφού πλέον χωράει άνετα! */
     width: 100%; 
     padding: 0 45px 0 15px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -235,8 +262,8 @@ body, html {
 .icon-circle {
     position: absolute;
     right: 5px;
-    width: 40px; /* Επανήλθε στο αρχικό */
-    height: 40px; /* Επανήλθε στο αρχικό */
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -259,34 +286,6 @@ body, html {
 .ghost-btn .btn-text { color: #1a1a1a; }
 .wa-bg { background-color: #25D366; color: white; border: none; }
 .ghost-btn:hover { background-color: rgba(26, 26, 26, 0.05); }
-
-
-/* --- ΠΕΡΙΟΧΕΣ (Μπαίνουν 3ες στα κινητά, κάτω από τα CTAs) --- */
-.destination-inline-list {
-    order: 3; /* Τρίτο στοιχείο στα κινητά */
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    color: #666;
-    margin-top: 30px; /* Κενό ανάμεσα στα CTAs και τις περιοχές */
-    padding-bottom: 10px;
-    line-height: 2;
-    letter-spacing: 0.3px;
-}
-
-.loc-item {
-    display: inline-block;
-    margin-right: 12px;
-    white-space: nowrap; 
-}
-
-.loc-item:last-child { margin-right: 0; }
-
-.loc-item i {
-    color: #1A365D; 
-    margin-right: 4px;
-    font-size: 11px;
-}
 
 
 /* =========================================
@@ -358,11 +357,31 @@ body, html {
         padding: 120px 5% 60px 5%; 
     }
 
+    /* FLEX ORDER ΓΙΑ DESKTOP: Επαναφορά στη φυσική τους σειρά (Τίτλος -> Λίστα -> Κουμπιά) */
     .top-content {
-        order: 1; /* Παραμένει 1ο στο desktop */
+        order: 1;
         align-items: flex-start;
         text-align: left;
     }
+
+    .destination-inline-list { 
+        order: 2; /* Επιστρέφει στη μέση για το desktop! */
+        font-size: 15px; 
+        text-align: left;
+        padding: 0;
+        margin-top: 25px;
+        margin-bottom: 0;
+        line-height: 2.2; 
+    }
+
+    .cta-group { 
+        order: 3; /* Πάει στο τέλος για το desktop! */
+        align-items: flex-start;
+        max-width: 400px; 
+        margin: 35px 0 0 0; 
+        padding: 0;
+    }
+
 
     .main-title { 
         font-size: 58px; 
@@ -377,26 +396,8 @@ body, html {
     .desktop-br-desc { display: block; } 
     .mobile-dash { display: none; } 
     
-    /* Εδώ γυρνάμε τη λίστα πίσω στη 2η θέση για το Desktop */
-    .destination-inline-list { 
-        order: 2; /* Γίνεται 2ο στο desktop */
-        font-size: 15px; 
-        text-align: left;
-        padding: 0;
-        margin-top: 25px;
-        line-height: 2.2; 
-    }
-
     .loc-item i { font-size: 12px; }
 
-    /* Εδώ γυρνάμε τα κουμπιά στην 3η θέση για το Desktop */
-    .cta-group { 
-        order: 3; /* Γίνεται 3ο στο desktop */
-        align-items: flex-start;
-        max-width: 400px; 
-        margin: 35px 0 0 0; 
-        padding: 0;
-    }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; text-align: left; }
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
