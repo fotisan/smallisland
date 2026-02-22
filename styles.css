@@ -145,10 +145,10 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 55svh; /* Η εικόνα παίρνει πίσω τον αέρα της */
+    height: 55svh; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center bottom; /* Το αυτοκίνητο κάθεται τέλεια κάτω */
+    background-position: center 60%; /* Επαναφορά στο σωστό καδράρισμα για να φαίνονται όλα */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -159,7 +159,7 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 30px 20px 40px 20px; /* Αφαιρέθηκε το ενοχλητικό min-height που έκανε τη ζημιά */
+    padding: 30px 20px 40px 20px; 
     
     position: relative;
     z-index: 10;
@@ -175,7 +175,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 25px; /* Καθαρή απόσταση πριν τα κουμπιά */
+    margin-bottom: 25px; 
 }
 
 .main-title {
@@ -210,7 +210,7 @@ body, html {
     gap: 12px;
     width: 100%; 
     max-width: 360px;
-    margin: 0 auto 25px auto; /* Ακριβώς 25px κενό κάτω από τα κουμπιά για τις περιοχές */
+    margin: 0 auto 25px auto; 
 }
 
 .primary-btn, .ghost-btn {
