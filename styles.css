@@ -250,7 +250,48 @@ html, body {
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
 /* =========================================
-   WHY CHOOSE US (Mobile: like your right image)
+   NEW: Hero -> Section transition
+   ========================================= */
+.section-transition{
+  position: relative;
+  height: 74px;
+  margin-top: -18px; /* pulls section 2 closer */
+  background: transparent;
+  z-index: 5;
+}
+
+.transition-glass{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1120px;
+  height: 58px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+.transition-wave{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 74px;
+  display: block;
+  pointer-events: none;
+}
+.transition-wave path{
+  fill: #f6f4f0;
+}
+
+/* =========================================
+   Container
    ========================================= */
 .container {
   width: 100%;
@@ -259,95 +300,159 @@ html, body {
   padding: 26px 16px 54px 16px;
 }
 
-.why {
+/* =========================================
+   SECTION 2: WHY (v2) — modern, premium, cohesive
+   ========================================= */
+.why{
   background: #f6f4f0;
 }
 
-.why-title {
+.why-v2{
+  position: relative;
+  margin-top: -22px; /* makes the transition feel connected */
+  padding-top: 34px;
+}
+
+.why-v2::before{
+  content:"";
+  position:absolute;
+  inset: -40px 0 auto 0;
+  height: 170px;
+  background:
+    radial-gradient(800px 160px at 50% 0%,
+      rgba(26,54,93,0.10),
+      rgba(246,244,240,0) 70%);
+  pointer-events:none;
+  z-index: 0;
+}
+
+.why-head{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 8px auto 18px auto;
+  max-width: 720px;
+}
+
+.why-kicker{
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+  margin-bottom: 10px;
+}
+
+.why-title{
   font-family: "Playfair Display", serif;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.1;
-  text-align: center;
   color: #111;
-  margin: 18px 0 18px 0;
+  margin-bottom: 10px;
 }
 
-.why-list {
+.why-sub{
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(0,0,0,0.68);
+}
+
+.why-grid{
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
+  margin-top: 18px;
 }
 
-/* Each item behaves like an "image card" on mobile */
-.why-item {
-  position: relative;
-  border-radius: 18px;
+.why-card{
+  border-radius: 22px;
   overflow: hidden;
-  background: #111;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.60);
+  border: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.10);
   transform: translateZ(0);
 }
 
-/* image */
-.why-media {
+.why-visual{
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  position: relative;
+  background: #111;
 }
-.why-media img {
+
+.why-visual img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(0.9) contrast(1.05);
+  filter: saturate(0.95) contrast(1.03);
 }
 
-/* overlay gradient like your right image */
-.why-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.0));
-  pointer-events:none;
-}
-
-.why-copy {
+.why-visual-overlay{
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 56%, rgba(0,0,0,0.00));
+  pointer-events: none;
+}
+
+.why-badge{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.24);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.why-badge-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.22);
   color: rgba(255,255,255,0.92);
+  font-size: 15px;
+}
+
+.why-badge-text{
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
+}
+
+.why-body{
+  padding: 16px 16px 18px 16px;
   text-align: center;
 }
 
-.why-copy h3{
+.why-body h3{
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.2px;
-  margin-bottom: 6px;
-}
-.why-copy p{
-  font-size: 13px;
-  line-height: 1.35;
-  color: rgba(255,255,255,0.82);
+  color: #111;
+  margin-bottom: 8px;
 }
 
-.why-icon{
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  margin: 0 auto 10px auto;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.16);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+.why-body p{
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.70);
 }
-.why-icon i { font-size: 18px; color: rgba(255,255,255,0.92); }
 
 /* =========================================
    Desktop & Tablet
@@ -441,72 +546,51 @@ html, body {
   .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
 
-  /* WHY desktop: alternating image left/right with text opposite */
-  .why-title {
+  /* Transition looks cleaner on desktop */
+  .section-transition{
+    height: 92px;
+    margin-top: -28px;
+  }
+  .transition-glass{
+    height: 66px;
+    border-radius: 34px;
+  }
+  .transition-wave{
+    height: 92px;
+  }
+
+  /* WHY v2 desktop layout */
+  .why-head{
+    text-align: left;
+    margin: 6px 0 16px 0;
+    max-width: 860px;
+  }
+
+  .why-title{
     font-size: 44px;
-    text-align: left;
-    margin: 8px 0 18px 0;
-  }
-
-  .why-list {
-    gap: 18px;
-  }
-
-  .why-item{
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: stretch;
-    min-height: 220px;
-    border-radius: 22px;
-    overflow: hidden;
-  }
-
-  /* reset overlay behavior */
-  .why-media { aspect-ratio: auto; height: 100%; }
-  .why-media::after { display: none; }
-
-  .why-copy{
-    position: relative;
-    inset: auto;
-    padding: 28px 26px;
-    text-align: left;
-    color: #111;
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-left: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .why-copy h3{
-    font-size: 22px;
-    color: #111;
     margin-bottom: 10px;
   }
 
-  .why-copy p{
-    font-size: 15px;
-    line-height: 1.5;
-    color: rgba(0,0,0,0.70);
+  .why-sub{
+    font-size: 16px;
   }
 
-  .why-icon{
-    margin: 0 0 14px 0;
-    background: rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: none;
+  .why-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 22px;
   }
-  .why-icon i{ color: rgba(0,0,0,0.78); }
 
-  /* alternate layout for even items (image right, text left) */
-  .why-item:nth-child(even){
-    grid-template-columns: 0.85fr 1.15fr;
+  .why-body{
+    text-align: left;
+    padding: 18px 18px 20px 18px;
   }
-  .why-item:nth-child(even) .why-media{
-    order: 2;
+
+  .why-body h3{
+    font-size: 20px;
   }
-  .why-item:nth-child(even) .why-copy{
-    order: 1;
-    border-left: none;
-    border-right: 1px solid rgba(0,0,0,0.06);
+
+  .why-body p{
+    font-size: 14px;
   }
 }
