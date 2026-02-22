@@ -124,7 +124,7 @@ html, body {
 .hero-section {
   display: block;
   width: 100%;
-  background-color: #f6f4f0; /* Το ίδιο φόντο με το επόμενο section */
+  background-color: #f6f4f0;
 }
 
 .mobile-hero-image {
@@ -139,17 +139,16 @@ html, body {
 }
 
 .hero-content {
-  background-color: #f6f4f0; /* Το ίδιο φόντο με το επόμενο section */
+  background-color: #f6f4f0; /* Το χρώμα του πλαισίου στο Hero */
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   margin-top: -85px;
-  /* Μειώθηκε λίγο το κάτω padding για να ενωθεί πιο φυσικά με τον τίτλο του section 2 */
-  padding: 30px 20px 20px 20px; 
+  padding: 30px 20px 40px 20px;
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Η σκιά είναι μόνο προς τα πάνω */
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .top-content {
@@ -250,7 +249,7 @@ html, body {
 .loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
-/* Απόκρυψη του shape divider στα κινητά για ομαλή ροή */
+/* Απόκρυψη του shape divider στα κινητά */
 .shape-divider {
   display: none;
 }
@@ -258,16 +257,15 @@ html, body {
 /* =========================================
    WHY CHOOSE US (Mobile: like your right image)
    ========================================= */
-.why {
-  background: #f6f4f0; /* Ακριβώς το ίδιο μπεζ φόντο με το Hero, καμία αλλαγή στο μάτι */
-}
-
 .container {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  /* Προσαρμογή του top padding για τέλεια ένωση με το Hero στο κινητό */
-  padding: 10px 16px 54px 16px; 
+  padding: 26px 16px 54px 16px;
+}
+
+.why {
+  background: #f6f4f0; /* Το φόντο στο Section 2 είναι ίδιο με το .hero-content */
 }
 
 .why-title {
@@ -277,7 +275,7 @@ html, body {
   line-height: 1.1;
   text-align: center;
   color: #111;
-  margin: 0 0 24px 0;
+  margin: 18px 0 18px 0;
 }
 
 .why-list {
@@ -471,7 +469,6 @@ html, body {
   
   .why .container {
     max-width: 864px; 
-    padding: 26px 16px 54px 16px; /* Επαναφορά του padding για το desktop */
   }
 
   .why-title {
@@ -542,7 +539,6 @@ html, body {
     font-size: 19px;
   }
 
-  /* alternate layout for even items (image right, text left) */
   .why-item:nth-child(even) {
     grid-template-columns: 1fr 1fr;
   }
