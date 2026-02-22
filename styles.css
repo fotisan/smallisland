@@ -145,10 +145,10 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 60svh; /* Ελαφριά προσαρμογή στο ύψος για καλύτερη αναλογία */
+    height: 60svh;
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center 85%; /* Αλλαγή εστίασης προς τα κάτω για να μη κόβεται το αυτοκίνητο */
+    background-position: center bottom; /* ΕΔΩ ΕΓΙΝΕ Η ΑΛΛΑΓΗ: Ευθυγράμμιση στο κάτω μέρος για να φαίνεται ολόκληρο το αυτοκίνητο */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -362,7 +362,7 @@ body, html {
         order: 1; 
         align-items: flex-start;
         text-align: left;
-        margin-bottom: 10px; /* Μείωση του κενού κάτω από το κείμενο για να ανέβουν τα στοιχεία */
+        margin-bottom: 10px; 
     }
 
     .main-title { 
@@ -380,7 +380,7 @@ body, html {
     
     .destination-list {
         order: 2; 
-        margin-top: 10px; /* Μείωση του περιθωρίου για να ανέβει η λίστα πιο κοντά στο κείμενο */
+        margin-top: 10px; 
     }
 
     .dest-line {
@@ -402,7 +402,7 @@ body, html {
         order: 3; 
         align-items: flex-start;
         max-width: 400px; 
-        margin: 20px 0 0 0; /* Μείωση του περιθωρίου για να ανέβουν τα κουμπιά πιο κοντά στη λίστα */
+        margin: 20px 0 0 0; 
         padding: 0;
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
