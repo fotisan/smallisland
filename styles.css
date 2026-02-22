@@ -143,14 +143,14 @@ html, body {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   margin-top: -85px;
-  margin-bottom: 0;
-  padding: 30px 20px 0 20px; /* Μηδενίσαμε το κάτω κενό */
+  margin-bottom: 0 !important;
+  padding: 30px 20px 0 20px !important;
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: none;
+  box-shadow: 0 -15px 25px -10px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: none !important;
 }
 
 .top-content {
@@ -251,25 +251,27 @@ html, body {
 .loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
-/* Απόκρυψη του shape divider στα κινητά με important για σιγουριά */
+/* Απόκρυψη του shape divider στα κινητά */
 .shape-divider {
   display: none !important;
 }
 
 /* =========================================
-   WHY CHOOSE US (Mobile: like your right image)
+   WHY CHOOSE US (Mobile)
    ========================================= */
 .why {
   background: #f6f4f0 !important;
-  margin-top: -1px; /* Τρικ για να εξαφανιστεί η γραμμή του 1px στο iOS */
-  padding-top: 1px;
+  margin-top: -2px !important; 
+  padding-top: 2px !important;
+  position: relative;
+  z-index: 20; 
 }
 
 .container {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 16px 54px 16px; /* Κρατάμε το σωστό κενό, αλλά πλέον είναι ενοποιημένο το φόντο */
+  padding: 40px 16px 54px 16px; 
 }
 
 .why-title {
@@ -312,7 +314,7 @@ html, body {
   filter: saturate(0.9) contrast(1.05);
 }
 
-/* overlay gradient like your right image */
+/* overlay gradient */
 .why-media::after{
   content:"";
   position:absolute;
@@ -415,9 +417,9 @@ html, body {
     align-items: flex-start;
     border-radius: 0;
     margin-top: 0;
-    box-shadow: none;
+    box-shadow: none !important;
     background-color: transparent !important;
-    padding: 120px 5% 60px 5%;
+    padding: 120px 5% 60px 5% !important;
   }
 
   .top-content {
@@ -453,7 +455,7 @@ html, body {
   .btn-text { font-size: 15px; text-align: left; }
 
   .shape-divider {
-    display: block !important; /* Επαναφορά για desktop */
+    display: block !important; 
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -474,12 +476,13 @@ html, body {
   
   .why {
     background: #f6f4f0 !important;
-    margin-top: 0;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .why .container {
     max-width: 864px; 
-    padding-top: 40px; /* Επαναφορά κενού για υπολογιστές */
+    padding-top: 40px; 
   }
 
   .why-title {
