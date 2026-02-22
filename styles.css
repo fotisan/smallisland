@@ -119,36 +119,44 @@ html, body {
 }
 
 /* =========================================
-   HERO (Mobile First)
+   BACKGROUNDS & TRANSITION WRAPPER
    ========================================= */
-.hero-section {
-  display: block;
-  width: 100%;
-  background-color: #f6f4f0;
-}
-
 .mobile-hero-image {
   width: 100%;
-  height: 68svh;
+  height: 65svh;
   background-image: url("hero-mobile.webp");
   background-size: cover;
   background-position: center 75%;
   background-repeat: no-repeat;
-  position: relative;
+  position: fixed; /* Parallax feel on mobile */
+  top: 0;
+  left: 0;
   z-index: 1;
 }
 
-.hero-content {
-  background-color: #f6f4f0;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  margin-top: -85px;
-  padding: 30px 20px 40px 20px;
+.desktop-hero-background {
+  display: none;
+}
+
+/* This wrapper acts as the "sheet" that overlaps the image, connecting Hero to Section 2 */
+.page-content-wrapper {
   position: relative;
   z-index: 10;
+  background-color: #f6f4f0;
+  margin-top: 55svh; /* Determines how much of the image is visible */
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.08);
+  padding-bottom: 40px;
+}
+
+/* =========================================
+   HERO CONTENT (Inside Wrapper)
+   ========================================= */
+.hero-content {
+  padding: 40px 20px 20px 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .top-content {
@@ -162,17 +170,17 @@ html, body {
 
 .main-title {
   font-family: "Playfair Display", serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #1a1a1a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
 .hero-description {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: #444;
   line-height: 1.5;
@@ -201,7 +209,7 @@ html, body {
   justify-content: center;
   position: relative;
   border-radius: 50px;
-  height: 50px;
+  height: 52px;
   width: 100%;
   padding: 0 45px 0 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -212,7 +220,7 @@ html, body {
 
 .icon-circle {
   position: absolute;
-  right: 5px;
+  right: 6px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -231,7 +239,7 @@ html, body {
 .fb-icon-bg { background-color: #fff; color: #1A365D; }
 
 .ghost-btn {
-  background-color: #fff;
+  background-color: transparent;
   border: 2px solid #1a1a1a;
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
@@ -242,216 +250,115 @@ html, body {
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 8px;
 }
 .dest-line:last-child { margin-bottom: 0; }
-.loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
-.loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
+.loc-item { font-size: 12px; font-weight: 500; color: #666; white-space: nowrap; }
+.loc-item i { color: #1A365D; margin-right: 3px; font-size: 11px; }
 
 /* =========================================
-   NEW: Hero -> Section transition
+   SECTION 2: WHY CHOOSE US (Modern Luxury)
    ========================================= */
-.section-transition{
-  position: relative;
-  height: 74px;
-  margin-top: -18px; /* pulls section 2 closer */
-  background: transparent;
-  z-index: 5;
+.why-section {
+  padding: 40px 16px 20px 16px;
 }
 
-.transition-glass{
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 1120px;
-  height: 58px;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.52);
-  border: 1px solid rgba(0,0,0,0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
-}
-
-.transition-wave{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  width: 100%;
-  height: 74px;
-  display: block;
-  pointer-events: none;
-}
-.transition-wave path{
-  fill: #f6f4f0;
-}
-
-/* =========================================
-   Container
-   ========================================= */
 .container {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 26px 16px 54px 16px;
 }
 
-/* =========================================
-   SECTION 2: WHY (v2) — modern, premium, cohesive
-   ========================================= */
-.why{
-  background: #f6f4f0;
-}
-
-.why-v2{
-  position: relative;
-  margin-top: -22px; /* makes the transition feel connected */
-  padding-top: 34px;
-}
-
-.why-v2::before{
-  content:"";
-  position:absolute;
-  inset: -40px 0 auto 0;
-  height: 170px;
-  background:
-    radial-gradient(800px 160px at 50% 0%,
-      rgba(26,54,93,0.10),
-      rgba(246,244,240,0) 70%);
-  pointer-events:none;
-  z-index: 0;
-}
-
-.why-head{
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin: 8px auto 18px auto;
-  max-width: 720px;
-}
-
-.why-kicker{
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.55);
-  margin-bottom: 10px;
-}
-
-.why-title{
+.why-title {
   font-family: "Playfair Display", serif;
   font-weight: 700;
-  font-size: 28px;
-  line-height: 1.1;
-  color: #111;
-  margin-bottom: 10px;
-}
-
-.why-sub{
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(0,0,0,0.68);
-}
-
-.why-grid{
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.why-card{
-  border-radius: 22px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.60);
-  border: 1px solid rgba(0,0,0,0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.10);
-  transform: translateZ(0);
-}
-
-.why-visual{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  background: #111;
-}
-
-.why-visual img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.95) contrast(1.03);
-}
-
-.why-visual-overlay{
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 56%, rgba(0,0,0,0.00));
-  pointer-events: none;
-}
-
-.why-badge{
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.16);
-  border: 1px solid rgba(255,255,255,0.24);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
-}
-
-.why-badge-icon{
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.22);
-  color: rgba(255,255,255,0.92);
-  font-size: 15px;
-}
-
-.why-badge-text{
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgba(255,255,255,0.92);
-  white-space: nowrap;
-}
-
-.why-body{
-  padding: 16px 16px 18px 16px;
+  font-size: 32px;
+  line-height: 1.2;
   text-align: center;
-}
-
-.why-body h3{
-  font-size: 18px;
-  font-weight: 700;
-  color: #111;
+  color: #1a1a1a;
   margin-bottom: 8px;
 }
 
-.why-body p{
-  font-size: 13px;
+.why-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Modern Card Design */
+.why-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.why-image-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.why-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.why-card:hover .why-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.why-info {
+  padding: 0 8px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.why-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f0f4f8; /* Soft blue tint */
+  color: #1A365D;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.why-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.why-info p {
+  font-size: 14px;
   line-height: 1.5;
-  color: rgba(0,0,0,0.70);
+  color: #555;
 }
 
 /* =========================================
@@ -491,37 +398,48 @@ html, body {
   }
   .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-  /* HERO desktop */
+  /* HERO & BACKGROUND Desktop Adjustments */
   .mobile-hero-image { display: none; }
-
-  .hero-section {
-    display: flex;
-    min-height: 750px;
-    background-color: transparent;
+  
+  .desktop-hero-background {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
+    z-index: 1;
+  }
+
+  /* Reset the wrapper so it behaves normally on desktop */
+  .page-content-wrapper {
+    margin-top: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding-bottom: 0;
   }
 
   .hero-content {
-    max-width: 900px;
-    justify-content: flex-start;
+    min-height: 85vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
     align-items: flex-start;
-    border-radius: 0;
-    margin-top: 0;
-    box-shadow: none;
-    background-color: transparent;
-    padding: 120px 5% 60px 5%;
+    padding: 140px 5% 60px 5%;
   }
 
   .top-content {
     align-items: flex-start;
     text-align: left;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
   .main-title {
-    font-size: 58px;
+    font-size: 64px;
     margin-bottom: 15px;
     white-space: nowrap;
   }
@@ -541,56 +459,57 @@ html, body {
   .cta-group {
     align-items: flex-start;
     max-width: 400px;
-    margin: 20px 0 0 0;
+    margin: 30px 0 0 0;
   }
-  .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
+  .primary-btn, .ghost-btn { height: 56px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
 
-  /* Transition looks cleaner on desktop */
-  .section-transition{
-    height: 92px;
-    margin-top: -28px;
-  }
-  .transition-glass{
-    height: 66px;
-    border-radius: 34px;
-  }
-  .transition-wave{
-    height: 92px;
+  /* SECTION 2 Desktop (2x2 Luxury Grid) */
+  .why-section {
+    background-color: #f6f4f0;
+    padding: 100px 5%;
+    position: relative;
+    z-index: 10;
   }
 
-  /* WHY v2 desktop layout */
-  .why-head{
-    text-align: left;
-    margin: 6px 0 16px 0;
-    max-width: 860px;
-  }
-
-  .why-title{
+  .why-title {
     font-size: 44px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .why-subtitle {
+    font-size: 18px;
+    margin-bottom: 60px;
   }
 
-  .why-sub{
-    font-size: 16px;
-  }
-
-  .why-grid{
+  .why-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 22px;
+    gap: 30px;
   }
 
-  .why-body{
-    text-align: left;
-    padding: 18px 18px 20px 18px;
+  .why-card {
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
   }
 
-  .why-body h3{
-    font-size: 20px;
+  .why-image-wrapper {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 
-  .why-body p{
-    font-size: 14px;
+  .why-info {
+    padding: 0;
+  }
+
+  .why-info h3 {
+    font-size: 22px;
+  }
+  
+  .why-info p {
+    font-size: 15px;
   }
 }
