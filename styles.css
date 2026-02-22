@@ -146,7 +146,7 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 55vh; 
+    height: 42vh; 
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: center 60%;
@@ -160,11 +160,11 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 20px 20px 30px 20px; 
+    padding: 20px; 
     
     position: relative;
     z-index: 10;
-    min-height: calc(45vh + 30px); 
+    min-height: calc(58vh + 30px); 
     
     display: flex;
     flex-direction: column;
@@ -181,11 +181,11 @@ body, html {
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 28px; 
+    font-size: 26px; 
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
@@ -207,7 +207,7 @@ body, html {
     font-size: 13px;
     font-weight: 500;
     color: #666;
-    margin-top: 18px;
+    margin-top: 12px;
     line-height: 2;
     padding: 0 10px;
     letter-spacing: 0.3px;
@@ -231,7 +231,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 12px;
+    gap: 10px;
     width: 100%; 
     max-width: 360px;
     margin: 0 auto; 
@@ -245,7 +245,7 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 50px; 
+    height: 46px; 
     width: 100%; 
     padding: 0 45px 0 15px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -257,8 +257,8 @@ body, html {
 .icon-circle {
     position: absolute;
     right: 5px;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -376,7 +376,7 @@ body, html {
         text-align: left;
         padding: 0;
         margin-top: 25px;
-        line-height: 2.2; /* Αυξήθηκε ελαφρώς για να αναπνέει το <br> */
+        line-height: 2.2; 
     }
 
     .loc-item i { font-size: 12px; }
