@@ -148,7 +148,7 @@ body, html {
     height: 60svh;
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center bottom; /* ΕΔΩ ΕΓΙΝΕ Η ΑΛΛΑΓΗ: Ευθυγράμμιση στο κάτω μέρος για να φαίνεται ολόκληρο το αυτοκίνητο */
+    background-position: center 92%; /* Η χρυσή τομή για να πατάνε τα λάστιχα ακριβώς */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
