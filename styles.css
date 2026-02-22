@@ -145,10 +145,10 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 55svh; 
+    height: 65svh; /* Αυξήσαμε το ύψος για να χωρέσει καλύτερα η εικόνα */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center 60%; /* Επαναφορά στο σωστό καδράρισμα για να φαίνονται όλα */
+    background-position: center 15%; /* Αλλάξαμε την εστίαση για να φανεί ο ουρανός και το ταξί */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
