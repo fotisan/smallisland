@@ -249,6 +249,11 @@ html, body {
 .loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
+/* Απόκρυψη του shape divider στα κινητά */
+.shape-divider {
+  display: none;
+}
+
 /* =========================================
    WHY CHOOSE US (Mobile: like your right image)
    ========================================= */
@@ -396,6 +401,7 @@ html, body {
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
+    position: relative; /* Απαραίτητο για το absolute position του shape divider */
   }
 
   .hero-content {
@@ -440,6 +446,25 @@ html, body {
   }
   .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
+
+  /* Ρυθμίσεις Shape Divider για Desktop */
+  .shape-divider {
+    display: block; /* Το εμφανίζουμε τώρα */
+    position: absolute;
+    bottom: -1px; /* Το -1px βοηθά να μη φαίνεται κενή γραμμή λόγω rendering */
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+  
+  .shape-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px; /* Ελέγχει πόσο "ψηλό" είναι το κύμα. Μπορείς να το αυξομειώσεις */
+  }
 
   /* WHY desktop: alternating image left/right with text opposite */
   .why-title {
