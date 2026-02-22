@@ -141,15 +141,14 @@ body, html {
     display: block; 
     width: 100%;
     background-color: #f6f4f0;
-    min-height: 100svh; /* Χρήση svh για να αγνοεί την μπάρα του browser */
 }
 
 .mobile-hero-image {
     width: 100%;
-    height: 42svh; /* Δώσαμε το 42% του καθαρού ύψους */
+    height: 55svh; /* Η εικόνα παίρνει πίσω τον αέρα της */
     background-image: url('hero-mobile.webp');
     background-size: cover;
-    background-position: center bottom; /* Κρίσιμη αλλαγή: Το Audi κάθεται τέλεια κάτω */
+    background-position: center bottom; /* Το αυτοκίνητο κάθεται τέλεια κάτω */
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
@@ -160,15 +159,13 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 20px 15px 15px 15px; /* Πιο σφιχτά περιθώρια */
+    padding: 30px 20px 40px 20px; /* Αφαιρέθηκε το ενοχλητικό min-height που έκανε τη ζημιά */
     
     position: relative;
     z-index: 10;
-    min-height: calc(58svh + 30px); /* Το υπόλοιπο 58% του καθαρού ύψους */
     
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Κεντράρει όλο το μπλοκ στον διαθέσιμο χώρο */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
@@ -178,25 +175,25 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 12px; /* Σπρώχνει τα κουμπιά ελαφρώς προς τα κάτω */
+    margin-bottom: 25px; /* Καθαρή απόσταση πριν τα κουμπιά */
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 24px; /* Ελαφρώς μικρότερο για να γλιτώσουμε χώρο */
+    font-size: 26px; 
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
 .hero-description {
-    font-size: 13.5px; 
+    font-size: 14px; 
     font-weight: 400;
     color: #444;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 .desktop-comma { display: none; }
 .desktop-br-desc { display: none; }
@@ -210,10 +207,10 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 10px;
+    gap: 12px;
     width: 100%; 
     max-width: 360px;
-    margin: 0 auto 15px auto; /* Σταθερό κενό πριν τις περιοχές */
+    margin: 0 auto 25px auto; /* Ακριβώς 25px κενό κάτω από τα κουμπιά για τις περιοχές */
 }
 
 .primary-btn, .ghost-btn {
@@ -223,7 +220,7 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 48px; /* Λίγο πιο κομψά για να εξοικονομήσουν χώρο */
+    height: 50px; 
     width: 100%; 
     padding: 0 45px 0 15px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -235,8 +232,8 @@ body, html {
 .icon-circle {
     position: absolute;
     right: 5px;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -264,7 +261,6 @@ body, html {
 .destination-list {
     order: 3; 
     width: 100%;
-    margin-top: 0; 
 }
 
 .dest-line {
@@ -291,6 +287,7 @@ body, html {
     margin-right: 2px;
     font-size: 10px;
 }
+
 
 /* =========================================
    DESKTOP & TABLET STYLES (Από 768px και πάνω)
