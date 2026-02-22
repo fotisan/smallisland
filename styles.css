@@ -376,7 +376,7 @@ body, html {
         text-align: left;
         padding: 0;
         margin-top: 25px;
-        line-height: 2.2; /* Αυξήθηκε ελαφρώς για να αναπνέει το <br> */
+        line-height: 2.2; 
     }
 
     .loc-item i { font-size: 12px; }
