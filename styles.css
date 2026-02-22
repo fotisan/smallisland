@@ -146,7 +146,7 @@ body, html {
 
 .mobile-hero-image {
     width: 100%;
-    height: 42vh; 
+    height: 55vh; /* Επαναφορά στο ιδανικό ύψος για να έχει αέρα η εικόνα */
     background-image: url('hero-mobile.webp');
     background-size: cover;
     background-position: center 60%;
@@ -160,15 +160,15 @@ body, html {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-top: -30px; 
-    padding: 20px; 
+    padding: 25px 20px 40px 20px; 
     
     position: relative;
     z-index: 10;
-    min-height: calc(58vh + 30px); 
+    min-height: calc(45vh + 30px); 
     
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Αλλαγή για να ακολουθούν φυσική ροή τα στοιχεία */
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); 
 }
 
@@ -177,15 +177,16 @@ body, html {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: 20px; /* Απόσταση από τα κουμπιά που ακολουθούν */
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: 26px; 
+    font-size: 28px; /* Επαναφορά του τίτλου στο κανονικό μέγεθος */
     font-weight: 700;
     line-height: 1.15;
     color: #1a1a1a;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
@@ -202,40 +203,16 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* STYLES ΓΙΑ ΤΗ ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ ΜΕ ΠΙΝΕΖΕΣ */
-.destination-inline-list {
-    font-size: 13px;
-    font-weight: 500;
-    color: #666;
-    margin-top: 12px;
-    line-height: 2;
-    padding: 0 10px;
-    letter-spacing: 0.3px;
-}
 
-.loc-item {
-    display: inline-block;
-    margin-right: 12px;
-    white-space: nowrap; 
-}
-
-.loc-item:last-child { margin-right: 0; }
-
-.loc-item i {
-    color: #1A365D; 
-    margin-right: 4px;
-    font-size: 11px;
-}
-
+/* --- CTA GROUP --- */
 .cta-group {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    gap: 10px;
+    gap: 12px;
     width: 100%; 
     max-width: 360px;
-    margin: 0 auto; 
-    margin-top: auto; 
+    margin: 0 auto 25px auto; /* Τοποθετήθηκε στο κέντρο με κενό από κάτω */
 }
 
 .primary-btn, .ghost-btn {
@@ -245,7 +222,7 @@ body, html {
     justify-content: center;
     position: relative;
     border-radius: 50px;
-    height: 46px; 
+    height: 50px; /* Επαναφορά στο 50px */
     width: 100%; 
     padding: 0 45px 0 15px; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -257,8 +234,8 @@ body, html {
 .icon-circle {
     position: absolute;
     right: 5px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -282,6 +259,37 @@ body, html {
 .wa-bg { background-color: #25D366; color: white; border: none; }
 .ghost-btn:hover { background-color: rgba(26, 26, 26, 0.05); }
 
+
+/* --- ΤΟΠΟΘΕΣΙΕΣ ΣΤΟ ΤΕΛΟΣ --- */
+.destination-wrapper {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.06); /* Διακριτική γραμμή διαχωρισμού */
+    padding-top: 15px;
+}
+
+.destination-inline-list {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    line-height: 2;
+    padding: 0 10px;
+    letter-spacing: 0.3px;
+}
+
+.loc-item {
+    display: inline-block;
+    margin-right: 12px;
+    white-space: nowrap; 
+}
+
+.loc-item:last-child { margin-right: 0; }
+
+.loc-item i {
+    color: #1A365D; 
+    margin-right: 4px;
+    font-size: 11px;
+}
 
 /* =========================================
    DESKTOP & TABLET STYLES (Από 768px και πάνω)
@@ -355,6 +363,7 @@ body, html {
     .top-content {
         align-items: flex-start;
         text-align: left;
+        margin-bottom: 30px;
     }
 
     .main-title { 
@@ -370,24 +379,28 @@ body, html {
     .desktop-br-desc { display: block; } 
     .mobile-dash { display: none; } 
     
-    /* DESKTOP STYLES ΓΙΑ ΤΗ ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ */
-    .destination-inline-list { 
-        font-size: 15px; 
-        text-align: left;
-        padding: 0;
-        margin-top: 25px;
-        line-height: 2.2; 
-    }
-
-    .loc-item i { font-size: 12px; }
-
     .cta-group { 
         align-items: flex-start;
         max-width: 400px; 
-        margin: 35px 0 0 0; 
+        margin: 0 0 35px 0; 
         padding: 0;
     }
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; text-align: left; }
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
+
+    /* DESKTOP STYLES ΓΙΑ ΤΗ ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ */
+    .destination-wrapper {
+        text-align: left;
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .destination-inline-list { 
+        font-size: 15px; 
+        padding: 0;
+        line-height: 2.2; 
+    }
+
+    .loc-item i { font-size: 12px; }
 }
