@@ -135,7 +135,7 @@ body, html {
 }
 
 /* =========================================
-   MOBILE STYLES 
+   HERO SECTION
    ========================================= */
 .hero-section {
     display: block; 
@@ -158,7 +158,7 @@ body, html {
     background-color: #f6f4f0;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    margin-top: -85px; /* ΕΔΩ ΕΓΙΝΕ Η ΑΛΛΑΓΗ: Ανέβηκε ακόμα 20px πιο πάνω το πλαίσιο */
+    margin-top: -85px; 
     padding: 30px 20px 40px 20px; 
     
     position: relative;
@@ -271,9 +271,7 @@ body, html {
     margin-bottom: 8px;
 }
 
-.dest-line:last-child {
-    margin-bottom: 0;
-}
+.dest-line:last-child { margin-bottom: 0; }
 
 .loc-item {
     font-size: 11px; 
@@ -286,6 +284,100 @@ body, html {
     color: #1A365D; 
     margin-right: 2px;
     font-size: 10px;
+}
+
+/* =========================================
+   FEATURES SECTION (ΝΕΟ) - MOBILE FIRST
+   ========================================= */
+.features-section {
+    padding: 50px 20px;
+    background-color: #f6f4f0;
+}
+
+.features-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Σκούρο gradient για να διαβάζονται τα γράμματα στο κινητό */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+}
+
+.feature-content {
+    position: relative;
+    z-index: 3;
+    padding: 25px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.feature-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.stars-group {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    font-size: 18px;
+}
+
+.feature-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.feature-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 0.9;
 }
 
 
@@ -389,9 +481,7 @@ body, html {
         margin-bottom: 12px;
     }
 
-    .loc-item {
-        font-size: 15px; 
-    }
+    .loc-item { font-size: 15px; }
 
     .loc-item i {
         font-size: 13px;
@@ -408,4 +498,77 @@ body, html {
     .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; width: 100%; }
     .btn-text { font-size: 15px; text-align: left; }
     .icon-circle { right: 7px; width: 40px; height: 40px; font-size: 20px; }
+
+    /* --- DESKTOP FEATURES SECTION --- */
+    .features-section {
+        padding: 100px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .features-title {
+        font-size: 48px;
+        margin-bottom: 70px;
+    }
+
+    .features-container {
+        gap: 60px;
+    }
+
+    .feature-card {
+        flex-direction: row; /* Εικόνα αριστερά, κείμενο δεξιά */
+        align-items: center;
+        min-height: auto;
+        box-shadow: none;
+        gap: 50px;
+    }
+
+    .feature-card:nth-child(even) {
+        flex-direction: row-reverse; /* Εναλλάξ διάταξη */
+    }
+
+    .feature-image {
+        position: relative;
+        flex: 1;
+        height: 380px; /* Σταθερό ύψος για τις εικόνες στο desktop */
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-overlay {
+        display: none; /* Αφαιρούμε το overlay gradient στις μεγάλες οθόνες */
+    }
+
+    .feature-content {
+        flex: 1;
+        padding: 0;
+        text-align: left;
+        color: #1a1a1a;
+    }
+
+    .feature-card:nth-child(even) .feature-content {
+        text-align: left; 
+    }
+
+    .feature-icon {
+        color: #1A365D; /* Σκούρο μπλε για τα εικονίδια στο desktop */
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .stars-group {
+        justify-content: flex-start;
+    }
+
+    .feature-content h3 {
+        font-size: 32px;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+    }
+
+    .feature-content p {
+        font-size: 18px;
+        color: #444;
+        opacity: 1;
+    }
 }
