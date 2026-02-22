@@ -119,44 +119,37 @@ html, body {
 }
 
 /* =========================================
-   BACKGROUNDS & TRANSITION WRAPPER
+   HERO (Mobile First)
    ========================================= */
+.hero-section {
+  display: block;
+  width: 100%;
+  background-color: #f6f4f0;
+  position: relative;
+}
+
 .mobile-hero-image {
   width: 100%;
-  height: 65svh;
+  height: 68svh;
   background-image: url("hero-mobile.webp");
   background-size: cover;
   background-position: center 75%;
   background-repeat: no-repeat;
-  position: fixed; /* Parallax feel on mobile */
-  top: 0;
-  left: 0;
+  position: relative;
   z-index: 1;
 }
 
-.desktop-hero-background {
-  display: none;
-}
-
-/* This wrapper acts as the "sheet" that overlaps the image, connecting Hero to Section 2 */
-.page-content-wrapper {
+.hero-content {
+  background-color: #f6f4f0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: -85px;
+  padding: 30px 20px 80px 20px; /* Increased bottom padding for wave space */
   position: relative;
   z-index: 10;
-  background-color: #f6f4f0;
-  margin-top: 55svh; /* Determines how much of the image is visible */
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.08);
-  padding-bottom: 40px;
-}
-
-/* =========================================
-   HERO CONTENT (Inside Wrapper)
-   ========================================= */
-.hero-content {
-  padding: 40px 20px 20px 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .top-content {
@@ -170,17 +163,17 @@ html, body {
 
 .main-title {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   color: #1a1a1a;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .desktop-br { display: none; }
 .mobile-space { display: inline; }
 
 .hero-description {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   color: #444;
   line-height: 1.5;
@@ -209,7 +202,7 @@ html, body {
   justify-content: center;
   position: relative;
   border-radius: 50px;
-  height: 52px;
+  height: 50px;
   width: 100%;
   padding: 0 45px 0 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -220,7 +213,7 @@ html, body {
 
 .icon-circle {
   position: absolute;
-  right: 6px;
+  right: 5px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -239,7 +232,7 @@ html, body {
 .fb-icon-bg { background-color: #fff; color: #1A365D; }
 
 .ghost-btn {
-  background-color: transparent;
+  background-color: #fff;
   border: 2px solid #1a1a1a;
 }
 .ghost-btn .btn-text { color: #1a1a1a; }
@@ -250,116 +243,164 @@ html, body {
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 8px;
 }
 .dest-line:last-child { margin-bottom: 0; }
-.loc-item { font-size: 12px; font-weight: 500; color: #666; white-space: nowrap; }
-.loc-item i { color: #1A365D; margin-right: 3px; font-size: 11px; }
+.loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
+.loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
 /* =========================================
-   SECTION 2: WHY CHOOSE US (Modern Luxury)
+   Wave Divider Transition
    ========================================= */
-.why-section {
-  padding: 40px 16px 20px 16px;
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: translateY(1px); /* fixes subpixel gaps */
+  z-index: 10;
+}
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+.wave-divider .shape-fill {
+  fill: #ffffff; /* Connects with the background of the Why section */
+}
+
+/* =========================================
+   WHY CHOOSE US (Section 2)
+   ========================================= */
+.why {
+  background: #ffffff; /* Cleaner, brighter canvas */
+  position: relative;
+  z-index: 11;
 }
 
 .container {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
+  padding: 40px 16px 60px 16px;
+}
+
+.why-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.why-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A365D;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .why-title {
   font-family: "Playfair Display", serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.2;
-  text-align: center;
-  color: #1a1a1a;
-  margin-bottom: 8px;
+  color: #111;
+  margin-top: 8px;
 }
 
-.why-subtitle {
-  text-align: center;
-  font-size: 15px;
-  color: #555;
-  margin-bottom: 35px;
-}
-
-.why-grid {
+.why-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-/* Modern Card Design */
-.why-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 16px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
+/* Mobile: Elegant card with rich navy overlay */
+.why-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(26, 54, 93, 0.12); /* Subtle blue tinted shadow */
+  transform: translateZ(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.why-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+.why-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(26, 54, 93, 0.18);
 }
 
-.why-image-wrapper {
+.why-media {
   width: 100%;
-  height: 180px;
-  border-radius: 16px;
+  aspect-ratio: 16 / 12;
+  position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
-.why-image-wrapper img {
+.why-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
-.why-card:hover .why-image-wrapper img {
+.why-item:hover .why-media img {
   transform: scale(1.05);
 }
 
-.why-info {
-  padding: 0 8px 10px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+/* Premium Navy gradient for mobile overlay */
+.why-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 33, 58, 0.95), rgba(26, 54, 93, 0.4) 60%, transparent);
+  pointer-events: none;
+}
+
+.why-copy {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.why-copy h3 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
+
+.why-copy p {
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .why-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  background: #f0f4f8; /* Soft blue tint */
-  color: #1A365D;
+  border-radius: 50%; /* Circles look slightly more premium here */
+  margin: 0 auto 12px auto;
   display: grid;
   place-items: center;
-  font-size: 20px;
-  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.why-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 8px;
+.why-icon i { 
+  font-size: 18px; 
+  color: #fff; 
 }
 
-.why-info p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #555;
-}
 
 /* =========================================
    Desktop & Tablet
@@ -398,48 +439,38 @@ html, body {
   }
   .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-  /* HERO & BACKGROUND Desktop Adjustments */
+  /* HERO desktop */
   .mobile-hero-image { display: none; }
-  
-  .desktop-hero-background {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+
+  .hero-section {
+    display: flex;
+    min-height: 750px;
+    background-color: transparent;
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
-    z-index: 1;
-  }
-
-  /* Reset the wrapper so it behaves normally on desktop */
-  .page-content-wrapper {
-    margin-top: 0;
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    padding-bottom: 0;
+    position: relative;
   }
 
   .hero-content {
-    min-height: 85vh;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
+    max-width: 900px;
+    justify-content: flex-start;
     align-items: flex-start;
-    padding: 140px 5% 60px 5%;
+    border-radius: 0;
+    margin-top: 0;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 120px 5% 100px 5%;
   }
 
   .top-content {
     align-items: flex-start;
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .main-title {
-    font-size: 64px;
+    font-size: 58px;
     margin-bottom: 15px;
     white-space: nowrap;
   }
@@ -459,57 +490,102 @@ html, body {
   .cta-group {
     align-items: flex-start;
     max-width: 400px;
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
   }
-  .primary-btn, .ghost-btn { height: 56px; padding: 0 55px 0 20px; }
+  .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
 
-  /* SECTION 2 Desktop (2x2 Luxury Grid) */
-  .why-section {
-    background-color: #f6f4f0;
-    padding: 100px 5%;
-    position: relative;
-    z-index: 10;
+  .wave-divider svg { height: 80px; }
+
+  /* WHY Desktop: Modern Overlapping Layout */
+  .why-header {
+    text-align: left;
+    margin-bottom: 50px;
   }
 
   .why-title {
-    font-size: 44px;
+    font-size: 42px;
+    margin-top: 10px;
+  }
+
+  .why-list {
+    gap: 60px; /* Space between each row */
+  }
+
+  .why-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .why-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .why-media {
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 1;
+    aspect-ratio: auto;
+    min-height: 340px;
+  }
+  .why-media::after { display: none; /* Remove mobile gradient */ }
+
+  /* Overlapping Clean Card */
+  .why-copy {
+    position: relative;
+    inset: auto;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(26, 54, 93, 0.08); /* Soft matching shadow */
+    border: 1px solid rgba(26, 54, 93, 0.05);
+    z-index: 2;
+    margin-left: -60px; /* Overlaps the image slightly */
+    text-align: left;
+    color: #111;
+  }
+
+  .why-copy h3 {
+    font-size: 26px;
+    color: #111;
     margin-bottom: 12px;
   }
-  
-  .why-subtitle {
-    font-size: 18px;
-    margin-bottom: 60px;
+
+  .why-copy p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
   }
 
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+  .why-icon {
+    margin: 0 0 20px 0;
+    width: 56px;
+    height: 56px;
+    background: rgba(26, 54, 93, 0.05); /* Tinted with your primary blue */
+    border: none;
   }
 
-  .why-card {
-    padding: 20px;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
+  .why-icon i { 
+    font-size: 22px; 
+    color: #1A365D; /* Primary blue */
   }
 
-  .why-image-wrapper {
-    width: 220px;
-    height: 220px;
-    margin-bottom: 0;
-    flex-shrink: 0;
+  /* Alternate layout for even items (Image right, text left) */
+  .why-item:nth-child(even) {
+    grid-template-columns: 1fr 1fr;
   }
-
-  .why-info {
-    padding: 0;
+  .why-item:nth-child(even) .why-media {
+    order: 2;
   }
-
-  .why-info h3 {
-    font-size: 22px;
-  }
-  
-  .why-info p {
-    font-size: 15px;
+  .why-item:nth-child(even) .why-copy {
+    order: 1;
+    margin-left: 0;
+    margin-right: -60px; /* Overlaps from the other side */
   }
 }
