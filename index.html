@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Small Island Transfer</title>
+
+  <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <header class="main-header">
+    <div class="logo-wrapper">
+      <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
+      <div class="logo-text">
+        <span>SMALL ISLAND</span>
+        <span>TRANSFER</span>
+      </div>
+    </div>
+
+    <button class="hamburger-btn" aria-label="Open menu" onclick="toggleMenu(event)">
+      <i class="fa-solid fa-bars" id="menu-icon" aria-hidden="true"></i>
+    </button>
+
+    <nav class="top-nav" id="topNav" aria-label="Primary">
+      <a href="#home" class="nav-item">Home</a>
+      <a href="#services" class="nav-item">Services</a>
+      <a href="#transfers" class="nav-item">Transfers</a>
+      <a href="#about" class="nav-item">About me</a>
+      <a href="#contact" class="nav-item active">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section" id="home">
+    <div class="mobile-hero-image" role="img" aria-label="Private transfer in Rhodes"></div>
+
+    <main class="hero-content">
+      <div class="top-content">
+        <h1 class="main-title animate-entry delay-1">
+          Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">
+          across<br>
+          Rhodes & The Islands.
+        </h1>
+
+        <p class="hero-description animate-entry delay-2">
+          <span class="highlight-text">One message and it's sorted.</span><br>
+          Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
+          with a driver who knows every harbour, every ferry, every island.
+        </p>
+      </div>
+
+      <div class="destination-list animate-entry delay-3">
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Airport</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Harbour</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kamiros Skala</span>
+        </div>
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Halki</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Symi</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Tilos</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kastellorizo</span>
+        </div>
+      </div>
+
+      <div class="cta-group animate-entry delay-4">
+        <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+          <span class="btn-text">Let's Plan Your Route</span>
+          <span class="icon-circle fb-icon-bg" aria-hidden="true">
+            <i class="fa-brands fa-facebook-messenger"></i>
+          </span>
+        </a>
+
+        <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+          <span class="btn-text">Get in Touch via WhatsApp</span>
+          <span class="icon-circle wa-bg" aria-hidden="true">
+            <i class="fa-brands fa-whatsapp"></i>
+          </span>
+        </a>
+      </div>
+    </main>
+  </section>
+
+  <!-- WHY CHOOSE US (mobile: image cards overlay / desktop: alternating image + text) -->
+  <section class="why" id="services" aria-labelledby="whyTitle">
+    <div class="container">
+      <h2 class="why-title" id="whyTitle">Γιατί να μας επιλέξετε</h2>
+
+      <div class="why-list">
+
+        <!-- 1 -->
+        <article class="why-item">
+          <div class="why-media">
+            <img
+              src="why-on-time.webp"
+              alt="Luxury watch symbolizing on-time service"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+            />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <h3>Απόλυτη Ακρίβεια (Always On-Time)</h3>
+            <p>Γνωρίζουμε πόσο σημαντικός είναι ο χρόνος στις διακοπές σας. Εγγυόμαστε συνέπεια σε κάθε παραλαβή και παράδοση.</p>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="why-item">
+          <div class="why-media">
+            <img
+              src="why-fleet.webp"
+              alt="Car interior representing premium fleet"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+            />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <h3>Premium Στόλος & Ευελιξία</h3>
+            <p>Από πολυτελή ιδιωτική μεταφορά με Audi Q5 (1-4 άτομα) έως άνετα mini vans και mini bus για group (5-8, 9-11, 12-21 άτομα).</p>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="why-item">
+          <div class="why-media">
+            <img
+              src="why-payment.webp"
+              alt="Card payment in a vehicle"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+            />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3>Ευκολία Πληρωμής</h3>
+            <p>Διαθέτουμε τερματικό POS σε όλα τα οχήματα. Δεχόμαστε κάρτες Visa, Mastercard και Maestro.</p>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="why-item">
+          <div class="why-media">
+            <img
+              src="why-5stars.webp"
+              alt="Five star service"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+            />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3>Υπηρεσίες 5 Αστέρων</h3>
+            <p>Η ικανοποίηση των πελατών μας είναι προτεραιότητα, με κορυφαίες αξιολογήσεις για την ασφάλεια και την εξυπηρέτηση.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function openWhatsApp() {
+      const phoneNumber = "306900000000";
+      const message = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank", "noopener");
+    }
+
+    function toggleMenu(event) {
+      if (event) event.stopPropagation();
+
+      const nav = document.getElementById("topNav");
+      const icon = document.getElementById("menu-icon");
+
+      nav.classList.toggle("active");
+
+      icon.style.opacity = "0";
+      icon.style.transform = "scale(0.8)";
+
+      setTimeout(() => {
+        if (nav.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        }
+        icon.style.opacity = "1";
+        icon.style.transform = "scale(1)";
+      }, 200);
+    }
+
+    document.addEventListener("click", function (event) {
+      const nav = document.getElementById("topNav");
+      const hamburger = document.querySelector(".hamburger-btn");
+
+      if (nav.classList.contains("active") && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+        toggleMenu();
+      }
+    });
+  </script>
+
+</body>
+</html>
