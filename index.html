@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -38,12 +38,10 @@
     </nav>
   </header>
 
-  <div class="mobile-hero-image" role="img" aria-label="Private transfer in Rhodes"></div>
-  <div class="desktop-hero-background"></div>
+  <section class="hero-section" id="home">
+    <div class="mobile-hero-image" role="img" aria-label="Private transfer in Rhodes"></div>
 
-  <main class="page-content-wrapper">
-    
-    <section class="hero-content" id="home">
+    <main class="hero-content">
       <div class="top-content">
         <h1 class="main-title animate-entry delay-1">
           Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">
@@ -87,64 +85,78 @@
           </span>
         </a>
       </div>
-    </section>
+    </main>
 
-    <section class="why-section" id="services" aria-labelledby="whyTitle">
-      <div class="container">
-        <h2 class="why-title">Γιατί να μας επιλέξετε</h2>
-        <p class="why-subtitle">Ανακαλύψτε τη διαφορά μιας πραγματικά premium εμπειρίας μεταφοράς.</p>
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C73.86,34.82,143.91,59.3,214.34,68.95,250.62,73.86,287.6,70.67,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
 
-        <div class="why-grid">
-
-          <article class="why-card">
-            <div class="why-image-wrapper">
-              <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" decoding="async" />
-            </div>
-            <div class="why-info">
-              <div class="why-icon"><i class="fa-regular fa-clock"></i></div>
-              <h3>Απόλυτη Ακρίβεια</h3>
-              <p>Γνωρίζουμε πόσο σημαντικός είναι ο χρόνος στις διακοπές σας. Εγγυόμαστε συνέπεια σε κάθε παραλαβή και παράδοση.</p>
-            </div>
-          </article>
-
-          <article class="why-card">
-            <div class="why-image-wrapper">
-              <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" decoding="async" />
-            </div>
-            <div class="why-info">
-              <div class="why-icon"><i class="fa-solid fa-car-side"></i></div>
-              <h3>Premium Στόλος & Ευελιξία</h3>
-              <p>Από πολυτελή ιδιωτική μεταφορά (1-4 άτομα) έως άνετα mini vans και mini bus για group (έως 21 άτομα).</p>
-            </div>
-          </article>
-
-          <article class="why-card">
-            <div class="why-image-wrapper">
-              <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" decoding="async" />
-            </div>
-            <div class="why-info">
-              <div class="why-icon"><i class="fa-solid fa-credit-card"></i></div>
-              <h3>Ευκολία Πληρωμής</h3>
-              <p>Διαθέτουμε τερματικό POS σε όλα τα οχήματα. Δεχόμαστε με ασφάλεια κάρτες Visa, Mastercard και Maestro.</p>
-            </div>
-          </article>
-
-          <article class="why-card">
-            <div class="why-image-wrapper">
-              <img src="why-5stars.webp" alt="Five star service" loading="lazy" decoding="async" />
-            </div>
-            <div class="why-info">
-              <div class="why-icon"><i class="fa-solid fa-star"></i></div>
-              <h3>Υπηρεσίες 5 Αστέρων</h3>
-              <p>Η ικανοποίηση των πελατών μας είναι προτεραιότητα, με κορυφαίες αξιολογήσεις για την ασφάλεια και την εξυπηρέτηση.</p>
-            </div>
-          </article>
-
-        </div>
+  <section class="why" id="services" aria-labelledby="whyTitle">
+    <div class="container">
+      <div class="why-header">
+        <span class="why-subtitle">Η ΥΠΟΣΧΕΣΗ ΜΑΣ</span>
+        <h2 class="why-title" id="whyTitle">Γιατί να μας επιλέξετε</h2>
       </div>
-    </section>
-    
-  </main>
+
+      <div class="why-list">
+        <article class="why-item">
+          <div class="why-media">
+            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" decoding="async" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <h3>Απόλυτη Ακρίβεια</h3>
+            <p>Γνωρίζουμε πόσο σημαντικός είναι ο χρόνος στις διακοπές σας. Εγγυόμαστε συνέπεια και επαγγελματισμό σε κάθε παραλαβή και παράδοση.</p>
+          </div>
+        </article>
+
+        <article class="why-item">
+          <div class="why-media">
+            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" decoding="async" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <h3>Premium Στόλος</h3>
+            <p>Από πολυτελή ιδιωτική μεταφορά με Audi Q5 (1-4 άτομα) έως άνετα mini vans και mini bus για group (5-21 άτομα).</p>
+          </div>
+        </article>
+
+        <article class="why-item">
+          <div class="why-media">
+            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" decoding="async" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3>Ευκολία Πληρωμής</h3>
+            <p>Διαθέτουμε τερματικό POS σε όλα τα οχήματα. Δεχόμαστε κάρτες ανέπαφων συναλλαγών Visa, Mastercard και Maestro.</p>
+          </div>
+        </article>
+
+        <article class="why-item">
+          <div class="why-media">
+            <img src="why-5stars.webp" alt="Five star service" loading="lazy" decoding="async" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3>Υπηρεσίες 5 Αστέρων</h3>
+            <p>Η ικανοποίηση των πελατών μας είναι προτεραιότητα, με κορυφαίες αξιολογήσεις για την ασφάλεια και την εξυπηρέτησή μας.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
 
   <script>
     function openWhatsApp() {
