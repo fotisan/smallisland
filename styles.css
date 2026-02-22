@@ -202,15 +202,29 @@ body, html {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* STYLES ΓΙΑ ΤΗ ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ (ΛΥΣΗ 2) */
+/* STYLES ΓΙΑ ΤΗ ΛΙΣΤΑ ΠΕΡΙΟΧΩΝ ΜΕ ΠΙΝΕΖΕΣ */
 .destination-inline-list {
     font-size: 13px;
     font-weight: 500;
     color: #666;
     margin-top: 18px;
-    line-height: 1.8;
+    line-height: 2;
     padding: 0 10px;
     letter-spacing: 0.3px;
+}
+
+.loc-item {
+    display: inline-block;
+    margin-right: 12px;
+    white-space: nowrap; 
+}
+
+.loc-item:last-child { margin-right: 0; }
+
+.loc-item i {
+    color: #1A365D; 
+    margin-right: 4px;
+    font-size: 11px;
 }
 
 .cta-group {
@@ -362,7 +376,10 @@ body, html {
         text-align: left;
         padding: 0;
         margin-top: 25px;
+        line-height: 2.2; /* Αυξήθηκε ελαφρώς για να αναπνέει το <br> */
     }
+
+    .loc-item i { font-size: 12px; }
 
     .cta-group { 
         align-items: flex-start;
