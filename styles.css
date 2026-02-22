@@ -139,11 +139,12 @@ html, body {
 }
 
 .hero-content {
-  background-color: #f6f4f0; /* Το χρώμα του πλαισίου στο Hero */
+  background-color: #f6f4f0;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   margin-top: -85px;
-  padding: 30px 20px 40px 20px;
+  /* ΑΛΛΑΓΗ: Το padding κάτω έγινε 0 για ομαλή ένωση στα κινητά */
+  padding: 30px 20px 0 20px;
   position: relative;
   z-index: 10;
   display: flex;
@@ -265,7 +266,7 @@ html, body {
 }
 
 .why {
-  background: #f6f4f0; /* Το φόντο στο Section 2 είναι ίδιο με το .hero-content */
+  background: #f6f4f0;
 }
 
 .why-title {
@@ -465,17 +466,17 @@ html, body {
     height: 90px;
   }
 
-  /* --- WHY CHOOSE US - DESKTOP --- */
+  /* --- WHY CHOOSE US - DESKTOP (Αυξημένο μέγεθος & Χρώματα από το Hero) --- */
   
   .why .container {
-    max-width: 864px; 
+    max-width: 864px; /* Αυξήθηκε ~20% */
   }
 
   .why-title {
-    font-size: 46px; 
+    font-size: 46px; /* Προσαρμοσμένο στο νέο μέγεθος */
     text-align: center; 
     margin: 8px 0 32px 0;
-    color: #1a1a1a; 
+    color: #1a1a1a; /* Χρώμα κεντρικού τίτλου (Hero) */
   }
 
   .why-list {
@@ -486,7 +487,7 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     align-items: stretch;
-    min-height: 180px; 
+    min-height: 180px; /* Αυξήθηκε ~20% */
     border-radius: 18px;
     overflow: hidden;
     background: #ffffff; 
@@ -499,7 +500,7 @@ html, body {
   .why-copy {
     position: relative;
     inset: auto;
-    padding: 24px; 
+    padding: 24px; /* Αυξήθηκαν ελαφρώς τα περιθώρια */
     text-align: left;
     background: #ffffff; 
     backdrop-filter: none;
@@ -511,22 +512,22 @@ html, body {
   }
 
   .why-copy h3 {
-    font-size: 22px; 
-    color: #1a1a1a; 
+    font-size: 22px; /* Αυξήθηκε ~20% */
+    color: #1a1a1a; /* Χρώμα τίτλου από το Hero */
     margin-bottom: 8px;
   }
 
   .why-copy p {
-    font-size: 16px; 
+    font-size: 16px; /* Αυξήθηκε ~20% */
     line-height: 1.5;
-    color: #444; 
+    color: #444; /* Χρώμα περιγραφής από το Hero */
   }
 
   .why-icon {
-    width: 44px; 
+    width: 44px; /* Αυξήθηκε για να ταιριάζει με την κλίμακα */
     height: 44px;
     margin: 0 0 12px 0;
-    background: rgba(26, 26, 26, 0.04); 
+    background: rgba(26, 26, 26, 0.04); /* Απαλό γκρι αντί για μπλε */
     border: none;
     border-radius: 12px;
     display: grid;
@@ -535,10 +536,11 @@ html, body {
   }
   
   .why-icon i { 
-    color: #1a1a1a; 
+    color: #1a1a1a; /* Σκούρο εικονίδιο για ομοιομορφία */
     font-size: 19px;
   }
 
+  /* alternate layout for even items (image right, text left) */
   .why-item:nth-child(even) {
     grid-template-columns: 1fr 1fr;
   }
