@@ -572,25 +572,3 @@ html, body {
     border-right: none;
   }
 }
-
-/* =========================================
-   5 Stars Icon Styling (Why Choose Us)
-   ========================================= */
-.why-icon.stars-pill {
-  width: auto;
-  padding: 0 14px;
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-}
-
-.why-icon.stars-pill i {
-  font-size: 15px;
-  color: #f5b301; 
-}
-
-@media (min-width: 768px) {
-  .why-icon.stars-pill {
-    padding: 0 10px;
-  }
-}
