@@ -413,16 +413,17 @@ html, body {
     min-height: 750px;
     max-width: 1200px;
     width: calc(100% - 30px);
-    /* Εδώ μηδενίσαμε το κάτω margin (από 20px σε 0) για να κολλήσει με το επόμενο */
     margin: 25px auto 0 auto; 
-    border-radius: 30px; 
+    /* ΕΔΩ ΕΙΝΑΙ Η ΛΥΣΗ ΓΙΑ ΤΙΣ ΑΚΡΕΣ: Στρογγυλές μόνο πάνω, ίσιες κάτω */
+    border-radius: 30px 30px 0 0; 
     overflow: hidden; 
     background-color: transparent !important;
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); 
+    /* Αφαιρέθηκε η σκιά για να μη δημιουργεί γραμμή στον πάτο */
+    box-shadow: none; 
   }
 
   .hero-content {
@@ -482,7 +483,9 @@ html, body {
   .shape-divider svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
+    /* Η διόρθωση πλάτους για να καλύπτει κενά στις άκρες */
+    width: calc(100% + 4px);
+    margin-left: -2px;
     height: 90px;
   }
 
@@ -491,13 +494,11 @@ html, body {
   .why {
     background: #f6f4f0 !important;
     margin-top: 0 !important;
-    /* Μηδενίσαμε το top padding που δημιουγούσε κενό */
     padding-top: 0 !important; 
   }
 
   .why .container {
     max-width: 864px; 
-    /* Μειώσαμε αισθητά το εσωτερικό κενό για να έρθει ο τίτλος κοντά στο κύμα */
     padding-top: 10px; 
   }
 
