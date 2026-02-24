@@ -405,23 +405,24 @@ html, body {
   }
   .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-  /* HERO desktop - Boxed Hero (Πρόταση 1) */
+  /* HERO desktop - Boxed Hero */
   .mobile-hero-image { display: none; }
 
   .hero-section {
     display: flex;
     min-height: 750px;
-    max-width: 1200px; /* Απόλυτη ευθυγράμμιση με το μενού */
+    max-width: 1200px;
     width: calc(100% - 30px);
-    margin: 25px auto 20px auto; /* Απόσταση από πάνω, κεντράρισμα */
-    border-radius: 30px; /* Στρογγυλεμένες, premium γωνίες */
-    overflow: hidden; /* Κρατάει την εικόνα και το divider μέσα στο "κουτί" */
+    /* Εδώ μηδενίσαμε το κάτω margin (από 20px σε 0) για να κολλήσει με το επόμενο */
+    margin: 25px auto 0 auto; 
+    border-radius: 30px; 
+    overflow: hidden; 
     background-color: transparent !important;
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Premium απαλή σκιά */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); 
   }
 
   .hero-content {
@@ -490,12 +491,14 @@ html, body {
   .why {
     background: #f6f4f0 !important;
     margin-top: 0 !important;
-    padding-top: 20px !important; /* Έξτρα αέρας επειδή κλείσαμε το Hero σε κουτί */
+    /* Μηδενίσαμε το top padding που δημιουγούσε κενό */
+    padding-top: 0 !important; 
   }
 
   .why .container {
     max-width: 864px; 
-    padding-top: 40px; 
+    /* Μειώσαμε αισθητά το εσωτερικό κενό για να έρθει ο τίτλος κοντά στο κύμα */
+    padding-top: 10px; 
   }
 
   .why-title {
