@@ -205,21 +205,15 @@ html, body {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Wrapper για τα CTAs - Κρατάει το ύψος */
-.cta-wrapper {
-  order: 2;
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto 25px auto;
-}
-
 .cta-group {
+  order: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   width: 100%;
-  transition: all 0.3s ease;
+  max-width: 360px;
+  margin: 0 auto 25px auto;
 }
 
 .primary-btn, .ghost-btn {
@@ -278,56 +272,6 @@ html, body {
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
 .shape-divider { display: none !important; }
-
-/* =========================================
-   MOBILE FLOATING CTAs LOGIC
-   ========================================= */
-@media (max-width: 767px) {
-  /* Εξασφαλίζει ότι η οθόνη δεν θα "πηδήξει" όταν το cta-group γίνει fixed */
-  .cta-wrapper {
-    min-height: 112px; 
-  }
-
-  /* Οι απόλυτοι κανόνες για όταν τα κουμπιά γίνονται floating στο κινητό */
-  .cta-group.is-floating {
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    width: auto !important;
-    flex-direction: column !important;
-    gap: 15px !important;
-    z-index: 9999 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  .cta-group.is-floating .primary-btn,
-  .cta-group.is-floating .ghost-btn {
-    width: 60px !important;
-    height: 60px !important;
-    padding: 0 !important;
-    border: none !important;
-    border-radius: 50% !important;
-    background-color: transparent !important; /* Αφήνουμε το εικονίδιο να δείξει το χρώμα του */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
-    min-width: unset !important;
-  }
-  
-  .cta-group.is-floating .btn-text {
-    display: none !important;
-  }
-  
-  .cta-group.is-floating .icon-circle {
-    position: static !important;
-    width: 60px !important;
-    height: 60px !important;
-    font-size: 28px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: none !important;
-  }
-}
 
 /* =========================================
    WHY CHOOSE US (Section 2)
@@ -702,15 +646,11 @@ html, body {
   .loc-item { font-size: 15px; }
   .loc-item i { font-size: 13px; margin-right: 5px; }
 
-  .cta-wrapper {
-    margin: 20px 0 0 0;
-    max-width: 400px;
-  }
-
   .cta-group {
     align-items: flex-start;
+    max-width: 400px;
+    margin: 20px 0 0 0;
   }
-
   .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
 
