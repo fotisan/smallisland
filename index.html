@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Small Island Transfer</title>
-
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=10" />
-
+  <link rel="stylesheet" href="styles.css?v=11" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,7 +13,6 @@
 </head>
 
 <body>
-
   <header class="main-header">
     <div class="logo-wrapper">
       <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
@@ -24,11 +21,9 @@
         <span>TRANSFER</span>
       </div>
     </div>
-
     <button class="hamburger-btn" aria-label="Open menu" onclick="toggleMenu(event)">
       <i class="fa-solid fa-bars" id="menu-icon" aria-hidden="true"></i>
     </button>
-
     <nav class="top-nav" id="topNav" aria-label="Primary">
       <a href="#home" class="nav-item">Home</a>
       <a href="#services" class="nav-item">Services</a>
@@ -40,15 +35,12 @@
 
   <section class="hero-section" id="home">
     <div class="mobile-hero-image" role="img" aria-label="Private transfer in Rhodes"></div>
-
     <main class="hero-content">
       <div class="top-content">
         <h1 class="main-title animate-entry delay-1">
           Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">
-          across<br>
-          Rhodes & The Islands.
+          across<br>Rhodes & The Islands.
         </h1>
-
         <p class="hero-description animate-entry delay-2">
           <span class="highlight-text">One message and it's sorted.</span><br>
           Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
@@ -70,18 +62,17 @@
         </div>
       </div>
 
-      <div id="cta-wrapper" class="cta-wrapper animate-entry delay-4">
-        <div class="cta-group">
+      <div id="cta-trigger"></div> <div class="cta-wrapper animate-entry delay-4">
+        <div id="main-cta-group" class="cta-group">
           <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
             <span class="btn-text">Let's Plan Your Route</span>
-            <span class="icon-circle fb-icon-bg" aria-hidden="true">
+            <span class="icon-circle fb-icon-bg">
               <i class="fa-brands fa-facebook-messenger"></i>
             </span>
           </a>
-
           <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
             <span class="btn-text">Get in Touch via WhatsApp</span>
-            <span class="icon-circle wa-bg" aria-hidden="true">
+            <span class="icon-circle wa-bg">
               <i class="fa-brands fa-whatsapp"></i>
             </span>
           </a>
@@ -91,248 +82,121 @@
 
     <div class="shape-divider" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path fill="#f6f4f0" fill-opacity="1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+        <path fill="#f6f4f0" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
       </svg>
     </div>
   </section>
 
-  <section class="why" id="services" aria-labelledby="whyTitle">
+  <section class="why" id="services">
     <div class="container">
-      <h2 class="section-title scroll-animate delay-1" id="whyTitle">Why Choose Us</h2>
-
+      <h2 class="section-title scroll-animate">Why Choose Us</h2>
       <div class="why-list">
-        <article class="why-item scroll-animate delay-2">
-          <div class="why-media">
-            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900" />
-          </div>
+        <article class="why-item scroll-animate">
+          <div class="why-media"><img src="why-on-time.webp" loading="lazy"></div>
           <div class="why-copy">
-            <div class="why-icon" aria-hidden="true">
-              <i class="fa-regular fa-clock"></i>
-            </div>
-            <h3>Absolute Punctuality (Always On-Time)</h3>
-            <p>We know how important time is on your holiday. We guarantee punctuality for every pick-up and drop-off.</p>
+            <div class="why-icon"><i class="fa-regular fa-clock"></i></div>
+            <h3>Always On-Time</h3>
+            <p>We guarantee punctuality for every pick-up.</p>
           </div>
         </article>
-
-        <article class="why-item scroll-animate delay-3">
-          <div class="why-media">
-            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900" />
-          </div>
+        <article class="why-item scroll-animate">
+          <div class="why-media"><img src="why-fleet.webp" loading="lazy"></div>
           <div class="why-copy">
-            <div class="why-icon" aria-hidden="true">
-              <i class="fa-solid fa-car-side"></i>
-            </div>
-            <h3>Premium Fleet & Flexibility</h3>
-            <p>From VIP transfers (1-4 people) to comfortable minivans and minibuses for groups (5-8, 9-11, 12-21 people).</p>
-          </div>
-        </article>
-
-        <article class="why-item scroll-animate delay-4">
-          <div class="why-media">
-            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" width="1200" height="900" />
-          </div>
-          <div class="why-copy">
-            <div class="why-icon" aria-hidden="true">
-              <i class="fa-solid fa-credit-card"></i>
-            </div>
-            <h3>Ease of Payment</h3>
-            <p>We have POS terminals available in all our vehicles. We accept Visa, Mastercard, and Maestro cards.</p>
-          </div>
-        </article>
-
-        <article class="why-item scroll-animate delay-5">
-          <div class="why-media">
-            <img src="why-5stars.webp" alt="Five star service" loading="lazy" width="1200" height="900" />
-          </div>
-          <div class="why-copy">
-            <div class="why-icon" aria-hidden="true">
-              <i class="fa-solid fa-trophy"></i>
-            </div>
-            <h3>5-Star Service</h3>
-            <p>Customer satisfaction is our priority, with top ratings for safety and excellent service.</p>
+            <div class="why-icon"><i class="fa-solid fa-car-side"></i></div>
+            <h3>Premium Fleet</h3>
+            <p>From VIP cars to minivans.</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="fleet" id="transfers" aria-labelledby="fleetTitle">
+  <section class="fleet" id="transfers">
     <div class="container fleet-container">
-      <h2 class="section-title scroll-animate delay-1" id="fleetTitle">Our Fleet & Partner Network</h2>
-
-      <div class="fleet-card scroll-animate delay-2">
-        <div class="fleet-image-wrapper">
-          <img src="audi-q5.webp" alt="Audi Q5 parked by the sea" class="fleet-image" loading="lazy" width="800" height="500">
-        </div>
-
+      <h2 class="section-title scroll-animate">Our Fleet</h2>
+      <div class="fleet-card scroll-animate">
+        <div class="fleet-image-wrapper"><img src="audi-q5.webp" class="fleet-image"></div>
         <div class="fleet-content">
           <h3 class="fleet-subtitle">Primary Service: Audi Q5</h3>
-          <h4 class="fleet-highlight">Flexible Fleet for Every Need</h4>
-
           <div class="passenger-pills">
             <span class="pill">1-4 Passengers</span>
-            <span class="pill">5-8 Passengers</span>
-            <span class="pill">9-11 Passengers</span>
-            <span class="pill">12-21 Passengers</span>
+            <span class="pill">5-21 Passengers</span>
           </div>
-
           <div class="fleet-features">
-            <div class="feature-item">
-              <i class="fa-solid fa-credit-card"></i>
-              <span>Cards Accepted<br>(POS)</span>
-            </div>
-            <div class="feature-item">
-              <i class="fa-regular fa-snowflake"></i>
-              <span>Air Conditioning<br>(A/C)</span>
-            </div>
-            <div class="feature-item">
-              <i class="fa-solid fa-baby-carriage"></i>
-              <span>Child Seats<br>(upon request)</span>
-            </div>
+            <div class="feature-item"><i class="fa-solid fa-credit-card"></i><span>POS</span></div>
+            <div class="feature-item"><i class="fa-regular fa-snowflake"></i><span>A/C</span></div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="destinations" id="routes" aria-labelledby="destTitle">
+  <section class="destinations" id="routes">
     <div class="container">
-      <h2 class="section-title scroll-animate delay-1" id="destTitle">Explore Our Destinations</h2>
-
+      <h2 class="section-title scroll-animate">Destinations</h2>
       <div class="dest-grid">
-        <article class="dest-card scroll-animate delay-2">
-          <div class="dest-media">
-            <img src="dest-halki-tilos.webp" alt="Halki and Tilos coastal view" loading="lazy" width="400" height="400">
-          </div>
+        <article class="dest-card scroll-animate">
+          <div class="dest-media"><img src="dest-rhodes.webp"></div>
           <div class="dest-info">
-            <h3 class="dest-name">Halki & Tilos<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Via Kamiros Skala)</span></h3>
-            <p class="dest-desc">Complete transfer from Rhodes to the harbour. Pick-up on the island and transfer to your accommodation.</p>
-            <div class="dest-meta">
-              <span><i class="fa-regular fa-clock"></i> ~45 mins (Rhodes-Kamiros)</span>
-              <span><i class="fa-solid fa-tag"></i> From €50</span>
-            </div>
-            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
-          </div>
-        </article>
-
-        <article class="dest-card scroll-animate delay-3">
-          <div class="dest-media">
-            <img src="dest-symi-kastellorizo.webp" alt="Symi harbour" loading="lazy" width="400" height="400">
-          </div>
-          <div class="dest-info">
-            <h3 class="dest-name">Symi & Kastellorizo<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Via Rhodes Harbour)</span></h3>
-            <p class="dest-desc">Comfortable transfer to the main harbour. VIP pick-up upon your arrival.</p>
-            <div class="dest-meta">
-              <span><i class="fa-regular fa-clock"></i> ~30 mins (Rhodes-Harbour)</span>
-              <span><i class="fa-solid fa-tag"></i> From €50</span>
-            </div>
-            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
-          </div>
-        </article>
-
-        <article class="dest-card scroll-animate delay-4">
-          <div class="dest-media">
-            <img src="dest-rhodes.webp" alt="Rhodes Old Town Castle" loading="lazy" width="400" height="400">
-          </div>
-          <div class="dest-info">
-            <h3 class="dest-name">Rhodes<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Airport, City & Tours)</span></h3>
-            <p class="dest-desc">VIP transfers to/from 'Diagoras' Airport, hotels, and local attractions.</p>
-            <div class="dest-meta">
-              <span><i class="fa-regular fa-clock"></i> 24/7 Service</span>
-              <span><i class="fa-solid fa-tag"></i> Premium Fleet</span>
-            </div>
-            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
+            <h3 class="dest-name">Rhodes Airport</h3>
+            <a href="#" class="dest-btn" onclick="openWhatsApp()">Book Now</a>
           </div>
         </article>
       </div>
-
     </div>
   </section>
 
   <script>
-    /* =========================================
-       WhatsApp & Menu Functions
-       ========================================= */
     function openWhatsApp() {
       const phoneNumber = "306900000000";
-      const message = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank", "noopener");
+      const message = encodeURIComponent("Hello! I'm interested in a transfer.");
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
     }
 
     function toggleMenu(event) {
       if (event) event.stopPropagation();
-
       const nav = document.getElementById("topNav");
       const icon = document.getElementById("menu-icon");
-
       nav.classList.toggle("active");
-
-      icon.style.opacity = "0";
-      icon.style.transform = "scale(0.8)";
-
-      setTimeout(() => {
-        if (nav.classList.contains("active")) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-xmark");
-        } else {
-          icon.classList.remove("fa-xmark");
-          icon.classList.add("fa-bars");
-        }
-        icon.style.opacity = "1";
-        icon.style.transform = "scale(1)";
-      }, 200);
+      if (nav.classList.contains("active")) {
+        icon.classList.replace("fa-bars", "fa-xmark");
+      } else {
+        icon.classList.replace("fa-xmark", "fa-bars");
+      }
     }
 
-    document.addEventListener("click", function (event) {
-      const nav = document.getElementById("topNav");
-      const hamburger = document.querySelector(".hamburger-btn");
-
-      if (nav.classList.contains("active") && !nav.contains(event.target) && !hamburger.contains(event.target)) {
-        toggleMenu();
-      }
-    });
-
-    /* =========================================
-       Scroll Animations & Floating CTAs
-       ========================================= */
+    /* === ΚΡΙΣΙΜΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΑ FLOATING CTAs === */
     document.addEventListener("DOMContentLoaded", function() {
-      // Intersection Observer για τα Animations
-      const observer = new IntersectionObserver((entries) => {
+      const ctaGroup = document.getElementById('main-cta-group');
+      const trigger = document.getElementById('cta-trigger');
+
+      const ctaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Αν το trigger ΔΕΝ φαίνεται (σημαίνει ότι κάναμε scroll κάτω)
+          if (!entry.isIntersecting) {
+            if (window.innerWidth < 768) {
+              ctaGroup.classList.add('is-floating');
+            }
+          } else {
+            // Αν το trigger φαίνεται (είμαστε στο Hero)
+            ctaGroup.classList.remove('is-floating');
+          }
+        });
+      }, { threshold: 0 });
+
+      if (trigger) ctaObserver.observe(trigger);
+
+      // Scroll animations για τα υπόλοιπα στοιχεία
+      const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); 
           }
         });
-      }, {
-        threshold: 0.1
-      });
+      }, { threshold: 0.1 });
 
-      const hiddenElements = document.querySelectorAll('.scroll-animate');
-      hiddenElements.forEach((el) => observer.observe(el));
-
-      // Λογική για τα Floating CTAs στο κινητό
-      const ctaWrapper = document.getElementById('cta-wrapper');
-      const ctaGroup = document.querySelector('.cta-group');
-
-      window.addEventListener('scroll', () => {
-        if (window.innerWidth < 768 && ctaWrapper && ctaGroup) {
-          // Παίρνουμε τη θέση του wrapper
-          const rect = ctaWrapper.getBoundingClientRect();
-          
-          // Όταν το κάτω μέρος του wrapper κρυφτεί πίσω από το μενού (ύψος μενού ~65px)
-          if (rect.bottom < 85) {
-            ctaGroup.classList.add('is-floating');
-          } else {
-            ctaGroup.classList.remove('is-floating');
-          }
-        } else if (ctaGroup) {
-          // Για σιγουριά, αν γυρίσουμε σε desktop να φεύγει το floating
-          ctaGroup.classList.remove('is-floating');
-        }
-      });
+      document.querySelectorAll('.scroll-animate').forEach(el => scrollObserver.observe(el));
     });
   </script>
-
 </body>
 </html>
