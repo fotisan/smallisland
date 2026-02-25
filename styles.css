@@ -205,7 +205,7 @@ html, body {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Περιτύλιγμα για τα CTAs */
+/* Wrapper για τα CTAs - Κρατάει το ύψος */
 .cta-wrapper {
   order: 2;
   width: 100%;
@@ -219,6 +219,7 @@ html, body {
   align-items: center;
   gap: 12px;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
 .primary-btn, .ghost-btn {
@@ -231,11 +232,11 @@ html, body {
   height: 50px;
   width: 100%;
   padding: 0 45px 0 15px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, width 0.3s ease, border-radius 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
 
-.btn-text { font-size: 14px; font-weight: 500; text-align: center; transition: opacity 0.2s ease; }
+.btn-text { font-size: 14px; font-weight: 500; text-align: center; }
 
 .icon-circle {
   position: absolute;
@@ -247,7 +248,6 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  transition: all 0.3s ease;
 }
 
 .primary-btn {
@@ -279,52 +279,53 @@ html, body {
 
 .shape-divider { display: none !important; }
 
-
 /* =========================================
    MOBILE FLOATING CTAs LOGIC
    ========================================= */
 @media (max-width: 767px) {
-  .cta-group {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Εξασφαλίζει ότι η οθόνη δεν θα "πηδήξει" όταν το cta-group γίνει fixed */
+  .cta-wrapper {
+    min-height: 112px; 
   }
 
-  /* Οι κανόνες όταν σκρολάρεις προς τα κάτω */
+  /* Οι απόλυτοι κανόνες για όταν τα κουμπιά γίνονται floating στο κινητό */
   .cta-group.is-floating {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: auto;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 1001; /* Πάνω από όλα τα άλλα στοιχεία */
-    margin: 0;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   .cta-group.is-floating .primary-btn,
   .cta-group.is-floating .ghost-btn {
-    width: 55px; /* Μετατροπή σε κυκλικό */
-    height: 55px;
-    padding: 0;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    background: transparent;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background-color: transparent !important; /* Αφήνουμε το εικονίδιο να δείξει το χρώμα του */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+    min-width: unset !important;
   }
   
   .cta-group.is-floating .btn-text {
-    opacity: 0;
-    display: none;
+    display: none !important;
   }
   
   .cta-group.is-floating .icon-circle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%; /* Γεμίζει όλο το κουμπί */
-    height: 100%;
-    border-radius: 50%;
-    font-size: 26px; /* Μεγαλύτερο εικονίδιο */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: static !important;
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
   }
 }
 
