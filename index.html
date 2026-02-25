@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -293,43 +293,10 @@
     });
 
     /* =========================================
-       Floating CTAs Mobile Logic
-       ========================================= */
-    const ctaWrapper = document.getElementById('cta-wrapper');
-    const ctaGroup = document.querySelector('.cta-group');
-    const header = document.querySelector('.main-header');
-
-    window.addEventListener('scroll', () => {
-      // Εφαρμόζεται μόνο σε κινητά (κάτω από 768px)
-      if (window.innerWidth < 768 && ctaWrapper && ctaGroup && header) {
-        const headerBottom = header.getBoundingClientRect().bottom;
-        const wrapperTop = ctaWrapper.getBoundingClientRect().top;
-
-        // Αν το πάνω μέρος του Wrapper περάσει το κάτω μέρος του Header
-        if (wrapperTop <= headerBottom) {
-          if (!ctaGroup.classList.contains('is-floating')) {
-            // Κρατάμε το ύψος σταθερό για να μην "πηδήξει" η σελίδα
-            ctaWrapper.style.height = ctaGroup.offsetHeight + 'px'; 
-            ctaGroup.classList.add('is-floating');
-          }
-        } else {
-          // Όταν επιστρέφουμε στο αρχικό σημείο
-          if (ctaGroup.classList.contains('is-floating')) {
-            ctaGroup.classList.remove('is-floating');
-            ctaWrapper.style.height = 'auto'; // Επαναφορά του ύψους
-          }
-        }
-      } else if (ctaGroup) {
-        // Εξασφαλίζουμε ότι σε desktop η κλάση φεύγει, αν τυχόν αλλάξει μέγεθος το παράθυρο
-        ctaGroup.classList.remove('is-floating');
-        if (ctaWrapper) ctaWrapper.style.height = 'auto';
-      }
-    });
-
-    /* =========================================
-       Scroll Animations (Intersection Observer)
+       Scroll Animations & Floating CTAs
        ========================================= */
     document.addEventListener("DOMContentLoaded", function() {
+      // Intersection Observer για τα Animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -343,6 +310,27 @@
 
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
+
+      // Λογική για τα Floating CTAs στο κινητό
+      const ctaWrapper = document.getElementById('cta-wrapper');
+      const ctaGroup = document.querySelector('.cta-group');
+
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth < 768 && ctaWrapper && ctaGroup) {
+          // Παίρνουμε τη θέση του wrapper
+          const rect = ctaWrapper.getBoundingClientRect();
+          
+          // Όταν το κάτω μέρος του wrapper κρυφτεί πίσω από το μενού (ύψος μενού ~65px)
+          if (rect.bottom < 85) {
+            ctaGroup.classList.add('is-floating');
+          } else {
+            ctaGroup.classList.remove('is-floating');
+          }
+        } else if (ctaGroup) {
+          // Για σιγουριά, αν γυρίσουμε σε desktop να φεύγει το floating
+          ctaGroup.classList.remove('is-floating');
+        }
+      });
     });
   </script>
 
