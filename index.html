@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 
 <body>
 
-  <header class="main-header">
+  <header class="main-header" id="mainHeader">
     <div class="logo-wrapper">
       <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
       <div class="logo-text">
@@ -70,20 +70,22 @@
         </div>
       </div>
 
-      <div class="cta-group animate-entry delay-4">
-        <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
-          <span class="btn-text">Let's Plan Your Route</span>
-          <span class="icon-circle fb-icon-bg" aria-hidden="true">
-            <i class="fa-brands fa-facebook-messenger"></i>
-          </span>
-        </a>
+      <div class="cta-placeholder" id="ctaPlaceholder">
+        <div class="cta-group animate-entry delay-4" id="ctaGroup">
+          <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+            <span class="btn-text">Let's Plan Your Route</span>
+            <span class="icon-circle fb-icon-bg" aria-hidden="true">
+              <i class="fa-brands fa-facebook-messenger"></i>
+            </span>
+          </a>
 
-        <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
-          <span class="btn-text">Get in Touch via WhatsApp</span>
-          <span class="icon-circle wa-bg" aria-hidden="true">
-            <i class="fa-brands fa-whatsapp"></i>
-          </span>
-        </a>
+          <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+            <span class="btn-text">Get in Touch via WhatsApp</span>
+            <span class="icon-circle wa-bg" aria-hidden="true">
+              <i class="fa-brands fa-whatsapp"></i>
+            </span>
+          </a>
+        </div>
       </div>
     </main>
 
@@ -188,17 +190,7 @@
               <span>Child Seats<br>(upon request)</span>
             </div>
           </div>
-          
-          <div class="fleet-cta" style="margin-top: 35px;">
-            <a href="#" class="primary-btn" onclick="openWhatsApp(); return false;" style="width: auto; display: inline-flex;">
-              <span class="btn-text">Request a Quote</span>
-              <span class="icon-circle wa-bg" aria-hidden="true">
-                <i class="fa-brands fa-whatsapp"></i>
-              </span>
-            </a>
           </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -317,6 +309,32 @@
 
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
+    });
+
+    /* =========================================
+       Floating CTAs on Scroll Logic
+       ========================================= */
+    document.addEventListener("DOMContentLoaded", function() {
+      const ctaGroup = document.getElementById('ctaGroup');
+      const ctaPlaceholder = document.getElementById('ctaPlaceholder');
+      const header = document.getElementById('mainHeader');
+
+      window.addEventListener('scroll', () => {
+        if (!ctaPlaceholder || !ctaGroup || !header) return;
+        
+        // Υπολογίζουμε τη θέση του placeholder σε σχέση με την οθόνη
+        const placeholderRect = ctaPlaceholder.getBoundingClientRect();
+        
+        // Βρίσκουμε πού τελειώνει το header (μενού)
+        const headerBottom = header.getBoundingClientRect().bottom;
+
+        // Όταν τα κουμπιά φτάσουν κάτω από το header, τα κάνουμε floating
+        if (placeholderRect.top < headerBottom) {
+          ctaGroup.classList.add('is-floating');
+        } else {
+          ctaGroup.classList.remove('is-floating');
+        }
+      });
     });
   </script>
 
