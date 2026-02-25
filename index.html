@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 
 <body>
 
-  <header class="main-header" id="mainHeader">
+  <header class="main-header">
     <div class="logo-wrapper">
       <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
       <div class="logo-text">
@@ -70,8 +70,8 @@
         </div>
       </div>
 
-      <div class="cta-placeholder" id="ctaPlaceholder">
-        <div class="cta-group animate-entry delay-4" id="ctaGroup">
+      <div id="cta-wrapper" class="cta-wrapper animate-entry delay-4">
+        <div class="cta-group">
           <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
             <span class="btn-text">Let's Plan Your Route</span>
             <span class="icon-circle fb-icon-bg" aria-hidden="true">
@@ -293,6 +293,40 @@
     });
 
     /* =========================================
+       Floating CTAs Mobile Logic
+       ========================================= */
+    const ctaWrapper = document.getElementById('cta-wrapper');
+    const ctaGroup = document.querySelector('.cta-group');
+    const header = document.querySelector('.main-header');
+
+    window.addEventListener('scroll', () => {
+      // Εφαρμόζεται μόνο σε κινητά (κάτω από 768px)
+      if (window.innerWidth < 768 && ctaWrapper && ctaGroup && header) {
+        const headerBottom = header.getBoundingClientRect().bottom;
+        const wrapperTop = ctaWrapper.getBoundingClientRect().top;
+
+        // Αν το πάνω μέρος του Wrapper περάσει το κάτω μέρος του Header
+        if (wrapperTop <= headerBottom) {
+          if (!ctaGroup.classList.contains('is-floating')) {
+            // Κρατάμε το ύψος σταθερό για να μην "πηδήξει" η σελίδα
+            ctaWrapper.style.height = ctaGroup.offsetHeight + 'px'; 
+            ctaGroup.classList.add('is-floating');
+          }
+        } else {
+          // Όταν επιστρέφουμε στο αρχικό σημείο
+          if (ctaGroup.classList.contains('is-floating')) {
+            ctaGroup.classList.remove('is-floating');
+            ctaWrapper.style.height = 'auto'; // Επαναφορά του ύψους
+          }
+        }
+      } else if (ctaGroup) {
+        // Εξασφαλίζουμε ότι σε desktop η κλάση φεύγει, αν τυχόν αλλάξει μέγεθος το παράθυρο
+        ctaGroup.classList.remove('is-floating');
+        if (ctaWrapper) ctaWrapper.style.height = 'auto';
+      }
+    });
+
+    /* =========================================
        Scroll Animations (Intersection Observer)
        ========================================= */
     document.addEventListener("DOMContentLoaded", function() {
@@ -309,32 +343,6 @@
 
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
-    });
-
-    /* =========================================
-       Floating CTAs on Scroll Logic
-       ========================================= */
-    document.addEventListener("DOMContentLoaded", function() {
-      const ctaGroup = document.getElementById('ctaGroup');
-      const ctaPlaceholder = document.getElementById('ctaPlaceholder');
-      const header = document.getElementById('mainHeader');
-
-      window.addEventListener('scroll', () => {
-        if (!ctaPlaceholder || !ctaGroup || !header) return;
-        
-        // Υπολογίζουμε τη θέση του placeholder σε σχέση με την οθόνη
-        const placeholderRect = ctaPlaceholder.getBoundingClientRect();
-        
-        // Βρίσκουμε πού τελειώνει το header (μενού)
-        const headerBottom = header.getBoundingClientRect().bottom;
-
-        // Όταν τα κουμπιά φτάσουν κάτω από το header, τα κάνουμε floating
-        if (placeholderRect.top < headerBottom) {
-          ctaGroup.classList.add('is-floating');
-        } else {
-          ctaGroup.classList.remove('is-floating');
-        }
-      });
     });
   </script>
 
