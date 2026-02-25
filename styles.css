@@ -19,11 +19,6 @@ html, body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideUpFade {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
 .animate-entry { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
 
 .scroll-animate { opacity: 0; }
@@ -210,14 +205,12 @@ html, body {
 
 .highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
 
-/* Placeholder to prevent layout jumps when CTAs become floating */
-.cta-placeholder {
+/* Περιτύλιγμα για τα CTAs */
+.cta-wrapper {
   order: 2;
   width: 100%;
   max-width: 360px;
   margin: 0 auto 25px auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .cta-group {
@@ -226,8 +219,6 @@ html, body {
   align-items: center;
   gap: 12px;
   width: 100%;
-  margin: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .primary-btn, .ghost-btn {
@@ -240,20 +231,11 @@ html, body {
   height: 50px;
   width: 100%;
   padding: 0 45px 0 15px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, width 0.3s ease, border-radius 0.3s ease;
 }
 .primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
 
-.btn-text { 
-  font-size: 14px; 
-  font-weight: 500; 
-  text-align: center; 
-  white-space: nowrap;
-  transition: opacity 0.2s ease, max-width 0.3s ease, margin 0.3s ease;
-  max-width: 300px;
-  opacity: 1;
-}
+.btn-text { font-size: 14px; font-weight: 500; text-align: center; transition: opacity 0.2s ease; }
 
 .icon-circle {
   position: absolute;
@@ -265,7 +247,7 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
 }
 
 .primary-btn {
@@ -283,55 +265,6 @@ html, body {
 .ghost-btn .btn-text { color: #1a1a1a; }
 .wa-bg { background-color: #25D366; color: #fff; border: none; }
 
-/* --- Floating CTAs State --- */
-.cta-group.is-floating {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 9999;
-  width: auto;
-  max-width: none;
-  gap: 15px;
-  align-items: flex-end;
-  animation: slideUpFade 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.cta-group.is-floating .primary-btn, 
-.cta-group.is-floating .ghost-btn {
-  width: 58px;
-  height: 58px;
-  padding: 0;
-  border-radius: 50%;
-  border: none;
-}
-
-.cta-group.is-floating .btn-text {
-  max-width: 0;
-  opacity: 0;
-  margin: 0;
-}
-
-.cta-group.is-floating .icon-circle {
-  position: relative;
-  right: auto;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  color: #fff;
-  font-size: 26px;
-}
-
-.cta-group.is-floating .primary-btn {
-  background-color: #0084ff; /* Messenger App Blue */
-  box-shadow: 0 5px 20px rgba(0, 132, 255, 0.35);
-}
-
-.cta-group.is-floating .ghost-btn {
-  background-color: #25D366; /* WhatsApp App Green */
-  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.35);
-}
-/* ------------------------- */
-
 .destination-list { order: 3; width: 100%; }
 .dest-line {
   display: flex;
@@ -345,6 +278,55 @@ html, body {
 .loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
 
 .shape-divider { display: none !important; }
+
+
+/* =========================================
+   MOBILE FLOATING CTAs LOGIC
+   ========================================= */
+@media (max-width: 767px) {
+  .cta-group {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  /* Οι κανόνες όταν σκρολάρεις προς τα κάτω */
+  .cta-group.is-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1001; /* Πάνω από όλα τα άλλα στοιχεία */
+    margin: 0;
+  }
+  
+  .cta-group.is-floating .primary-btn,
+  .cta-group.is-floating .ghost-btn {
+    width: 55px; /* Μετατροπή σε κυκλικό */
+    height: 55px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background: transparent;
+  }
+  
+  .cta-group.is-floating .btn-text {
+    opacity: 0;
+    display: none;
+  }
+  
+  .cta-group.is-floating .icon-circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%; /* Γεμίζει όλο το κουμπί */
+    height: 100%;
+    border-radius: 50%;
+    font-size: 26px; /* Μεγαλύτερο εικονίδιο */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+}
 
 /* =========================================
    WHY CHOOSE US (Section 2)
@@ -528,7 +510,7 @@ html, body {
 }
 
 /* =========================================
-   DESTINATIONS / ROUTES (Section 4)
+   DESTINATIONS / ROUTES (Section 4) - NEO
    ========================================= */
 .destinations {
   background: #f6f4f0;
@@ -719,11 +701,14 @@ html, body {
   .loc-item { font-size: 15px; }
   .loc-item i { font-size: 13px; margin-right: 5px; }
 
-  .cta-placeholder {
-    max-width: 400px;
+  .cta-wrapper {
     margin: 20px 0 0 0;
+    max-width: 400px;
   }
-  .cta-group { align-items: flex-start; }
+
+  .cta-group {
+    align-items: flex-start;
+  }
 
   .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
   .btn-text { font-size: 15px; text-align: left; }
