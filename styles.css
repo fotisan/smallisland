@@ -274,6 +274,62 @@ html, body {
 .shape-divider { display: none !important; }
 
 /* =========================================
+   ✅ Floating CTA (Mobile only)
+   ========================================= */
+.floating-cta {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-cta.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+}
+
+.floating-btn:active { transform: scale(0.97); }
+
+.floating-messenger {
+  background: #1A365D;
+  color: #ffffff;
+}
+
+.floating-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+}
+
+.floating-btn i { font-size: 22px; }
+
+/* Safety: μην εμφανίζεται καθόλου σε desktop */
+@media (min-width: 768px) {
+  .floating-cta { display: none !important; }
+}
+
+/* =========================================
    WHY CHOOSE US (Section 2)
    ========================================= */
 .why {
@@ -664,7 +720,7 @@ html, body {
     line-height: 0;
     z-index: 5;
   }
-  
+
   .shape-divider svg {
     position: relative;
     display: block;
