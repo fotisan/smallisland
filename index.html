@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,11 +168,12 @@
           <h3 class="fleet-subtitle">Primary Service: Audi Q5</h3>
           <h4 class="fleet-highlight">Flexible Fleet for Every Need</h4>
 
-          <div class="passenger-pills">
-            <span class="pill">1-4 Passengers</span>
-            <span class="pill">5-8 Passengers</span>
-            <span class="pill">9-11 Passengers</span>
-            <span class="pill">12-21 Passengers</span>
+          <!-- ✅ Option C: microcopy capacity lines (no gold pills) -->
+          <div class="capacity-lines" aria-label="Vehicle capacity options">
+            <div class="cap-item"><span class="cap-label">Private rides</span> <span class="cap-meta">(1–4)</span></div>
+            <div class="cap-item"><span class="cap-label">Vans</span> <span class="cap-meta">(5–8)</span></div>
+            <div class="cap-item"><span class="cap-label">Mini buses</span> <span class="cap-meta">(9–11)</span></div>
+            <div class="cap-item"><span class="cap-label">Groups</span> <span class="cap-meta">(12–21)</span></div>
           </div>
 
           <div class="fleet-features">
@@ -369,12 +370,10 @@
         teardown();
         io = new IntersectionObserver((entries) => {
           const entry = entries[0];
-          // if hero CTA is NOT visible => show floating
           setActive(!entry.isIntersecting);
         }, {
           root: null,
           threshold: 0.05,
-          // μικρό "buffer" ώστε να μην flicker στο όριο
           rootMargin: "0px 0px -10px 0px"
         });
 
@@ -388,7 +387,6 @@
 
       handleMq();
       mq.addEventListener?.("change", handleMq);
-      // fallback για παλιά Safari
       if (!mq.addEventListener) mq.addListener(handleMq);
     })();
   </script>
