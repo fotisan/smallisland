@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,8 @@
         </div>
       </div>
 
-      <div class="cta-group animate-entry delay-4">
+      <!-- HERO CTA (αυτό παραμένει όπως είναι) -->
+      <div class="cta-group animate-entry delay-4" id="heroCtaGroup">
         <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
           <span class="btn-text">Let's Plan Your Route</span>
           <span class="icon-circle fb-icon-bg" aria-hidden="true">
@@ -188,7 +189,7 @@
               <span>Child Seats<br>(upon request)</span>
             </div>
           </div>
-          
+
           <div class="fleet-cta" style="margin-top: 35px;">
             <a href="#" class="primary-btn" onclick="openWhatsApp(); return false;" style="width: auto; display: inline-flex;">
               <span class="btn-text">Request a Quote</span>
@@ -257,6 +258,30 @@
     </div>
   </section>
 
+  <!-- ✅ FLOATING MINI CTA (ΜΟΝΟ MOBILE) -->
+  <div class="floating-cta" id="floatingCta" aria-label="Quick contact shortcuts">
+    <a
+      href="https://m.me/yourfacebookpage"
+      target="_blank"
+      rel="noopener"
+      class="floating-btn floating-messenger"
+      aria-label="Message us on Facebook Messenger"
+      title="Messenger"
+    >
+      <i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i>
+    </a>
+
+    <a
+      href="#"
+      class="floating-btn floating-whatsapp"
+      aria-label="Message us on WhatsApp"
+      title="WhatsApp"
+      onclick="openWhatsApp(); return false;"
+    >
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
   <script>
     /* =========================================
        WhatsApp & Menu Functions
@@ -308,16 +333,64 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); 
+            observer.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.1
-      });
+      }, { threshold: 0.1 });
 
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
     });
+
+    /* =========================================
+       ✅ Mobile Floating CTA (ONLY on mobile)
+       - when hero CTA leaves viewport -> show floating icons bottom-right
+       - when hero CTA enters viewport -> hide floating icons
+       ========================================= */
+    (function initFloatingCta(){
+      const heroCta = document.getElementById("heroCtaGroup");
+      const floating = document.getElementById("floatingCta");
+      if (!heroCta || !floating) return;
+
+      const mq = window.matchMedia("(max-width: 767px)");
+      let io = null;
+
+      const setActive = (isActive) => {
+        if (isActive) floating.classList.add("is-active");
+        else floating.classList.remove("is-active");
+      };
+
+      const teardown = () => {
+        setActive(false);
+        if (io) { io.disconnect(); io = null; }
+      };
+
+      const setup = () => {
+        teardown();
+        io = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          // if hero CTA is NOT visible => show floating
+          setActive(!entry.isIntersecting);
+        }, {
+          root: null,
+          threshold: 0.05,
+          // μικρό "buffer" ώστε να μην flicker στο όριο
+          rootMargin: "0px 0px -10px 0px"
+        });
+
+        io.observe(heroCta);
+      };
+
+      const handleMq = () => {
+        if (mq.matches) setup();
+        else teardown();
+      };
+
+      handleMq();
+      mq.addEventListener?.("change", handleMq);
+      // fallback για παλιά Safari
+      if (!mq.addEventListener) mq.addListener(handleMq);
+    })();
   </script>
 
 </body>
