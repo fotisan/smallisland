@@ -464,26 +464,34 @@ html, body {
   font-size: 16px;
   font-weight: 600;
   color: #444;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
-.passenger-pills {
+/* ✅ Option C: quiet capacity microcopy */
+.capacity-lines{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 10px 18px;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
+  margin: 0 auto 26px auto;
 }
 
-.pill {
-  background-color: #a68a6d; 
-  color: #fff;
+.cap-item{
   font-size: 14px;
   font-weight: 600;
-  padding: 10px 12px;
-  border-radius: 25px;
-  box-shadow: 0 4px 12px rgba(166, 138, 109, 0.3);
+  color: #2a2a2a;
+  letter-spacing: 0.1px;
+  line-height: 1.25;
+}
+
+.cap-label{
+  font-weight: 700;
+}
+
+.cap-meta{
+  font-weight: 600;
+  color: #555;
 }
 
 .fleet-features {
@@ -777,9 +785,15 @@ html, body {
   /* FLEET / TRANSFERS - DESKTOP */
   .fleet { padding-bottom: 80px; }
   .fleet-subtitle { font-size: 24px; margin-bottom: 12px; }
-  .fleet-highlight { font-size: 18px; margin-bottom: 30px; }
-  .passenger-pills { gap: 16px; max-width: 480px; margin-bottom: 40px; }
-  .pill { font-size: 16px; padding: 12px 16px; }
+  .fleet-highlight { font-size: 18px; margin-bottom: 22px; }
+
+  .capacity-lines{
+    max-width: 520px;
+    gap: 12px 28px;
+    margin-bottom: 34px;
+  }
+  .cap-item{ font-size: 16px; }
+
   .fleet-features { max-width: 600px; gap: 30px; }
   .feature-item { font-size: 15px; }
   .feature-item i { font-size: 32px; margin-bottom: 12px; }
