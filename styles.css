@@ -274,7 +274,7 @@ html, body {
 .shape-divider { display: none !important; }
 
 /* =========================================
-   ✅ Floating CTA (Mobile only)
+   Floating CTA (Mobile only)
    ========================================= */
 .floating-cta {
   position: fixed;
@@ -324,7 +324,6 @@ html, body {
 
 .floating-btn i { font-size: 22px; }
 
-/* Safety: μην εμφανίζεται καθόλου σε desktop */
 @media (min-width: 768px) {
   .floating-cta { display: none !important; }
 }
@@ -467,7 +466,6 @@ html, body {
   margin-bottom: 18px;
 }
 
-/* ✅ Option C: quiet capacity microcopy */
 .capacity-lines{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -485,14 +483,8 @@ html, body {
   line-height: 1.25;
 }
 
-.cap-label{
-  font-weight: 700;
-}
-
-.cap-meta{
-  font-weight: 600;
-  color: #555;
-}
+.cap-label{ font-weight: 700; }
+.cap-meta{ font-weight: 600; color: #555; }
 
 .fleet-features {
   display: flex;
@@ -519,7 +511,7 @@ html, body {
 }
 
 /* =========================================
-   DESTINATIONS / ROUTES (Section 4) - NEO
+   DESTINATIONS / ROUTES (Section 4)
    ========================================= */
 .destinations {
   background: #f6f4f0;
@@ -617,6 +609,135 @@ html, body {
 
 .dest-btn:active {
   transform: scale(0.98);
+}
+
+/* =========================================
+   TESTIMONIALS (Section 5)
+   ========================================= */
+.testimonials {
+  background: #f6f4f0;
+  padding-bottom: 60px;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.testimonials-subtitle {
+  font-size: 16px;
+  color: #111;
+  margin-top: -15px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.overall-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-number {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #a68a6d;
+  line-height: 1;
+}
+
+.rating-stars {
+  color: #a68a6d;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.rating-source {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+/* Slider / Carousel Container */
+.testimonials-slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0 20px 0;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.testimonials-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.test-card {
+  background: #fdfbf8; /* Ελαφρώς πιο ανοιχτό από το background */
+  border-radius: 18px;
+  padding: 25px 20px;
+  min-width: 85%;
+  max-width: 320px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quote-icon {
+  font-size: 42px;
+  color: #a68a6d;
+  line-height: 1;
+  margin-bottom: -5px;
+}
+
+.card-stars {
+  color: #a68a6d;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.test-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #111;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.test-author {
+  font-size: 14px;
+  color: #111;
+  margin-top: 5px;
+}
+.test-author strong {
+  font-weight: 700;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.slider-dots .dot {
+  width: 8px;
+  height: 8px;
+  background: #d4c5b5;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slider-dots .dot.active {
+  background: #a68a6d;
+  width: 24px;
+  border-radius: 10px;
 }
 
 /* =========================================
@@ -809,4 +930,24 @@ html, body {
   .dest-meta i { font-size: 16px; }
   .dest-btn { font-size: 15px; padding: 12px 25px; max-width: 200px; }
   .dest-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(166, 138, 109, 0.4); }
+  
+  /* TESTIMONIALS - DESKTOP */
+  .rating-number { font-size: 56px; }
+  
+  .testimonials-slider {
+    justify-content: center;
+    overflow-x: visible;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  
+  .test-card {
+    min-width: 320px;
+    max-width: 340px;
+  }
+  
+  .slider-dots {
+    display: none; 
+  }
 }
