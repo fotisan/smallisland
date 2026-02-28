@@ -1,1051 +1,526 @@
-/* --- Basic Reset --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
-  background-color: #f6f4f0;
-  overflow-x: hidden;
-  color: #111;
-  scroll-behavior: smooth;
-}
-
-/* =========================================
-   Animations
-   ========================================= */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-entry { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
-
-.scroll-animate { opacity: 0; }
-.scroll-animate.is-visible { animation: fadeInUp 0.8s ease-out forwards; }
-
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.3s; }
-.delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.7s; }
-.delay-5 { animation-delay: 0.9s; }
-
-/* =========================================
-   General Typography & Utilities
-   ========================================= */
-.section-title {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.1;
-  text-align: center;
-  color: #111;
-  margin: 0 0 25px 0;
-}
-
-/* =========================================
-   Header & Navigation
-   ========================================= */
-.main-header {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 30px);
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.logo-wrapper { display: flex; align-items: center; gap: 8px; }
-.logo-img { height: 38px; width: auto; max-height: 40px; }
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: #111;
-  letter-spacing: 0.5px;
-}
-
-.hamburger-btn {
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  color: #111;
-  cursor: pointer;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  outline: none;
-}
-#menu-icon { transition: opacity 0.2s ease, transform 0.2s ease; }
-
-.top-nav {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 65px;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  padding: 10px 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform-origin: top center;
-  transform: translateY(-15px) scaleY(0.95);
-  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
-}
-.top-nav.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scaleY(1);
-}
-
-.nav-item {
-  text-decoration: none;
-  color: #555;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 12px 20px;
-  text-align: center;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  transition: background-color 0.2s, color 0.2s;
-}
-.nav-item:last-child { border-bottom: none; }
-.nav-item.active, .nav-item:hover {
-  color: #111;
-  font-weight: 600;
-  background-color: rgba(0,0,0,0.03);
-}
-
-/* =========================================
-   HERO (Mobile First)
-   ========================================= */
-.hero-section {
-  display: block;
-  width: 100%;
-  background-color: #f6f4f0 !important;
-}
-
-.mobile-hero-image {
-  width: 100%;
-  height: 68svh;
-  background-image: url("hero-mobile.webp");
-  background-size: cover;
-  background-position: center 75%;
-  background-repeat: no-repeat;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content {
-  background-color: #f6f4f0 !important;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  margin-top: -85px;
-  margin-bottom: 0 !important;
-  padding: 30px 20px 0 20px !important;
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 -15px 25px -10px rgba(0, 0, 0, 0.1) !important;
-  border-bottom: none !important;
-}
-
-.top-content {
-  order: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.main-title {
-  font-family: "Playfair Display", serif;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1.15;
-  color: #1a1a1a;
-  margin-bottom: 8px;
-}
-.desktop-br { display: none; }
-.mobile-space { display: inline; }
-
-.hero-description {
-  font-size: 14px;
-  font-weight: 400;
-  color: #444;
-  line-height: 1.5;
-}
-.desktop-comma { display: none; }
-.desktop-br-desc { display: none; }
-.mobile-dash { display: inline; }
-
-.highlight-text { font-weight: 600; color: #111; display: inline-block; margin-bottom: 4px; }
-
-.cta-group {
-  order: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto 25px auto;
-}
-
-.primary-btn, .ghost-btn {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 50px;
-  height: 50px;
-  width: 100%;
-  padding: 0 45px 0 15px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.primary-btn:active, .ghost-btn:active { transform: scale(0.98); }
-
-.btn-text { font-size: 14px; font-weight: 500; text-align: center; }
-
-.icon-circle {
-  position: absolute;
-  right: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.primary-btn {
-  background-color: #1A365D;
-  border: 2px solid #1A365D;
-  box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
-}
-.primary-btn .btn-text { color: #fff; }
-.fb-icon-bg { background-color: #fff; color: #1A365D; }
-
-.ghost-btn {
-  background-color: #fff;
-  border: 2px solid #1a1a1a;
-}
-.ghost-btn .btn-text { color: #1a1a1a; }
-.wa-bg { background-color: #25D366; color: #fff; border: none; }
-
-.destination-list { order: 3; width: 100%; }
-.dest-line {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-.dest-line:last-child { margin-bottom: 0; }
-.loc-item { font-size: 11px; font-weight: 500; color: #666; white-space: nowrap; }
-.loc-item i { color: #1A365D; margin-right: 2px; font-size: 10px; }
-
-.shape-divider { display: none !important; }
-
-/* =========================================
-   Floating CTA (Mobile only)
-   ========================================= */
-.floating-cta {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 1200;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  pointer-events: none;
-  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.floating-cta.is-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-.floating-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.10);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-  -webkit-tap-highlight-color: transparent;
-  transform: translateZ(0);
-}
-
-.floating-btn:active { transform: scale(0.97); }
-
-.floating-messenger {
-  background: #1A365D;
-  color: #ffffff;
-}
-
-.floating-whatsapp {
-  background: #25D366;
-  color: #ffffff;
-}
-
-.floating-btn i { font-size: 22px; }
-
-@media (min-width: 768px) {
-  .floating-cta { display: none !important; }
-}
-
-/* =========================================
-   ABOUT SECTION (New)
-   ========================================= */
-.about-section {
-  background: #f6f4f0;
-  padding: 40px 16px 20px 16px;
-  position: relative;
-  z-index: 20;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.about-subtitle {
-  font-size: 16px;
-  color: #444;
-  margin-top: -15px;
-  font-weight: 500;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.founder-image-wrapper {
-  margin-bottom: 25px;
-  border-radius: 50%;
-  padding: 4px;
-  background: linear-gradient(135deg, #a68a6d, #e3d5c5);
-}
-
-.founder-img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  border: 4px solid #f6f4f0;
-}
-
-.about-text {
-  text-align: center;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #222;
-  font-weight: 400;
-}
-
-.about-text p {
-  margin-bottom: 20px;
-}
-
-.about-text p:last-of-type {
-  margin-bottom: 0;
-}
-
-.signature {
-  margin-top: 25px;
-  font-size: 15px;
-  color: #111;
-  font-weight: 500;
-}
-
-.sign-name {
-  font-family: 'Caveat', cursive;
-  font-size: 32px;
-  color: #a68a6d;
-  margin-right: 5px;
-  font-weight: 600;
-}
-
-/* =========================================
-   WHY CHOOSE US (Section 2)
-   ========================================= */
-.why {
-  background: #f6f4f0 !important;
-  padding-top: 20px !important;
-  position: relative;
-  z-index: 20; 
-}
-
-.container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 40px 16px; 
-}
-
-.why-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.why-item {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #111;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
-  transform: translateZ(0);
-}
-
-.why-media {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  position: relative;
-}
-.why-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.9) contrast(1.05);
-}
-
-.why-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.0));
-  pointer-events:none;
-}
-
-.why-copy {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-  color: rgba(255,255,255,0.92);
-  text-align: center;
-}
-
-.why-copy h3{
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  margin-bottom: 6px;
-}
-.why-copy p{
-  font-size: 13px;
-  line-height: 1.35;
-  color: rgba(255,255,255,0.82);
-}
-
-.why-icon{
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  margin: 0 auto 10px auto;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.16);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-.why-icon i { font-size: 18px; color: rgba(255,255,255,0.92); }
-
-/* =========================================
-   TRANSFERS & FLEET (Section 3)
-   ========================================= */
-.fleet {
-  background: #f6f4f0;
-  padding-bottom: 40px;
-}
-
-.fleet-container {
-  max-width: 800px; 
-}
-
-.fleet-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.fleet-image-wrapper {
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.fleet-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.fleet-subtitle {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 8px;
-}
-
-.fleet-highlight {
-  font-size: 16px;
-  font-weight: 600;
-  color: #444;
-  margin-bottom: 18px;
-}
-
-.capacity-lines{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 18px;
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto 26px auto;
-}
-
-.cap-item{
-  font-size: 14px;
-  font-weight: 600;
-  color: #2a2a2a;
-  letter-spacing: 0.1px;
-  line-height: 1.25;
-}
-
-.cap-label{ font-weight: 700; }
-.cap-meta{ font-weight: 600; color: #555; }
-
-.fleet-features {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 450px;
-  gap: 15px;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 13px;
-  color: #333;
-  line-height: 1.3;
-  font-weight: 500;
-}
-
-.feature-item i {
-  font-size: 24px;
-  color: #a68a6d;
-  margin-bottom: 10px;
-}
-
-/* =========================================
-   DESTINATIONS / ROUTES (Section 4)
-   ========================================= */
-.destinations {
-  background: #f6f4f0;
-  padding-bottom: 60px;
-}
-
-.dest-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-.dest-card {
-  display: flex;
-  flex-direction: row; 
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-}
-
-.dest-media {
-  width: 38%; 
-  position: relative;
-  flex-shrink: 0;
-}
-
-.dest-media img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.dest-info {
-  width: 62%;
-  padding: 15px 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.dest-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 6px;
-  line-height: 1.2;
-}
-
-.dest-desc {
-  font-size: 12px;
-  color: #444;
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.dest-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 14px;
-}
-
-.dest-meta span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.dest-meta i {
-  color: #a68a6d;
-  font-size: 13px;
-}
-
-.dest-btn {
-  display: block;
-  text-align: center;
-  background: linear-gradient(to right, #9d7d5d, #7b5f42);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 10px;
-  border-radius: 30px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.dest-btn:active {
-  transform: scale(0.98);
-}
-
-/* =========================================
-   TESTIMONIALS (Section 5)
-   ========================================= */
-.testimonials {
-  background: #f6f4f0;
-  padding-bottom: 60px;
-}
-
-.testimonials-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.testimonials-subtitle {
-  font-size: 16px;
-  color: #111;
-  margin-top: -15px;
-  margin-bottom: 25px;
-  font-weight: 500;
-}
-
-.overall-rating {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.rating-number {
-  font-family: "Roboto", sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: #a68a6d;
-  line-height: 1;
-}
-
-.rating-stars {
-  color: #a68a6d;
-  font-size: 24px;
-  letter-spacing: 2px;
-}
-
-.rating-source {
-  font-size: 14px;
-  color: #333;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-/* Slider / Carousel Container */
-.testimonials-slider {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 10px 0 20px 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.testimonials-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.test-card {
-  background: #fdfbf8;
-  border-radius: 18px;
-  padding: 25px 20px;
-  min-width: 88%;
-  max-width: 320px;
-  min-height: 250px;
-  scroll-snap-align: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.quote-icon {
-  font-size: 42px;
-  color: #a68a6d;
-  line-height: 1;
-  margin-bottom: -5px;
-}
-
-.card-stars {
-  color: #a68a6d;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.test-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #222;
-  font-weight: 500;
-  flex-grow: 1;
-  font-style: italic;
-}
-
-.test-author {
-  font-size: 14px;
-  color: #111;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.test-author strong {
-  font-weight: 700;
-}
-.fb-color {
-  color: #1877F2; 
-  font-size: 16px;
-}
-
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.slider-dots .dot {
-  width: 8px;
-  height: 8px;
-  background: #d4c5b5;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.slider-dots .dot.active {
-  background: #a68a6d;
-  width: 24px;
-  border-radius: 10px;
-}
-
-/* =========================================
-   Desktop & Tablet
-   ========================================= */
-@media (min-width: 768px) {
-  .main-header { top: 25px; max-width: 1200px; padding: 10px 25px; }
-  .logo-img { height: 45px; max-height: 45px; }
-  .logo-text { font-size: 13px; }
-
-  .hamburger-btn { display: none; }
-
-  .top-nav {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    width: auto;
-    margin-top: 0;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
-    padding: 0;
-    box-shadow: none;
-    gap: 15px;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: none !important;
-  }
-
-  .nav-item {
-    font-size: 14px;
-    padding: 8px 16px;
-    border-bottom: none;
-    border-radius: 30px;
-  }
-  .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
-
-  /* HERO desktop */
-  .mobile-hero-image { display: none; }
-
-  .hero-section {
-    display: flex;
-    min-height: 750px;
-    max-width: 1200px;
-    width: calc(100% - 30px);
-    margin: 25px auto 0 auto; 
-    border-radius: 30px 30px 0 0; 
-    overflow: hidden; 
-    background-color: transparent !important;
-    background-image: url("hero.webp");
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    box-shadow: none; 
-  }
-
-  .hero-content {
-    max-width: 900px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-radius: 0;
-    margin-top: 0;
-    box-shadow: none !important; 
-    background-color: transparent !important;
-    padding: 120px 5% 60px 5% !important;
-  }
-
-  .top-content {
-    align-items: flex-start;
-    text-align: left;
-    margin-bottom: 10px;
-  }
-
-  .main-title {
-    font-size: 58px;
-    margin-bottom: 15px;
-    white-space: nowrap;
-  }
-  .desktop-br { display: block; }
-  .mobile-space { display: none; }
-
-  .hero-description { font-size: 18px; line-height: 1.6; }
-  .desktop-comma { display: inline; }
-  .desktop-br-desc { display: block; }
-  .mobile-dash { display: none; }
-
-  .destination-list { margin-top: 10px; }
-  .dest-line { justify-content: flex-start; gap: 18px; margin-bottom: 12px; }
-  .loc-item { font-size: 15px; }
-  .loc-item i { font-size: 13px; margin-right: 5px; }
-
-  .cta-group {
-    align-items: flex-start;
-    max-width: 400px;
-    margin: 20px 0 0 0;
-  }
-  .primary-btn, .ghost-btn { height: 54px; padding: 0 55px 0 20px; }
-  .btn-text { font-size: 15px; text-align: left; }
-
-  .shape-divider {
-    display: block !important; 
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    z-index: 5;
-  }
-
-  .shape-divider svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 4px);
-    margin-left: -2px;
-    height: 90px;
-  }
-
-  .section-title { font-size: 52px; margin: 10px 0 40px 0; }
-
-  /* ABOUT SECTION - DESKTOP */
-  .about-section {
-    padding-top: 60px;
-    padding-bottom: 50px;
-  }
-  .about-subtitle { font-size: 18px; }
-  .about-text { font-size: 17px; max-width: 850px; }
-  .founder-img { width: 160px; height: 160px; }
-  .signature { font-size: 18px; margin-top: 35px; }
-  .sign-name { font-size: 38px; }
-
-  /* WHY CHOOSE US - DESKTOP */
-  .why { margin-top: 0 !important; padding-top: 0 !important; }
-  .why .container { max-width: 1060px; padding-top: 15px; }
-  .why-list { gap: 26px; }
-
-  .why-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    align-items: stretch;
-    min-height: 220px; 
-    border-radius: 20px; 
-    background: #ffffff; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
-  }
-  .why-media { aspect-ratio: auto; height: 100%; }
-  .why-media::after { display: none; }
-
-  .why-copy {
-    position: relative;
-    inset: auto;
-    padding: 32px 36px; 
-    text-align: left;
-    background: #ffffff; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .why-copy h3 { font-size: 24px; color: #1a1a1a; margin-bottom: 12px; }
-  .why-copy p { font-size: 17px; line-height: 1.6; color: #444; }
-
-  .why-icon {
-    width: 52px; height: 52px;
-    margin: 0 0 16px 0;
-    background: rgba(26, 26, 26, 0.04); 
-    border-radius: 14px;
-    box-shadow: none;
-  }
-  .why-icon i { color: #1a1a1a; font-size: 22px; }
-
-  .why-item:nth-child(even) { grid-template-columns: 1fr 1fr; }
-  .why-item:nth-child(even) .why-media { order: 2; }
-  .why-item:nth-child(even) .why-copy { order: 1; border-right: none; }
-
-  /* FLEET / TRANSFERS - DESKTOP */
-  .fleet { padding-bottom: 80px; }
-  .fleet-subtitle { font-size: 24px; margin-bottom: 12px; }
-  .fleet-highlight { font-size: 18px; margin-bottom: 22px; }
-
-  .capacity-lines{
-    max-width: 520px;
-    gap: 12px 28px;
-    margin-bottom: 34px;
-  }
-  .cap-item{ font-size: 16px; }
-
-  .fleet-features { max-width: 600px; gap: 30px; }
-  .feature-item { font-size: 15px; }
-  .feature-item i { font-size: 32px; margin-bottom: 12px; }
-
-  /* ROUTES / DESTINATIONS - DESKTOP */
-  .dest-card { border-radius: 20px; }
-  .dest-media { width: 35%; min-height: 220px; }
-  .dest-info { width: 65%; padding: 30px; }
-  .dest-name { font-size: 22px; margin-bottom: 8px; }
-  .dest-name span { font-size: 15px !important; }
-  .dest-desc { font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
-  .dest-meta { font-size: 14px; gap: 20px; margin-bottom: 25px; }
-  .dest-meta i { font-size: 16px; }
-  .dest-btn { font-size: 15px; padding: 12px 25px; max-width: 200px; }
-  .dest-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(166, 138, 109, 0.4); }
-  
-  /* TESTIMONIALS - DESKTOP */
-  .rating-number { font-size: 56px; }
-  
-  .testimonials-slider {
-    justify-content: center;
-    overflow-x: visible;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-top: 20px;
-  }
-  
-  .test-card {
-    min-width: 320px;
-    max-width: 340px;
-  }
-  
-  .slider-dots {
-    display: none; 
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Small Island Transfer</title>
+
+  <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
+  <link rel="stylesheet" href="styles.css?v=14" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <header class="main-header">
+    <div class="logo-wrapper">
+      <img src="logo.webp" alt="Small Island Transfer Logo" class="logo-img">
+      <div class="logo-text">
+        <span>SMALL ISLAND</span>
+        <span>TRANSFER</span>
+      </div>
+    </div>
+
+    <button class="hamburger-btn" aria-label="Open menu" onclick="toggleMenu(event)">
+      <i class="fa-solid fa-bars" id="menu-icon" aria-hidden="true"></i>
+    </button>
+
+    <nav class="top-nav" id="topNav" aria-label="Primary">
+      <a href="#home" class="nav-item">Home</a>
+      <a href="#about" class="nav-item">About</a>
+      <a href="#services" class="nav-item">Services</a>
+      <a href="#transfers" class="nav-item">Transfers</a>
+      <a href="#routes" class="nav-item">Routes</a>
+      <a href="#reviews" class="nav-item">Reviews</a>
+      <a href="#contact" class="nav-item active">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero-section" id="home">
+    <div class="mobile-hero-image" role="img" aria-label="Private transfer in Rhodes"></div>
+
+    <main class="hero-content">
+      <div class="top-content">
+        <h1 class="main-title animate-entry delay-1">
+          Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">
+          across<br>
+          Rhodes & The Islands.
+        </h1>
+
+        <p class="hero-description animate-entry delay-2">
+          <span class="highlight-text">One message and it's sorted.</span><br>
+          Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
+          with a driver who knows every harbour, every ferry, every island.
+        </p>
+      </div>
+
+      <div class="destination-list animate-entry delay-3">
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Airport</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Harbour</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kamiros Skala</span>
+        </div>
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Halki</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Symi</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Tilos</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kastellorizo</span>
+        </div>
+      </div>
+
+      <div class="cta-group animate-entry delay-4" id="heroCtaGroup">
+        <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+          <span class="btn-text">Let's Plan Your Route</span>
+          <span class="icon-circle fb-icon-bg" aria-hidden="true">
+            <i class="fa-brands fa-facebook-messenger"></i>
+          </span>
+        </a>
+
+        <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+          <span class="btn-text">Get in Touch via WhatsApp</span>
+          <span class="icon-circle wa-bg" aria-hidden="true">
+            <i class="fa-brands fa-whatsapp"></i>
+          </span>
+        </a>
+      </div>
+    </main>
+
+    <div class="shape-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#f6f4f0" fill-opacity="1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="aboutTitle">
+    <div class="container about-container">
+      <div class="about-header scroll-animate delay-1">
+        <h2 class="section-title" id="aboutTitle">Your Personal Host in the Dodecanese</h2>
+        <p class="about-subtitle">Local knowledge meets premium service.</p>
+      </div>
+
+      <div class="about-content scroll-animate delay-2">
+        <img src="founder.webp" alt="Yiannis - Founder of Small Island Transfer" class="about-img" loading="lazy" width="150" height="150">
+        <div class="about-text">
+          <p>Welcome to Rhodes. Behind Small Island Transfer is my passion for authentic Greek hospitality and the desire to offer stress-free transportation. Born and raised here, I know every corner of Rhodes and the unique details of our neighboring islands.</p>
+          <p>As your primary driver and coordinator, I personally guarantee two things: absolute punctuality and uncompromising quality in your transfer. Whether you travel with me in the Audi Q5, or with one of our carefully selected network partners on the smaller islands, my goal is for your journey to be as enjoyable as your destination.</p>
+          <div class="about-signature">Yiannis – Founder, S.I.T.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="services" aria-labelledby="whyTitle">
+    <div class="container">
+      <h2 class="section-title scroll-animate delay-1" id="whyTitle">Why Choose Us</h2>
+
+      <div class="why-list">
+        <article class="why-item scroll-animate delay-2">
+          <div class="why-media">
+            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <h3>Absolute Punctuality (Always On-Time)</h3>
+            <p>We know how important time is on your holiday. We guarantee punctuality for every pick-up and drop-off.</p>
+          </div>
+        </article>
+
+        <article class="why-item scroll-animate delay-3">
+          <div class="why-media">
+            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <h3>Premium Fleet & Flexibility</h3>
+            <p>From VIP transfers (1-4 people) to comfortable minivans and minibuses for groups (5-8, 9-11, 12-21 people).</p>
+          </div>
+        </article>
+
+        <article class="why-item scroll-animate delay-4">
+          <div class="why-media">
+            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3>Ease of Payment</h3>
+            <p>We have POS terminals available in all our vehicles. We accept Visa, Mastercard, and Maestro cards.</p>
+          </div>
+        </article>
+
+        <article class="why-item scroll-animate delay-5">
+          <div class="why-media">
+            <img src="why-5stars.webp" alt="Five star service" loading="lazy" width="1200" height="900" />
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h3>5-Star Service</h3>
+            <p>Customer satisfaction is our priority, with top ratings for safety and excellent service.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fleet" id="transfers" aria-labelledby="fleetTitle">
+    <div class="container fleet-container">
+      <h2 class="section-title scroll-animate delay-1" id="fleetTitle">Our Fleet & Partner Network</h2>
+
+      <div class="fleet-card scroll-animate delay-2">
+        <div class="fleet-image-wrapper">
+          <img src="audi-q5.webp" alt="Audi Q5 parked by the sea" class="fleet-image" loading="lazy" width="800" height="500">
+        </div>
+
+        <div class="fleet-content">
+          <h3 class="fleet-subtitle">Primary Service: Audi Q5</h3>
+          <h4 class="fleet-highlight">Flexible Fleet for Every Need</h4>
+
+          <div class="capacity-lines" aria-label="Vehicle capacity options">
+            <div class="cap-item"><span class="cap-label">Private rides</span> <span class="cap-meta">(1–4)</span></div>
+            <div class="cap-item"><span class="cap-label">Vans</span> <span class="cap-meta">(5–8)</span></div>
+            <div class="cap-item"><span class="cap-label">Mini buses</span> <span class="cap-meta">(9–11)</span></div>
+            <div class="cap-item"><span class="cap-label">Groups</span> <span class="cap-meta">(12–21)</span></div>
+          </div>
+
+          <div class="fleet-features">
+            <div class="feature-item">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Cards Accepted<br>(POS)</span>
+            </div>
+            <div class="feature-item">
+              <i class="fa-regular fa-snowflake"></i>
+              <span>Air Conditioning<br>(A/C)</span>
+            </div>
+            <div class="feature-item">
+              <i class="fa-solid fa-baby-carriage"></i>
+              <span>Child Seats<br>(upon request)</span>
+            </div>
+          </div>
+
+          <div class="fleet-cta" style="margin-top: 35px;">
+            <a href="#" class="primary-btn" onclick="openWhatsApp(); return false;" style="width: auto; display: inline-flex;">
+              <span class="btn-text">Request a Quote</span>
+              <span class="icon-circle wa-bg" aria-hidden="true">
+                <i class="fa-brands fa-whatsapp"></i>
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations" id="routes" aria-labelledby="destTitle">
+    <div class="container">
+      <h2 class="section-title scroll-animate delay-1" id="destTitle">Explore Our Destinations</h2>
+
+      <div class="dest-grid">
+        <article class="dest-card scroll-animate delay-2">
+          <div class="dest-media">
+            <img src="dest-halki-tilos.webp" alt="Halki and Tilos coastal view" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Halki & Tilos<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Via Kamiros Skala)</span></h3>
+            <p class="dest-desc">Complete transfer from Rhodes to the harbour. Pick-up on the island and transfer to your accommodation.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~45 mins (Rhodes-Kamiros)</span>
+              <span><i class="fa-solid fa-tag"></i> From €50</span>
+            </div>
+            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-3">
+          <div class="dest-media">
+            <img src="dest-symi-kastellorizo.webp" alt="Symi harbour" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Symi & Kastellorizo<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Via Rhodes Harbour)</span></h3>
+            <p class="dest-desc">Comfortable transfer to the main harbour. VIP pick-up upon your arrival.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~30 mins (Rhodes-Harbour)</span>
+              <span><i class="fa-solid fa-tag"></i> From €50</span>
+            </div>
+            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-4">
+          <div class="dest-media">
+            <img src="dest-rhodes.webp" alt="Rhodes Old Town Castle" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Rhodes<br><span style="font-size: 13px; font-weight: 500; color: #555;">(Airport, City & Tours)</span></h3>
+            <p class="dest-desc">VIP transfers to/from 'Diagoras' Airport, hotels, and local attractions.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> 24/7 Service</span>
+              <span><i class="fa-solid fa-tag"></i> Premium Fleet</span>
+            </div>
+            <a href="#" class="dest-btn" onclick="openWhatsApp(); return false;">Book / Details</a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="testimonials" id="reviews" aria-labelledby="reviewsTitle">
+    <div class="container">
+      <div class="testimonials-header scroll-animate delay-1">
+        <h2 class="section-title" id="reviewsTitle">What our customers say</h2>
+        <p class="testimonials-subtitle">The Small Island Transfer experience through your eyes.</p>
+        
+        <div class="overall-rating">
+          <span class="rating-number">5.0 / 5.0</span>
+          <div class="rating-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="rating-source">Average rating on Facebook</p>
+        </div>
+      </div>
+
+      <div class="testimonials-slider scroll-animate delay-2" id="testimonialSlider">
+        
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Very friendly, professional and competitive company. We booked them twice recently on our holiday in Halki, both from the airport to our accommodation in Rhodes town and also from Kamiros Skala to the airport on our return journey. They also responded to my messages within minutes. 5 stars highly recommended"</p>
+          <div class="test-author">
+            <strong>Terry Cranston</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Used twice from and to the airport - excellent service and lovely drivers. I would most certainly recommend and will definitely use again. Thank you. Your 5 star rating is well deserved!"</p>
+          <div class="test-author">
+            <strong>Carol Springett</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Perfect timing. Happy and helpful drivers. Safe journey. We used the taxi on our outward and inward journey. Would recommend."</p>
+          <div class="test-author">
+            <strong>Debbie Jane</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Thank you for your excellent service on our trip home yesterday. Much appreciated. Hopefully see you next year!"</p>
+          <div class="test-author">
+            <strong>Janey Gaskell</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"The best taxi drivers. Very helpful and very punctual. Have a good season."</p>
+          <div class="test-author">
+            <strong>Zina Zervou</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="slider-dots scroll-animate delay-3" id="sliderDots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="floating-cta" id="floatingCta" aria-label="Quick contact shortcuts">
+    <a
+      href="https://m.me/yourfacebookpage"
+      target="_blank"
+      rel="noopener"
+      class="floating-btn floating-messenger"
+      aria-label="Message us on Facebook Messenger"
+      title="Messenger"
+    >
+      <i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i>
+    </a>
+
+    <a
+      href="#"
+      class="floating-btn floating-whatsapp"
+      aria-label="Message us on WhatsApp"
+      title="WhatsApp"
+      onclick="openWhatsApp(); return false;"
+    >
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <script>
+    /* =========================================
+       WhatsApp & Menu Functions
+       ========================================= */
+    function openWhatsApp() {
+      const phoneNumber = "306900000000";
+      const message = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank", "noopener");
+    }
+
+    function toggleMenu(event) {
+      if (event) event.stopPropagation();
+
+      const nav = document.getElementById("topNav");
+      const icon = document.getElementById("menu-icon");
+
+      nav.classList.toggle("active");
+
+      icon.style.opacity = "0";
+      icon.style.transform = "scale(0.8)";
+
+      setTimeout(() => {
+        if (nav.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        }
+        icon.style.opacity = "1";
+        icon.style.transform = "scale(1)";
+      }, 200);
+    }
+
+    document.addEventListener("click", function (event) {
+      const nav = document.getElementById("topNav");
+      const hamburger = document.querySelector(".hamburger-btn");
+
+      if (nav.classList.contains("active") && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+        toggleMenu();
+      }
+    });
+
+    /* =========================================
+       Scroll Animations & Slider Logic
+       ========================================= */
+    document.addEventListener("DOMContentLoaded", function() {
+      // Intersection Observer for fade-in animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const hiddenElements = document.querySelectorAll('.scroll-animate');
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      // Testimonial Slider Dots Logic (Dynamic generation)
+      const slider = document.getElementById('testimonialSlider');
+      const dotsContainer = document.getElementById('sliderDots');
+      
+      if (slider && dotsContainer) {
+        const cards = slider.querySelectorAll('.test-card');
+        
+        // Generate a dot for each card
+        cards.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (index === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        slider.addEventListener('scroll', () => {
+          let scrollLeft = slider.scrollLeft;
+          // Use the width of a single card + gap for accurate indexing
+          let cardWidth = cards[0].offsetWidth + 16; // 16px is the gap
+          let index = Math.round(scrollLeft / cardWidth);
+          
+          if (index >= dots.length) index = dots.length - 1;
+          
+          dots.forEach(dot => dot.classList.remove('active'));
+          if(dots[index]) {
+            dots[index].classList.add('active');
+          }
+        });
+      }
+    });
+
+    /* =========================================
+       Mobile Floating CTA (ONLY on mobile)
+       ========================================= */
+    (function initFloatingCta(){
+      const heroCta = document.getElementById("heroCtaGroup");
+      const floating = document.getElementById("floatingCta");
+      if (!heroCta || !floating) return;
+
+      const mq = window.matchMedia("(max-width: 767px)");
+      let io = null;
+
+      const setActive = (isActive) => {
+        if (isActive) floating.classList.add("is-active");
+        else floating.classList.remove("is-active");
+      };
+
+      const teardown = () => {
+        setActive(false);
+        if (io) { io.disconnect(); io = null; }
+      };
+
+      const setup = () => {
+        teardown();
+        io = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          setActive(!entry.isIntersecting);
+        }, {
+          root: null,
+          threshold: 0.05,
+          rootMargin: "0px 0px -10px 0px"
+        });
+
+        io.observe(heroCta);
+      };
+
+      const handleMq = () => {
+        if (mq.matches) setup();
+        else teardown();
+      };
+
+      handleMq();
+      mq.addEventListener?.("change", handleMq);
+      if (!mq.addEventListener) mq.addListener(handleMq);
+    })();
+  </script>
+
+</body>
+</html>
