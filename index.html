@@ -6,7 +6,7 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=13" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -265,11 +265,11 @@
         <p class="testimonials-subtitle">The Small Island Transfer experience through your eyes.</p>
         
         <div class="overall-rating">
-          <span class="rating-number">4.9 / 5.0</span>
+          <span class="rating-number">5.0 / 5.0</span>
           <div class="rating-stars">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
-          <p class="rating-source">Average rating (Google & Social Media)</p>
+          <p class="rating-source">Average rating on Facebook</p>
         </div>
       </div>
 
@@ -280,8 +280,11 @@
           <div class="card-stars" aria-hidden="true">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
-          <p class="test-text">"Excellent professional! The Audi Q5 was spotless and our transfer to the port was exactly on time. Comfort and luxury."</p>
-          <p class="test-author"><strong>Maria K.</strong> | Couple from Greece</p>
+          <p class="test-text">"Very friendly, professional and competitive company. We booked them twice recently on our holiday in Halki, both from the airport to our accommodation in Rhodes town and also from Kamiros Skala to the airport on our return journey. They also responded to my messages within minutes. 5 stars highly recommended"</p>
+          <div class="test-author">
+            <strong>Terry Cranston</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
         </article>
 
         <article class="test-card">
@@ -289,8 +292,11 @@
           <div class="card-stars" aria-hidden="true">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
-          <p class="test-text">"They picked us up directly from the airport. The driver was very polite and helpful. Highly recommended for trips to the islands."</p>
-          <p class="test-author"><strong>Lisa D.</strong> | Family from UK</p>
+          <p class="test-text">"Used twice from and to the airport - excellent service and lovely drivers. I would most certainly recommend and will definitely use again. Thank you. Your 5 star rating is well deserved!"</p>
+          <div class="test-author">
+            <strong>Carol Springett</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
         </article>
 
         <article class="test-card">
@@ -298,17 +304,40 @@
           <div class="card-stars" aria-hidden="true">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
-          <p class="test-text">"Smooth and stress-free transfer to Kamiros Skala. The best way to start our holiday in Halki. Will definitely book again next year."</p>
-          <p class="test-author"><strong>John S.</strong> | Solo Traveler</p>
+          <p class="test-text">"Perfect timing. Happy and helpful drivers. Safe journey. We used the taxi on our outward and inward journey. Would recommend."</p>
+          <div class="test-author">
+            <strong>Debbie Jane</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Thank you for your excellent service on our trip home yesterday. Much appreciated. Hopefully see you next year!"</p>
+          <div class="test-author">
+            <strong>Janey Gaskell</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"The best taxi drivers. Very helpful and very punctual. Have a good season."</p>
+          <div class="test-author">
+            <strong>Zina Zervou</strong>
+            <i class="fa-brands fa-facebook fb-color"></i>
+          </div>
         </article>
 
       </div>
 
-      <div class="slider-dots scroll-animate delay-3" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
+      <div class="slider-dots scroll-animate delay-3" id="sliderDots" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -379,9 +408,10 @@
     });
 
     /* =========================================
-       Scroll Animations (Intersection Observer)
+       Scroll Animations & Slider Logic
        ========================================= */
     document.addEventListener("DOMContentLoaded", function() {
+      // Intersection Observer for fade-in animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -394,15 +424,30 @@
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
 
-      // Slider Dots Logic for Testimonials
+      // Testimonial Slider Dots Logic (Dynamic generation)
       const slider = document.getElementById('testimonialSlider');
-      const dots = document.querySelectorAll('.slider-dots .dot');
+      const dotsContainer = document.getElementById('sliderDots');
       
-      if (slider && dots.length > 0) {
+      if (slider && dotsContainer) {
+        const cards = slider.querySelectorAll('.test-card');
+        
+        // Generate a dot for each card
+        cards.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (index === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+
         slider.addEventListener('scroll', () => {
           let scrollLeft = slider.scrollLeft;
-          let cardWidth = slider.offsetWidth;
+          // Use the width of a single card + gap for accurate indexing
+          let cardWidth = cards[0].offsetWidth + 16; // 16px is the gap
           let index = Math.round(scrollLeft / cardWidth);
+          
+          if (index >= dots.length) index = dots.length - 1;
           
           dots.forEach(dot => dot.classList.remove('active'));
           if(dots[index]) {
