@@ -6,11 +6,12 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=14" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -31,6 +32,7 @@
 
     <nav class="top-nav" id="topNav" aria-label="Primary">
       <a href="#home" class="nav-item">Home</a>
+      <a href="#about" class="nav-item">About</a>
       <a href="#services" class="nav-item">Services</a>
       <a href="#transfers" class="nav-item">Transfers</a>
       <a href="#routes" class="nav-item">Routes</a>
@@ -92,6 +94,29 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
         <path fill="#f6f4f0" fill-opacity="1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
       </svg>
+    </div>
+  </section>
+
+  <section class="about-section" id="about" aria-labelledby="aboutTitle">
+    <div class="container about-container">
+      <div class="about-header scroll-animate delay-1">
+        <h2 class="section-title" id="aboutTitle">Your Personal Host in the Dodecanese</h2>
+        <p class="about-subtitle">Local knowledge meets premium service.</p>
+      </div>
+
+      <div class="about-content scroll-animate delay-2">
+        <div class="founder-image-wrapper">
+          <img src="founder.webp" alt="Yiannis - Founder" class="founder-img" loading="lazy" width="140" height="140">
+        </div>
+        
+        <div class="about-text">
+          <p>Welcome to Rhodes. Behind Small Island Transfer lies my passion for authentic Greek hospitality and the desire to offer stress-free transfers. Born and raised here, I know every corner of Rhodes and the particularities of our neighboring islands.</p>
+          <p>As your primary driver and coordinator, I personally guarantee two things: absolute punctuality and uncompromising quality in your transfer. Whether you travel with me in the Audi Q5, or with one of our carefully selected network partners on the smaller islands, my goal is to make your journey as enjoyable as your destination.</p>
+          <div class="signature">
+            <span class="sign-name">Yiannis</span> – Founder, S.I.T.
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -411,7 +436,6 @@
        Scroll Animations & Slider Logic
        ========================================= */
     document.addEventListener("DOMContentLoaded", function() {
-      // Intersection Observer for fade-in animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -424,14 +448,12 @@
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
 
-      // Testimonial Slider Dots Logic (Dynamic generation)
       const slider = document.getElementById('testimonialSlider');
       const dotsContainer = document.getElementById('sliderDots');
       
       if (slider && dotsContainer) {
         const cards = slider.querySelectorAll('.test-card');
         
-        // Generate a dot for each card
         cards.forEach((_, index) => {
           const dot = document.createElement('span');
           dot.classList.add('dot');
@@ -443,8 +465,7 @@
 
         slider.addEventListener('scroll', () => {
           let scrollLeft = slider.scrollLeft;
-          // Use the width of a single card + gap for accurate indexing
-          let cardWidth = cards[0].offsetWidth + 16; // 16px is the gap
+          let cardWidth = cards[0].offsetWidth + 16; 
           let index = Math.round(scrollLeft / cardWidth);
           
           if (index >= dots.length) index = dots.length - 1;
@@ -458,7 +479,7 @@
     });
 
     /* =========================================
-       Mobile Floating CTA (ONLY on mobile)
+       Mobile Floating CTA
        ========================================= */
     (function initFloatingCta(){
       const heroCta = document.getElementById("heroCtaGroup");
