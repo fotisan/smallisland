@@ -676,11 +676,12 @@ html, body {
 }
 
 .test-card {
-  background: #fdfbf8; /* Ελαφρώς πιο ανοιχτό από το background */
+  background: #fdfbf8;
   border-radius: 18px;
   padding: 25px 20px;
-  min-width: 85%;
+  min-width: 88%;
   max-width: 320px;
+  min-height: 250px;
   scroll-snap-align: center;
   flex-shrink: 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.03);
@@ -703,20 +704,28 @@ html, body {
 }
 
 .test-text {
-  font-size: 15px;
+  font-size: 14px; /* Ελαφρώς μικρότερο για να χωράνε οι μεγάλες κριτικές */
   line-height: 1.5;
-  color: #111;
+  color: #222;
   font-weight: 500;
-  flex-grow: 1;
+  flex-grow: 1; /* Σπρώχνει το author στο κάτω μέρος */
+  font-style: italic;
 }
 
 .test-author {
   font-size: 14px;
   color: #111;
-  margin-top: 5px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .test-author strong {
   font-weight: 700;
+}
+.fb-color {
+  color: #1877F2; /* Επίσημο χρώμα Facebook */
+  font-size: 16px;
 }
 
 .slider-dots {
