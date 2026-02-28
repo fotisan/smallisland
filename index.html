@@ -6,11 +6,11 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -34,6 +34,7 @@
       <a href="#services" class="nav-item">Services</a>
       <a href="#transfers" class="nav-item">Transfers</a>
       <a href="#routes" class="nav-item">Routes</a>
+      <a href="#reviews" class="nav-item">Reviews</a>
       <a href="#contact" class="nav-item active">Contact</a>
     </nav>
   </header>
@@ -70,7 +71,6 @@
         </div>
       </div>
 
-      <!-- HERO CTA (αυτό παραμένει όπως είναι) -->
       <div class="cta-group animate-entry delay-4" id="heroCtaGroup">
         <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
           <span class="btn-text">Let's Plan Your Route</span>
@@ -168,7 +168,6 @@
           <h3 class="fleet-subtitle">Primary Service: Audi Q5</h3>
           <h4 class="fleet-highlight">Flexible Fleet for Every Need</h4>
 
-          <!-- ✅ Option C: microcopy capacity lines (no gold pills) -->
           <div class="capacity-lines" aria-label="Vehicle capacity options">
             <div class="cap-item"><span class="cap-label">Private rides</span> <span class="cap-meta">(1–4)</span></div>
             <div class="cap-item"><span class="cap-label">Vans</span> <span class="cap-meta">(5–8)</span></div>
@@ -259,7 +258,60 @@
     </div>
   </section>
 
-  <!-- ✅ FLOATING MINI CTA (ΜΟΝΟ MOBILE) -->
+  <section class="testimonials" id="reviews" aria-labelledby="reviewsTitle">
+    <div class="container">
+      <div class="testimonials-header scroll-animate delay-1">
+        <h2 class="section-title" id="reviewsTitle">What our customers say</h2>
+        <p class="testimonials-subtitle">The Small Island Transfer experience through your eyes.</p>
+        
+        <div class="overall-rating">
+          <span class="rating-number">4.9 / 5.0</span>
+          <div class="rating-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="rating-source">Average rating (Google & Social Media)</p>
+        </div>
+      </div>
+
+      <div class="testimonials-slider scroll-animate delay-2" id="testimonialSlider">
+        
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Excellent professional! The Audi Q5 was spotless and our transfer to the port was exactly on time. Comfort and luxury."</p>
+          <p class="test-author"><strong>Maria K.</strong> | Couple from Greece</p>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"They picked us up directly from the airport. The driver was very polite and helpful. Highly recommended for trips to the islands."</p>
+          <p class="test-author"><strong>Lisa D.</strong> | Family from UK</p>
+        </article>
+
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="test-text">"Smooth and stress-free transfer to Kamiros Skala. The best way to start our holiday in Halki. Will definitely book again next year."</p>
+          <p class="test-author"><strong>John S.</strong> | Solo Traveler</p>
+        </article>
+
+      </div>
+
+      <div class="slider-dots scroll-animate delay-3" aria-hidden="true">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
   <div class="floating-cta" id="floatingCta" aria-label="Quick contact shortcuts">
     <a
       href="https://m.me/yourfacebookpage"
@@ -341,12 +393,27 @@
 
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
+
+      // Slider Dots Logic for Testimonials
+      const slider = document.getElementById('testimonialSlider');
+      const dots = document.querySelectorAll('.slider-dots .dot');
+      
+      if (slider && dots.length > 0) {
+        slider.addEventListener('scroll', () => {
+          let scrollLeft = slider.scrollLeft;
+          let cardWidth = slider.offsetWidth;
+          let index = Math.round(scrollLeft / cardWidth);
+          
+          dots.forEach(dot => dot.classList.remove('active'));
+          if(dots[index]) {
+            dots[index].classList.add('active');
+          }
+        });
+      }
     });
 
     /* =========================================
-       ✅ Mobile Floating CTA (ONLY on mobile)
-       - when hero CTA leaves viewport -> show floating icons bottom-right
-       - when hero CTA enters viewport -> hide floating icons
+       Mobile Floating CTA (ONLY on mobile)
        ========================================= */
     (function initFloatingCta(){
       const heroCta = document.getElementById("heroCtaGroup");
