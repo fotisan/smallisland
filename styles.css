@@ -1116,21 +1116,12 @@ html, body {
 
   .highlight-text { font-weight: 700; color: #111; display: inline-block; margin-bottom: 4px; } 
 
-  /* Εφέ ομαλής συνέχειας του φωτεινού ουρανού (χωρίς κουτί και γωνίες) */
+  /* Αφαιρέθηκε εντελώς το φόντο/κουτί, έμεινε μόνο το κενό (margin) */
   .destination-list { 
     margin-top: 15px; 
-    padding: 20px 60px 20px 25px; 
-    margin-left: -25px; /* Το τραβάμε αριστερά για να ξεκινάει πιο φυσικά */
-    /* Απαλό λευκό ακτινωτό ντεγκραντέ που 'σβήνει' δεξιά */
-    background: radial-gradient(ellipse at center left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0) 75%);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-radius: 0;
-    display: block;
   }
   .dest-line { justify-content: flex-start; gap: 18px; margin-bottom: 12px; }
   
-  /* Σκουραίνουμε τα γράμματα και αυξάνουμε το βάρος τους για τέλεια αντίθεση */
   .loc-item { font-size: 15px; font-weight: 500; color: #222; }
   .loc-item i { font-size: 13px; margin-right: 5px; color: #555; }
 
