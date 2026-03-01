@@ -1075,7 +1075,8 @@ html, body {
     border-radius: 30px; 
     overflow: hidden; 
     background-color: transparent !important;
-    background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%), url("hero.webp");
+    /* Ανοιχτό/λευκό gradient για να διαβάζονται τα μαύρα γράμματα */
+    background-image: linear-gradient(to top, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 50%), url("hero.webp");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1091,7 +1092,8 @@ html, body {
     margin-top: 0;
     box-shadow: none !important; 
     background-color: transparent !important;
-    padding: 0 5% 60px 5% !important;
+    /* padding-bottom 70px αντί για 60px για να ανέβουν τα στοιχεία 10px */
+    padding: 0 5% 70px 5% !important;
   }
 
   .top-content {
@@ -1104,22 +1106,23 @@ html, body {
     font-size: 58px;
     margin-bottom: 15px;
     white-space: nowrap;
-    color: #ffffff;
+    color: #111; /* Μαύρα γράμματα */
   }
   .desktop-br { display: block; }
   .mobile-space { display: none; }
 
-  .hero-description { font-size: 18px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); }
+  .hero-description { font-size: 18px; line-height: 1.6; color: #333; /* Σκούρα γράμματα */ }
   .desktop-comma { display: inline; }
   .desktop-br-desc { display: block; }
   .mobile-dash { display: none; }
 
-  .highlight-text { font-weight: 600; color: #ffffff; display: inline-block; margin-bottom: 4px; }
+  .highlight-text { font-weight: 700; color: #111; display: inline-block; margin-bottom: 4px; } /* Μαύρα γράμματα */
 
   .destination-list { margin-top: 10px; }
   .dest-line { justify-content: flex-start; gap: 18px; margin-bottom: 12px; }
-  .loc-item { font-size: 15px; color: rgba(255, 255, 255, 0.85); }
-  .loc-item i { font-size: 13px; margin-right: 5px; color: #ffffff; }
+  /* Περιοχές πιο "light": πιο λεπτή γραμματοσειρά (400 αντί για 500) και πιο ανοιχτό γκρι χρώμα */
+  .loc-item { font-size: 15px; font-weight: 400; color: #777; }
+  .loc-item i { font-size: 13px; margin-right: 5px; color: #999; }
 
   .cta-group {
     align-items: flex-start;
@@ -1132,12 +1135,12 @@ html, body {
   .btn-text { font-size: 15px; text-align: left; }
 
   .ghost-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #111; /* Μαύρο περίγραμμα για να ταιριάζει με το κείμενο */
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
-  .ghost-btn .btn-text { color: #ffffff; }
+  .ghost-btn .btn-text { color: #111; } /* Μαύρα γράμματα */
 
   .shape-divider {
     display: none !important; 
