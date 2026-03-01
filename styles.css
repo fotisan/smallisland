@@ -259,6 +259,10 @@ html, body {
 .ghost-btn .btn-text { color: #1a1a1a; }
 .wa-bg { background-color: #25D366; color: #fff; border: none; }
 
+/* Utilities για τα νέα CTA */
+.email-bg { background-color: #a68a6d; color: #fff; border: none; }
+.fleet-cta-desktop { display: none; }
+
 .destination-list { order: 3; width: 100%; }
 .dest-line {
   display: flex;
@@ -1116,7 +1120,6 @@ html, body {
 
   .highlight-text { font-weight: 700; color: #111; display: inline-block; margin-bottom: 4px; } 
 
-  /* Αφαιρέθηκε εντελώς το φόντο/κουτί, έμεινε μόνο το κενό (margin) */
   .destination-list { 
     margin-top: 15px; 
   }
@@ -1207,6 +1210,28 @@ html, body {
   .fleet-features { max-width: 600px; gap: 30px; }
   .feature-item { font-size: 15px; }
   .feature-item i { font-size: 32px; margin-bottom: 12px; }
+
+  /* Νέα ρύθμιση αποκλειστικά για τα CTA του Desktop (σταματούν να φαίνονται του Mobile) */
+  .fleet-cta-mobile { display: none !important; }
+  
+  .fleet-cta-desktop {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap; /* Σε μικρές οθόνες laptop θα σπάσει σε 2 γραμμές για να μην συμπιεστεί */
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    width: 100%;
+  }
+  
+  .fleet-cta-desktop .primary-btn,
+  .fleet-cta-desktop .ghost-btn {
+    height: 54px;
+    padding: 0 48px 0 15px;
+    width: auto;
+    flex: 1;
+    min-width: 240px; 
+  }
 
   /* ROUTES / DESTINATIONS - DESKTOP */
   .dest-card { border-radius: 20px; }
