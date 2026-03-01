@@ -1075,7 +1075,6 @@ html, body {
     border-radius: 30px; 
     overflow: hidden; 
     background-color: transparent !important;
-    /* Αφαιρέθηκε εντελώς το white gradient, έμεινε μόνο η εικόνα */
     background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
@@ -1092,8 +1091,8 @@ html, body {
     margin-top: 0;
     box-shadow: none !important; 
     background-color: transparent !important;
-    /* Αυξήθηκε το bottom padding από 70px σε 80px για να ανέβουν τα στοιχεία πιο πάνω 10px */
-    padding: 0 5% 80px 5% !important;
+    /* Αυξήθηκε το bottom padding στα 110px για να ανέβουν τα στοιχεία πιο πάνω */
+    padding: 0 5% 110px 5% !important;
   }
 
   .top-content {
@@ -1118,9 +1117,17 @@ html, body {
 
   .highlight-text { font-weight: 700; color: #111; display: inline-block; margin-bottom: 4px; } /* Μαύρα γράμματα */
 
-  .destination-list { margin-top: 10px; }
-  .dest-line { justify-content: flex-start; gap: 18px; margin-bottom: 12px; }
-  /* Περιοχές πιο "light": πιο λεπτή γραμματοσειρά (400 αντί για 500) και πιο ανοιχτό γκρι χρώμα */
+  /* Εφέ θαμπώματος / frosted glass πίσω από τις τοποθεσίες */
+  .destination-list { 
+    margin-top: 15px; 
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    display: inline-block;
+  }
+  .dest-line { justify-content: flex-start; gap: 18px; margin-bottom: 10px; }
   .loc-item { font-size: 15px; font-weight: 400; color: #777; }
   .loc-item i { font-size: 13px; margin-right: 5px; color: #999; }
 
