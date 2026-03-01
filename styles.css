@@ -1075,8 +1075,8 @@ html, body {
     border-radius: 30px; 
     overflow: hidden; 
     background-color: transparent !important;
-    /* Ανοιχτό/λευκό gradient για να διαβάζονται τα μαύρα γράμματα */
-    background-image: linear-gradient(to top, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 50%), url("hero.webp");
+    /* Αφαιρέθηκε εντελώς το white gradient, έμεινε μόνο η εικόνα */
+    background-image: url("hero.webp");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1092,8 +1092,8 @@ html, body {
     margin-top: 0;
     box-shadow: none !important; 
     background-color: transparent !important;
-    /* padding-bottom 70px αντί για 60px για να ανέβουν τα στοιχεία 10px */
-    padding: 0 5% 70px 5% !important;
+    /* Αυξήθηκε το bottom padding από 70px σε 80px για να ανέβουν τα στοιχεία πιο πάνω 10px */
+    padding: 0 5% 80px 5% !important;
   }
 
   .top-content {
