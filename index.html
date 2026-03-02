@@ -6,6 +6,12 @@
   <title>Small Island Transfer</title>
 
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
+  
+  <link rel="preload" href="hero-mobile.webp" as="image" media="(max-width: 767px)">
+  <link rel="preload" href="hero.webp" as="image" media="(min-width: 768px)">
+  
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
   <link rel="stylesheet" href="styles.css?v=14" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -474,7 +480,7 @@
     <div class="container footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="logo.webp" alt="Small Island Transfer Logo" class="footer-logo">
+          <img src="logo.webp" alt="Small Island Transfer Logo" class="footer-logo" loading="lazy">
           <h3>Small Island Transfer</h3>
           <p>Premium private transfers in Rhodes & the Dodecanese islands. Reliable, punctual, and stress-free.</p>
         </div>
