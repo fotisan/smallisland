@@ -12,7 +12,7 @@
   
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <link rel="stylesheet" href="styles.css?v=14" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -252,7 +252,10 @@
               <span><i class="fa-regular fa-clock"></i> ~15 mins (Rhodes-Harbour)</span>
               <span><i class="fa-solid fa-tag"></i> From €20</span>
             </div>
-            <a href="#" class="dest-btn">Read more</a>
+            <div class="dest-actions">
+              <a href="symi.html" class="dest-btn">Symi</a>
+              <a href="kastellorizo.html" class="dest-btn">Kastellorizo</a>
+            </div>
           </div>
         </article>
 
@@ -267,7 +270,9 @@
               <span><i class="fa-regular fa-clock"></i> 24/7 Service</span>
               <span><i class="fa-solid fa-tag"></i> Premium Fleet</span>
             </div>
-            <a href="#" class="dest-btn">Read more</a>
+            <div class="dest-actions single-btn">
+              <a href="rhodes.html" class="dest-btn">Explore Rhodes</a>
+            </div>
           </div>
         </article>
 
@@ -282,7 +287,10 @@
               <span><i class="fa-regular fa-clock"></i> ~45 mins (Rhodes-Kamiros)</span>
               <span><i class="fa-solid fa-tag"></i> From €50</span>
             </div>
-            <a href="#" class="dest-btn">Read more</a>
+            <div class="dest-actions">
+              <a href="halki.html" class="dest-btn">Halki</a>
+              <a href="tilos.html" class="dest-btn">Tilos</a>
+            </div>
           </div>
         </article>
 
@@ -701,7 +709,7 @@
       };
 
       handleMq();
-      mq.addEventListener?.("change", handleMq);
+      mq.addEventListener?.change?.(handleMq);
       if (!mq.addEventListener) mq.addListener(handleMq);
     })();
   </script>
