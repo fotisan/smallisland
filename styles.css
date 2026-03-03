@@ -511,6 +511,13 @@ html, body {
   font-weight: 500;
 }
 
+/* Διόρθωση στοίχισης κειμένου κάτω από τα εικονίδια */
+.feature-item span {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
 .feature-item i {
   font-size: 24px;
   color: #a68a6d;
@@ -1310,13 +1317,15 @@ html, body {
     width: 100%;
   }
   
+  /* Διόρθωση: Μέγιστο πλάτος στα κουμπιά για να μην ξεχειλώνουν */
   .shared-cta-desktop .primary-btn,
   .shared-cta-desktop .ghost-btn {
     height: 54px;
     padding: 0 48px 0 15px;
     width: auto;
     flex: 1;
-    min-width: 240px; 
+    min-width: 240px;
+    max-width: 280px; 
   }
 
   /* ROUTES / DESTINATIONS - DESKTOP */
