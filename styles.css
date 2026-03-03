@@ -497,6 +497,7 @@ html, body {
   justify-content: space-around;
   width: 100%;
   max-width: 450px;
+  margin: 0 auto; /* ΠΡΟΣΘΗΚΗ: Κεντράρει όλο το μπλοκ στη μέση της οθόνης σε Desktop */
   gap: 15px;
 }
 
@@ -511,7 +512,7 @@ html, body {
   font-weight: 500;
 }
 
-/* Διόρθωση στοίχισης κειμένου κάτω από τα εικονίδια */
+/* Σωστή ευθυγράμμιση κειμένου */
 .feature-item span {
   display: block;
   text-align: center;
@@ -522,6 +523,10 @@ html, body {
   font-size: 24px;
   color: #a68a6d;
   margin-bottom: 10px;
+  height: 32px; /* ΠΡΟΣΘΗΚΗ: Σταθερό ύψος στα εικονίδια για να ευθυγραμμιστούν κάθετα τα κείμενα */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* =========================================
@@ -1303,7 +1308,13 @@ html, body {
 
   .fleet-features { max-width: 600px; gap: 30px; }
   .feature-item { font-size: 15px; }
-  .feature-item i { font-size: 32px; margin-bottom: 12px; }
+  
+  /* ΠΡΟΣΘΗΚΗ: Σταθερό ύψος στα εικονίδια και για το Desktop */
+  .feature-item i { 
+    font-size: 32px; 
+    margin-bottom: 12px; 
+    height: 42px; 
+  }
 
   .shared-cta-mobile { display: none !important; }
   
@@ -1317,7 +1328,6 @@ html, body {
     width: 100%;
   }
   
-  /* Διόρθωση: Μέγιστο πλάτος στα κουμπιά για να μην ξεχειλώνουν */
   .shared-cta-desktop .primary-btn,
   .shared-cta-desktop .ghost-btn {
     height: 54px;
