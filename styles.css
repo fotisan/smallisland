@@ -147,17 +147,29 @@ html, body {
   display: block;
   width: 100%;
   background-color: #f6f4f0 !important;
+  position: relative; /* Βοηθάει να παραμείνουν τα absolute στοιχεία μέσα */
 }
 
-.mobile-hero-image {
+/* ΒΕΛΤΙΣΤΟΠΟΙΗΣΗ: NΕΟΙ ΚΑΝΟΝΕΣ ΓΙΑ ΤΟ HERO IMAGE */
+.hero-picture-wrapper {
+  display: block;
   width: 100%;
-  height: 68svh;
-  background-image: url("hero-mobile.webp");
-  background-size: cover;
-  background-position: center 75%;
-  background-repeat: no-repeat;
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .hero-picture-wrapper {
+    height: 68svh; /* Διατηρεί το ύψος που είχε η αρχική σχεδίαση στο mobile */
+  }
+}
+
+.hero-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 75%;
+  display: block;
 }
 
 .hero-content {
@@ -497,7 +509,7 @@ html, body {
   justify-content: space-around;
   width: 100%;
   max-width: 450px;
-  margin: 0 auto; /* ΠΡΟΣΘΗΚΗ: Κεντράρει όλο το μπλοκ στη μέση της οθόνης σε Desktop */
+  margin: 0 auto; 
   gap: 15px;
 }
 
@@ -512,7 +524,6 @@ html, body {
   font-weight: 500;
 }
 
-/* Σωστή ευθυγράμμιση κειμένου */
 .feature-item span {
   display: block;
   text-align: center;
@@ -523,7 +534,7 @@ html, body {
   font-size: 24px;
   color: #a68a6d;
   margin-bottom: 10px;
-  height: 32px; /* ΠΡΟΣΘΗΚΗ: Σταθερό ύψος στα εικονίδια για να ευθυγραμμιστούν κάθετα τα κείμενα */
+  height: 32px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1165,8 +1176,18 @@ html, body {
   }
   .nav-item.active, .nav-item:hover { background-color: rgba(0, 0, 0, 0.05); }
 
-  /* HERO desktop */
-  .mobile-hero-image { display: none; }
+  /* ΒΕΛΤΙΣΤΟΠΟΙΗΣΗ: ΝΕΟI ΚΑΝΟΝΕΣ ΓΙΑ ΤΟ DESKTOP HERO */
+  .hero-picture-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-main-img {
+    object-position: center;
+  }
 
   .hero-section {
     display: flex;
@@ -1178,9 +1199,6 @@ html, body {
     border-radius: 30px; 
     overflow: hidden; 
     background-color: transparent !important;
-    background-image: url("hero.webp");
-    background-size: cover;
-    background-position: center;
     position: relative;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
   }
@@ -1309,7 +1327,6 @@ html, body {
   .fleet-features { max-width: 600px; gap: 30px; }
   .feature-item { font-size: 15px; }
   
-  /* ΠΡΟΣΘΗΚΗ: Σταθερό ύψος στα εικονίδια και για το Desktop */
   .feature-item i { 
     font-size: 32px; 
     margin-bottom: 12px; 
