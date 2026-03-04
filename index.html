@@ -9,6 +9,10 @@
   
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
+  <link rel="preload" href="styles.css?v=18" as="style" />
+  <link rel="preload" href="hero-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" href="hero.webp" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="high" />
+
   <link rel="stylesheet" href="styles.css?v=18" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,20 +60,20 @@
 
     <main class="hero-content">
       <div class="top-content">
-        <h1 class="main-title animate-entry delay-1">
+        <h1 class="main-title animate-entry">
           Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">
           across<br>
           Rhodes & The Islands.
         </h1>
 
-        <p class="hero-description animate-entry delay-2">
+        <p class="hero-description animate-entry delay-1">
           <span class="highlight-text">One message and it's sorted.</span><br>
           Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
           with a driver who knows every harbour, every ferry, every island.
         </p>
       </div>
 
-      <div class="destination-list animate-entry delay-3">
+      <div class="destination-list animate-entry delay-2">
         <div class="dest-line">
           <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Airport</span>
           <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Harbour</span>
@@ -83,7 +87,7 @@
         </div>
       </div>
 
-      <div class="cta-group animate-entry delay-4" id="heroCtaGroup">
+      <div class="cta-group animate-entry delay-3" id="heroCtaGroup">
         <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
           <span class="btn-text">Let's Plan Your Route</span>
           <span class="icon-circle fb-icon-bg" aria-hidden="true">
@@ -726,7 +730,7 @@
       const hiddenElements = document.querySelectorAll('.scroll-animate');
       hiddenElements.forEach((el) => observer.observe(el));
 
-      // Testimonial Slider Dots Logic
+      // ΕΝΗΜΕΡΩΜΕΝΟΣ ΚΩΔΙΚΑΣ: Testimonial Slider Dots Logic - Διόρθωση του Forced Reflow
       const slider = document.getElementById('testimonialSlider');
       const dotsContainer = document.getElementById('sliderDots');
       
@@ -741,19 +745,34 @@
         });
 
         const dots = dotsContainer.querySelectorAll('.dot');
+        
+        // Υπολογίζουμε το cardWidth μόνο μία φορά στην αρχή
+        let cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 0; 
+        
+        // Και το ανανεώνουμε μόνο αν ο χρήστης αλλάξει το μέγεθος του παραθύρου
+        window.addEventListener('resize', () => {
+          if(cards[0]) cardWidth = cards[0].offsetWidth + 16;
+        }, { passive: true });
+
+        let scrollTimeout;
 
         slider.addEventListener('scroll', () => {
-          let scrollLeft = slider.scrollLeft;
-          let cardWidth = cards[0].offsetWidth + 16; 
-          let index = Math.round(scrollLeft / cardWidth);
+          if (scrollTimeout) window.cancelAnimationFrame(scrollTimeout);
           
-          if (index >= dots.length) index = dots.length - 1;
-          
-          dots.forEach(dot => dot.classList.remove('active'));
-          if(dots[index]) {
-            dots[index].classList.add('active');
-          }
-        });
+          // Το requestAnimationFrame διασφαλίζει ομαλότητα και αποτρέπει layout thrashing
+          scrollTimeout = window.requestAnimationFrame(() => {
+            if(cardWidth === 0) return; // safety check
+            let scrollLeft = slider.scrollLeft;
+            let index = Math.round(scrollLeft / cardWidth);
+            
+            if (index >= dots.length) index = dots.length - 1;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            if(dots[index]) {
+              dots[index].classList.add('active');
+            }
+          });
+        }, { passive: true }); // Το passive: true ενημερώνει τον browser ότι δεν θα μπλοκάρουμε το scroll
       }
     });
 
