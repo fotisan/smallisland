@@ -15,13 +15,14 @@
 
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"></noscript>
 
   <style>
     :root {
       --bg: #faf9f6; 
       --text: #2c3632; 
       --font: "Inter", "Roboto", Arial, sans-serif;
-      --serif: "Playfair Display", Georgia, serif;
+      --serif: "Playfair Display", "Times New Roman", Georgia, serif;
     }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -29,40 +30,124 @@
       width:100%;height:100%;margin:0;
       font-family:var(--font);
       background-color:var(--bg);
-      /* Ενσωμάτωση του gradient εδώ για να μην αλλάζει η οθόνη μετά τη φόρτωση */
       background-image: radial-gradient(circle at 10% 20%, rgba(94, 140, 133, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(214, 180, 152, 0.1) 0%, transparent 40%);
       overflow-x:hidden;color:var(--text);line-height:1.6;
     }
-    .main-header{position:fixed;top:15px;left:50%;transform:translateX(-50%);width:calc(100% - 30px);max-width:1200px;background:rgba(255,255,255,.9);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.5);border-radius:40px;display:flex;justify-content:space-between;align-items:center;padding:10px 15px;z-index:1000;box-shadow:0 4px 15px rgba(0,0,0,.05)}
-    .hero-section{display:block;width:100%;background-color:transparent!important;position:relative}
-    .hero-main-img{width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block}
-    .main-title{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.15;color:var(--text);margin-bottom:8px}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-entry{opacity:0;animation:fadeInUp 0.8s ease-out forwards}
     .scroll-animate{opacity:0}
     .scroll-animate.is-visible{animation:fadeInUp 0.8s ease-out forwards}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .delay-1{animation-delay:.1s}.delay-2{animation-delay:.3s}.delay-3{animation-delay:.5s}.delay-4{animation-delay:.7s}.delay-5{animation-delay:.9s}.delay-6{animation-delay:1.1s}.delay-7{animation-delay:1.3s}
+    .main-header{position:fixed;top:15px;left:50%;transform:translateX(-50%);width:calc(100% - 30px);max-width:1200px;background:rgba(255,255,255,.9);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.5);border-radius:40px;display:flex;justify-content:space-between;align-items:center;padding:10px 15px;z-index:1000;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+    .logo-wrapper{display:flex;align-items:center;gap:8px}
+    .logo-text{display:flex;flex-direction:column;font-size:11px;font-weight:700;line-height:1.1;color:var(--text);letter-spacing:.5px}
+    .hamburger-btn{background:transparent;border:none;font-size:24px;color:var(--text);cursor:pointer;padding:5px 10px;display:flex;align-items:center;outline:none}
+    #menu-icon{transition:opacity .2s ease,transform .2s ease}
+    .top-nav{display:flex;flex-direction:column;position:absolute;top:65px;left:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:10px 0;box-shadow:0 10px 25px rgba(0,0,0,.1);visibility:hidden;opacity:0;pointer-events:none;transform-origin:top center;transform:translateY(-15px) scaleY(.95);transition:opacity .3s ease,transform .4s cubic-bezier(.16,1,.3,1),visibility .4s}
+    .top-nav.active{visibility:visible;opacity:1;pointer-events:auto;transform:translateY(0) scaleY(1)}
+    .nav-item{text-decoration:none;color:#555;font-size:15px;font-weight:500;padding:12px 20px;text-align:center;border-bottom:1px solid rgba(0,0,0,.05);transition:background-color .2s,color .2s}
+    .nav-item:last-child{border-bottom:none}
+    .nav-item.active,.nav-item:hover{color:var(--text);font-weight:600;background-color:rgba(0,0,0,.03)}
+    .hero-section{display:block;width:100%;background-color:transparent!important;position:relative}
+    .hero-picture-wrapper{display:block;width:100%;position:relative;z-index:1}
     @media(max-width:767px){.hero-picture-wrapper{height:68svh}}
+    .hero-main-img{width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block}
+    .hero-content{background-color:var(--bg)!important;border-top-left-radius:30px;border-top-right-radius:30px;margin-top:-85px;margin-bottom:0!important;padding:30px 20px 0 20px!important;position:relative;z-index:10;display:flex;flex-direction:column;box-shadow:0 -15px 25px -10px rgba(0,0,0,.1)!important;border-bottom:none!important}
+    .top-content{order:1;display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:25px}
+    .main-title{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.15;color:var(--text);margin-bottom:8px}
+    .desktop-br{display:none}.mobile-space{display:inline}
+    .hero-description{font-size:14px;font-weight:400;color:#444;line-height:1.5}
+    .desktop-comma{display:none}.desktop-br-desc{display:none}.mobile-dash{display:inline}
+    .highlight-text{font-weight:600;color:var(--text);display:inline-block;margin-bottom:4px}
+    .cta-group{order:2;display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:360px;margin:0 auto 25px auto}
+    .primary-btn,.ghost-btn{text-decoration:none;display:flex;align-items:center;justify-content:center;position:relative;border-radius:50px;height:50px;width:100%;padding:0 45px 0 15px;transition:transform .2s ease,box-shadow .2s ease}
+    .primary-btn:active,.ghost-btn:active{transform:scale(.98)}
+    .btn-text{font-size:14px;font-weight:500;text-align:center}
+    .icon-circle{position:absolute;right:5px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+    .primary-btn{background-color:#1A365D;border:2px solid #1A365D;box-shadow:0 4px 15px rgba(26,54,93,.3)}
+    .primary-btn .btn-text{color:#fff}
+    .fb-icon-bg{background-color:#fff;color:#1A365D}
+    .ghost-btn{background-color:#fff;border:2px solid var(--text)}
+    .ghost-btn .btn-text{color:var(--text)}
+    .wa-bg{background-color:#25D366;color:#fff;border:none}
+    .email-bg{background-color:#a68a6d;color:#fff;border:none}
+    .shared-cta-desktop{display:none}
+    .destination-list{order:3;width:100%}
+    .dest-line{display:flex;justify-content:center;flex-wrap:nowrap;gap:6px;margin-bottom:8px}
+    .dest-line:last-child{margin-bottom:0}
+    .loc-item{font-size:11px;font-weight:500;color:#666;white-space:nowrap}
+    .loc-item i{color:#1A365D;margin-right:2px;font-size:10px}
+    .shape-divider{display:none!important}
+    .section-title{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1.1;text-align:center;color:var(--text);margin:0 0 25px 0}
+    .floating-cta{position:fixed;right:14px;bottom:14px;z-index:1200;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(10px) scale(.98);pointer-events:none;transition:opacity .22s ease,transform .28s cubic-bezier(.16,1,.3,1)}
+    .floating-cta.is-active{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    .floating-btn{width:56px;height:56px;border-radius:999px;display:grid;place-items:center;text-decoration:none;border:1px solid rgba(0,0,0,.10);box-shadow:0 12px 28px rgba(0,0,0,.18);-webkit-tap-highlight-color:transparent;transform:translateZ(0)}
+    .floating-btn:active{transform:scale(.97)}
+    .floating-messenger{background:#1A365D;color:#fff}
+    .floating-whatsapp{background:#25D366;color:#fff}
+    .floating-btn i{font-size:22px}
     @media(min-width:768px){
-      .main-title{font-size:58px}
-      .hero-section{display:flex;align-items:flex-end;min-height:700px;max-width:1200px;width:calc(100% - 30px);margin:120px auto 40px auto;border-radius:30px;overflow:hidden;}
+      .floating-cta{display:none!important}
+      .main-header{top:25px;max-width:1200px;padding:10px 25px}
+      .logo-text{font-size:13px}
+      .hamburger-btn{display:none}
+      .top-nav{display:flex!important;flex-direction:row;position:static;width:auto;margin-top:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;padding:0;box-shadow:none;gap:15px;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transform:none!important}
+      .nav-item{font-size:14px;padding:8px 16px;border-bottom:none;border-radius:30px}
+      .nav-item.active,.nav-item:hover{background-color:rgba(0,0,0,.05)}
+      .hero-picture-wrapper{position:absolute;top:0;left:0;height:100%;z-index:0}
+      .hero-main-img{object-position:center}
+      .hero-section{display:flex;align-items:flex-end;min-height:700px;max-width:1200px;width:calc(100% - 30px);margin:120px auto 40px auto;border-radius:30px;overflow:hidden;background-color:transparent!important;position:relative;box-shadow:0 15px 35px rgba(0,0,0,.1)}
+      .hero-content{max-width:900px;width:100%;justify-content:flex-end;align-items:flex-start;border-radius:0;margin-top:0;box-shadow:none!important;background-color:transparent!important;padding:0 5% 110px 5%!important}
+      .top-content{align-items:flex-start;text-align:left;margin-bottom:20px}
+      .main-title{font-size:58px;margin-bottom:15px;white-space:nowrap;color:var(--text)}
+      .desktop-br{display:block}.mobile-space{display:none}
+      .hero-description{font-size:18px;line-height:1.6;color:#333}
+      .desktop-comma{display:inline}.desktop-br-desc{display:block}.mobile-dash{display:none}
+      .highlight-text{font-weight:700;color:var(--text);display:inline-block;margin-bottom:4px}
+      .destination-list{margin-top:15px}
+      .dest-line{justify-content:flex-start;gap:18px;margin-bottom:12px}
+      .loc-item{font-size:15px;font-weight:500;color:#222}
+      .loc-item i{font-size:13px;margin-right:5px;color:#555}
+      .cta-group{align-items:flex-start;flex-direction:row;max-width:700px;margin:30px 0 0 0;gap:20px}
+      .primary-btn,.ghost-btn{height:54px;padding:0 55px 0 20px;width:auto;flex:1}
+      .btn-text{font-size:15px;text-align:left}
+      .ghost-btn{background-color:rgba(255,255,255,.7);border:2px solid var(--text);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+      .ghost-btn .btn-text{color:var(--text)}
+      .section-title{font-size:52px;margin:10px 0 40px 0}
     }
   </style>
 
   <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="fa-custom.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  
+  <link rel="stylesheet" href="fa-custom.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="fa-custom.css"></noscript>
 </head>
 
 <body>
 
   <header class="main-header">
     <div class="logo-wrapper">
-      <div class="logo-text" style="display:flex; flex-direction:column; font-size:11px; font-weight:700;"><span>SMALL ISLAND</span><span>TRANSFER</span></div>
+      <div class="logo-text"><span>SMALL ISLAND</span><span>TRANSFER</span></div>
     </div>
-    <button class="hamburger-btn" style="background:transparent; border:none; font-size:24px;" onclick="toggleMenu(event)">
-      <i class="fa-solid fa-bars" id="menu-icon"></i>
+    <button class="hamburger-btn" aria-label="Open menu" onclick="toggleMenu(event)">
+      <i class="fa-solid fa-bars" id="menu-icon" aria-hidden="true"></i>
     </button>
-    <nav class="top-nav" id="topNav" style="display:none;">
-      </nav>
+    <nav class="top-nav" id="topNav" aria-label="Primary">
+      <a href="#home" class="nav-item">Home</a>
+      <a href="#services" class="nav-item">Services</a>
+      <a href="#transfers" class="nav-item">Transfers</a>
+      <a href="#routes" class="nav-item">Routes</a>
+      <a href="#pricing" class="nav-item">Pricing</a>
+      <a href="#about" class="nav-item">About</a>
+      <a href="#reviews" class="nav-item">Reviews</a>
+      <a href="#faq" class="nav-item">FAQ</a>
+      <a href="#contact" class="nav-item active">Contact</a>
+    </nav>
   </header>
 
   <section class="hero-section" id="home">
@@ -70,58 +155,514 @@
       <source media="(min-width: 768px)" srcset="hero.webp">
       <img src="hero-mobile.webp" alt="Private transfer in Rhodes" class="hero-main-img" fetchpriority="high">
     </picture>
-    <main class="hero-content" style="background-color:var(--bg); border-top-left-radius:30px; border-top-right-radius:30px; margin-top:-85px; padding:30px 20px 0 20px; position:relative; z-index:10;">
-      <div class="top-content" style="text-align:center;">
-        <h1 class="main-title">Your Private Transfer across Rhodes & The Islands.</h1>
-        <p style="font-size:14px; color:#444;">One message and it's sorted.</p>
+    <main class="hero-content">
+      <div class="top-content">
+        <h1 class="main-title">
+          Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">across<br>Rhodes & The Islands.
+        </h1>
+        <p class="hero-description">
+          <span class="highlight-text">One message and it's sorted.</span><br>
+          Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
+          with a driver who knows every harbour, every ferry, every island.
+        </p>
       </div>
-      <div class="cta-group" id="heroCtaGroup" style="display:flex; flex-direction:column; gap:12px; margin-top:20px;">
-        <a href="#" class="primary-btn" style="background:#1A365D; color:#fff; text-decoration:none; padding:15px; border-radius:50px; text-align:center;">Let's Plan Your Route</a>
+      <div class="destination-list animate-entry delay-3">
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Airport</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Rhodes Harbour</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kamiros Skala</span>
+        </div>
+        <div class="dest-line">
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Halki</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Symi</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Tilos</span>
+          <span class="loc-item"><i class="fa-solid fa-location-dot"></i> Kastellorizo</span>
+        </div>
+      </div>
+      <div class="cta-group animate-entry delay-4" id="heroCtaGroup">
+        <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+          <span class="btn-text">Let's Plan Your Route</span>
+          <span class="icon-circle fb-icon-bg" aria-hidden="true"><i class="fa-brands fa-facebook-messenger"></i></span>
+        </a>
+        <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+          <span class="btn-text">Get in Touch via WhatsApp</span>
+          <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+        </a>
       </div>
     </main>
   </section>
 
-  <section class="destinations" id="routes">
+  <section class="why" id="services" aria-labelledby="whyTitle">
     <div class="container">
-      <h2 class="section-title">Explore Our Destinations</h2>
-      <div class="dest-grid">
-        <article class="dest-card">
-          <div class="dest-media">
-            <img src="dest-symi.webp" srcset="dest-symi-320.webp 320w, dest-symi.webp 400w" sizes="(max-width: 767px) 140px, 300px" alt="Symi" loading="lazy">
+      <h2 class="section-title scroll-animate delay-1" id="whyTitle">Why Choose Us</h2>
+      <div class="why-list">
+
+        <article class="why-item scroll-animate delay-2">
+          <div class="why-media">
+            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900"/>
           </div>
-          <div class="dest-info">
-            <h3 class="dest-name">Symi</h3>
-            <a href="symi.html" class="dest-btn">Explore</a>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true"><i class="fa-regular fa-clock"></i></div>
+            <h3>Absolute Punctuality (Always On-Time)</h3>
+            <p>We know how important time is on your holiday. We guarantee punctuality for every pick-up and drop-off.</p>
           </div>
         </article>
-        </div>
+
+        <article class="why-item scroll-animate delay-3">
+          <div class="why-media">
+            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900"/>
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-car-side"></i></div>
+            <h3>Premium Fleet & Flexibility</h3>
+            <p>From VIP transfers (1-4 people) to comfortable minivans and minibuses for groups (5-8, 9-11, 12-21 people).</p>
+          </div>
+        </article>
+
+        <article class="why-item scroll-animate delay-4">
+          <div class="why-media">
+            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" width="1200" height="900"/>
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-credit-card"></i></div>
+            <h3>Ease of Payment</h3>
+            <p>We have POS terminals available in all our vehicles. We accept Visa, Mastercard, and Maestro cards.</p>
+          </div>
+        </article>
+
+        <article class="why-item scroll-animate delay-5">
+          <div class="why-media">
+            <img src="why-5stars.webp" alt="Five star service" loading="lazy" width="1200" height="900"/>
+          </div>
+          <div class="why-copy">
+            <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
+            <h3>5-Star Service</h3>
+            <p>Customer satisfaction is our priority, with top ratings for safety and excellent service.</p>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
-  <script>
-    // ΜΗΔΕΝΙΚΟ FORCED REFLOW - Χρήση IntersectionObserver για τα κουκκίδια
-    window.addEventListener('load', function() {
-      const slider = document.getElementById('testimonialSlider');
-      const cards = document.querySelectorAll('.test-card');
-      const dots = document.querySelectorAll('.slider-dots .dot');
-      if (!slider || cards.length === 0) return;
+  <section class="fleet" id="transfers" aria-labelledby="fleetTitle">
+    <div class="container fleet-container">
+      <h2 class="section-title scroll-animate delay-1" id="fleetTitle">Our Fleet & Partner Network</h2>
+      <div class="fleet-card scroll-animate delay-2">
+        <div class="fleet-image-wrapper">
+          <img src="audi-q5.webp" alt="Audi Q5 parked by the sea" class="fleet-image" loading="lazy" width="800" height="500">
+        </div>
+        <div class="fleet-content">
+          <h3 class="fleet-subtitle">Primary Service: Audi Q5</h3>
+          <h4 class="fleet-highlight">Flexible Fleet for Every Need</h4>
+          <div class="capacity-lines" aria-label="Vehicle capacity options">
+            <div class="cap-item"><span class="cap-label">Private rides</span> <span class="cap-meta">(1–4)</span></div>
+            <div class="cap-item"><span class="cap-label">Vans</span> <span class="cap-meta">(5–8)</span></div>
+            <div class="cap-item"><span class="cap-label">Mini buses</span> <span class="cap-meta">(9–11)</span></div>
+            <div class="cap-item"><span class="cap-label">Groups</span> <span class="cap-meta">(12–21)</span></div>
+          </div>
+          <div class="fleet-features">
+            <div class="feature-item"><i class="fa-solid fa-credit-card"></i><span>Cards Accepted<br>(POS)</span></div>
+            <div class="feature-item"><i class="fa-regular fa-snowflake"></i><span>Air Conditioning<br>(A/C)</span></div>
+            <div class="feature-item"><i class="fa-solid fa-baby-carriage"></i><span>Child Seats<br>(upon request)</span></div>
+          </div>
+          <div class="shared-cta-mobile" style="margin-top:35px;text-align:center;">
+            <a href="#" class="primary-btn" onclick="openWhatsApp(); return false;" style="width:auto;display:inline-flex;">
+              <span class="btn-text">Request a Quote</span>
+              <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+            </a>
+          </div>
+          <div class="shared-cta-desktop">
+            <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+              <span class="btn-text">Let's Plan Your Route</span>
+              <span class="icon-circle fb-icon-bg" aria-hidden="true"><i class="fa-brands fa-facebook-messenger"></i></span>
+            </a>
+            <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+              <span class="btn-text">Get in Touch via WhatsApp</span>
+              <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+            </a>
+            <a href="mailto:info@smallislandtransfer.com" class="ghost-btn">
+              <span class="btn-text">Send us an Email</span>
+              <span class="icon-circle email-bg" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+  <section class="destinations" id="routes" aria-labelledby="destTitle">
+    <div class="container">
+      <h2 class="section-title scroll-animate delay-1" id="destTitle">Explore Our Destinations</h2>
+      <div class="dest-grid">
+
+        <article class="dest-card scroll-animate delay-2">
+          <div class="dest-media">
+            <img src="dest-symi.webp"
+              srcset="dest-symi-320.webp 320w, dest-symi.webp 400w"
+              sizes="(max-width: 767px) 140px, 300px"
+              alt="Symi harbour" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Symi<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Rhodes Harbour)</span></h3>
+            <p class="dest-desc">Comfortable transfer to the main harbour. VIP pick-up upon your arrival.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~15 mins (to Harbour)</span>
+              <span><i class="fa-solid fa-tag"></i> From €30</span>
+            </div>
+            <a href="symi.html" class="dest-btn">Explore Symi</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-3">
+          <div class="dest-media">
+            <img src="dest-kastellorizo.webp"
+              srcset="dest-kastellorizo-320.webp 320w, dest-kastellorizo.webp 400w"
+              sizes="(max-width: 767px) 140px, 300px"
+              alt="Kastellorizo harbour" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Kastellorizo<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Rhodes Harbour)</span></h3>
+            <p class="dest-desc">Comfortable transfer to the main harbour. VIP pick-up upon your arrival.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~15 mins (to Harbour)</span>
+              <span><i class="fa-solid fa-tag"></i> From €30</span>
+            </div>
+            <a href="kastellorizo.html" class="dest-btn">Explore Kastellorizo</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-4">
+          <div class="dest-media">
+            <img src="dest-rhodes.webp"
+              srcset="dest-rhodes-320.webp 320w, dest-rhodes.webp 400w"
+              sizes="(max-width: 767px) 140px, 300px"
+              alt="Rhodes Old Town Castle" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Rhodes<br><span style="font-size:13px;font-weight:500;color:#555;">(Airport, City & Tours)</span></h3>
+            <p class="dest-desc">VIP transfers to/from 'Diagoras' Airport, hotels, and local attractions.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> 24/7 Service</span>
+              <span><i class="fa-solid fa-tag"></i> Premium Fleet</span>
+            </div>
+            <a href="rhodes.html" class="dest-btn">Explore Rhodes</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-5">
+          <div class="dest-media">
+            <img src="dest-halki.webp"
+              srcset="dest-halki-320.webp 320w, dest-halki.webp 400w"
+              sizes="(max-width: 767px) 140px, 300px"
+              alt="Halki coastal view" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Halki<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Kamiros Skala)</span></h3>
+            <p class="dest-desc">Complete transfer from Rhodes to the harbour. Pick-up on the island and transfer to your accommodation.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~45 mins (Rhodes-Kamiros)</span>
+              <span><i class="fa-solid fa-tag"></i> From €65</span>
+            </div>
+            <a href="halki.html" class="dest-btn">Explore Halki</a>
+          </div>
+        </article>
+
+        <article class="dest-card scroll-animate delay-6">
+          <div class="dest-media">
+            <img src="dest-tilos.webp"
+              srcset="dest-tilos-320.webp 320w, dest-tilos.webp 400w"
+              sizes="(max-width: 767px) 140px, 300px"
+              alt="Tilos coastal view" loading="lazy" width="400" height="400">
+          </div>
+          <div class="dest-info">
+            <h3 class="dest-name">Tilos<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Kamiros Skala)</span></h3>
+            <p class="dest-desc">Complete transfer from Rhodes to the harbour. Pick-up on the island and transfer to your accommodation.</p>
+            <div class="dest-meta">
+              <span><i class="fa-regular fa-clock"></i> ~45 mins (Rhodes-Kamiros)</span>
+              <span><i class="fa-solid fa-tag"></i> From €65</span>
+            </div>
+            <a href="tilos.html" class="dest-btn">Explore Tilos</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="pricing" aria-labelledby="pricingTitle">
+    <div class="container">
+      <h2 class="section-title scroll-animate delay-1" id="pricingTitle">Popular Routes & Pricing</h2>
+      <p class="pricing-subtitle scroll-animate delay-2">Fixed prices with no hidden fees.</p>
+      <div class="pricing-grid scroll-animate delay-3">
+        <div class="price-table-container">
+          <h3 class="price-table-title">Routes to / from Kamiros Skala</h3>
+          <ul class="price-list">
+            <li><span>Rhodes Airport</span><span>€65</span></li>
+            <li><span>Rhodes Town</span><span>€70 - €80</span></li>
+            <li><span>Rhodes Port</span><span>€80</span></li>
+            <li><span>Kolympia / Faliraki / Kallithea</span><span>€75 - €80</span></li>
+            <li><span>Stegna / Haraki</span><span>€80 - €90</span></li>
+            <li><span>Lindos</span><span>€80 - €90</span></li>
+            <li><span>Lardos / Kiotari / Pefkos</span><span>€90 - €100</span></li>
+          </ul>
+        </div>
+        <div class="price-table-container">
+          <h3 class="price-table-title">Other Popular Routes</h3>
+          <ul class="price-list">
+            <li><span>Rhodes Airport &rarr; Rhodes Town</span><span>€40</span></li>
+            <li><span>Rhodes Town &rarr; Rhodes Airport</span><span>€30</span></li>
+            <li><span>Rhodes Port &rarr; Rhodes Airport</span><span>€40</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="shared-cta-mobile scroll-animate delay-4" style="margin-top:35px;text-align:center;">
+        <a href="#" class="primary-btn" onclick="openWhatsApp(); return false;" style="width:auto;display:inline-flex;">
+          <span class="btn-text">Request a Quote</span>
+          <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+        </a>
+      </div>
+      <div class="shared-cta-desktop scroll-animate delay-4">
+        <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="primary-btn">
+          <span class="btn-text">Let's Plan Your Route</span>
+          <span class="icon-circle fb-icon-bg" aria-hidden="true"><i class="fa-brands fa-facebook-messenger"></i></span>
+        </a>
+        <a href="#" class="ghost-btn" onclick="openWhatsApp(); return false;">
+          <span class="btn-text">Get in Touch via WhatsApp</span>
+          <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
+        </a>
+        <a href="mailto:info@smallislandtransfer.com" class="ghost-btn">
+          <span class="btn-text">Send us an Email</span>
+          <span class="icon-circle email-bg" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="aboutTitle">
+    <div class="container about-container">
+      <h2 class="section-title scroll-animate delay-1" id="aboutTitle">Your Personal Host in the Dodecanese</h2>
+      <p class="about-subtitle scroll-animate delay-2">Local knowledge meets premium service.</p>
+      <div class="about-content scroll-animate delay-3">
+        <div class="about-image-wrapper">
+          <img src="founder.webp" alt="Aggelos - Founder" class="about-image" loading="lazy">
+        </div>
+        <div class="about-text">
+          <p>Welcome to Rhodes. Behind Small Island Transfer lies my passion for authentic Greek hospitality and the desire to offer stress-free transportation. Born and raised here, I know every corner of Rhodes and the unique characteristics of our neighboring islands.</p>
+          <p>As your primary driver and coordinator, I personally guarantee two things: absolute punctuality and uncompromising quality in your transfer. Whether you travel with me in the Audi Q5, or with one of the carefully selected partners in our network on the smaller islands, my goal is to make your journey as enjoyable as your destination.</p>
+          <p class="about-signature">Aggelos – Founder, S.I.T.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="reviews" aria-labelledby="reviewsTitle">
+    <div class="container">
+      <div class="testimonials-header scroll-animate delay-1">
+        <h2 class="section-title" id="reviewsTitle">What our customers say</h2>
+        <p class="testimonials-subtitle">The Small Island Transfer experience through your eyes.</p>
+        <div class="overall-rating">
+          <span class="rating-number">5.0 / 5.0</span>
+          <div class="rating-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="rating-source">Average rating on Facebook</p>
+        </div>
+      </div>
+      <div class="testimonials-slider scroll-animate delay-2" id="testimonialSlider">
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="test-text">"Very friendly, professional and competitive company. We booked them twice recently on our holiday in Halki, both from the airport to our accommodation in Rhodes town and also from Kamiros Skala to the airport on our return journey. They also responded to my messages within minutes. 5 stars highly recommended"</p>
+          <div class="test-author"><strong>Terry Cranston</strong><i class="fa-brands fa-facebook fb-color"></i></div>
+        </article>
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="test-text">"Used twice from and to the airport - excellent service and lovely drivers. I would most certainly recommend and will definitely use again. Thank you. Your 5 star rating is well deserved!"</p>
+          <div class="test-author"><strong>Carol Springett</strong><i class="fa-brands fa-facebook fb-color"></i></div>
+        </article>
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="test-text">"Perfect timing. Happy and helpful drivers. Safe journey. We used the taxi on our outward and inward journey. Would recommend."</p>
+          <div class="test-author"><strong>Debbie Jane</strong><i class="fa-brands fa-facebook fb-color"></i></div>
+        </article>
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="test-text">"Thank you for your excellent service on our trip home yesterday. Much appreciated. Hopefully see you next year!"</p>
+          <div class="test-author"><strong>Janey Gaskell</strong><i class="fa-brands fa-facebook fb-color"></i></div>
+        </article>
+        <article class="test-card">
+          <div class="quote-icon" aria-hidden="true"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="card-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="test-text">"The best taxi drivers. Very helpful and very punctual. Have a good season."</p>
+          <div class="test-author"><strong>Zina Zervou</strong><i class="fa-brands fa-facebook fb-color"></i></div>
+        </article>
+      </div>
+      <div class="slider-dots scroll-animate delay-3" id="sliderDots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq" aria-labelledby="faqTitle">
+    <div class="container faq-container">
+      <h2 class="section-title scroll-animate delay-1" id="faqTitle">Frequently Asked Questions</h2>
+      <p class="faq-subtitle scroll-animate delay-2">Everything you need to know before booking.</p>
+      <div class="faq-list scroll-animate delay-3">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">What happens if my flight or ferry is delayed?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">We monitor the progress of your flight or ferry live. Our driver will be waiting for you at the exact time of your arrival, with absolutely no extra charge for the delay.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">Exactly where will I meet the driver?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">At the airport, the driver will be waiting in the arrivals hall holding a sign with your name. At the ports (Rhodes, Kamiros Skala), they will be waiting right at the disembarkation point of your ferry.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">How far in advance should I make my booking?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">Ideally 24-48 hours in advance, so we can secure the appropriate vehicle for you. However, for last-minute transfers, send us a message on WhatsApp and we will do our best to accommodate you.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">How can I pay for the transfer?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">You can pay the driver directly at the end of the journey. All our vehicles have POS terminals and we accept Visa, Mastercard, Maestro cards, as well as cash.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">I am traveling with a baby/child. Do you provide child seats?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">Of course. We provide child seats and boosters free of charge. Just let us know the age and weight of the child during booking, so we can have the correct seat installed.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false"><span class="faq-q-text">We have a lot of/bulky luggage. Will it fit in the car?</span><i class="fa-solid fa-chevron-down faq-icon"></i></button>
+          <div class="faq-answer-wrapper"><div class="faq-answer">Our main vehicle (Audi Q5) has ample luggage space. But if you have an exceptionally large number of suitcases or special equipment, please inform us in advance so we can arrange your pickup with one of our spacious Vans.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer" id="contact">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Small Island Transfer</h3>
+          <p>Premium private transfers in Rhodes & the Dodecanese islands. Reliable, punctual, and stress-free.</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <nav class="footer-nav">
+            <a href="#services">Why Choose Us</a>
+            <a href="#transfers">Our Fleet</a>
+            <a href="#routes">Destinations</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <div class="contact-methods">
+            <a href="#" class="contact-link" onclick="openWhatsApp(); return false;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Message</a>
+            <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="contact-link"><i class="fa-brands fa-facebook-messenger"></i> Facebook Messenger</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Small Island Transfer. All rights reserved.</p>
+        <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-cta" id="floatingCta" aria-label="Quick contact shortcuts">
+    <a href="https://m.me/yourfacebookpage" target="_blank" rel="noopener" class="floating-btn floating-messenger" aria-label="Message us on Facebook Messenger" title="Messenger">
+      <i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i>
+    </a>
+    <a href="#" class="floating-btn floating-whatsapp" aria-label="Message us on WhatsApp" title="WhatsApp" onclick="openWhatsApp(); return false;">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <script>
+    function openWhatsApp() {
+      var p = "306900000000";
+      var m = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
+      window.open("https://wa.me/" + p + "?text=" + m, "_blank", "noopener");
+    }
+
+    function toggleMenu(event) {
+      if (event) event.stopPropagation();
+      var nav = document.getElementById("topNav");
+      var icon = document.getElementById("menu-icon");
+      nav.classList.toggle("active");
+      icon.style.opacity = "0"; icon.style.transform = "scale(0.8)";
+      setTimeout(function() {
+        icon.classList.toggle("fa-bars", !nav.classList.contains("active"));
+        icon.classList.toggle("fa-xmark", nav.classList.contains("active"));
+        icon.style.opacity = "1"; icon.style.transform = "scale(1)";
+      }, 200);
+    }
+
+    document.addEventListener("click", function(e) {
+      var nav = document.getElementById("topNav");
+      var ham = document.querySelector(".hamburger-btn");
+      if (nav.classList.contains("active") && !nav.contains(e.target) && !ham.contains(e.target)) toggleMenu();
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        item.querySelector('.faq-question').addEventListener('click', function() {
+          var isActive = item.classList.contains('active');
+          faqItems.forEach(function(f) { f.classList.remove('active'); f.querySelector('.faq-question').setAttribute('aria-expanded','false'); });
+          if (!isActive) { item.classList.add('active'); this.setAttribute('aria-expanded','true'); }
+        });
+      });
+
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.scroll-animate').forEach(function(el) { obs.observe(el); });
+
+      (function() {
+        var hero = document.getElementById("heroCtaGroup");
+        var fl = document.getElementById("floatingCta");
+        if (!hero || !fl) return;
+        var mq = window.matchMedia("(max-width: 767px)");
+        var io = null;
+        function set(v) { fl.classList[v ? 'add' : 'remove']("is-active"); }
+        function teardown() { set(false); if (io) { io.disconnect(); io = null; } }
+        function setup() {
+          teardown();
+          io = new IntersectionObserver(function(e) { set(!e[0].isIntersecting); }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" });
+          io.observe(hero);
+        }
+        function handle() { if (mq.matches) setup(); else teardown(); }
+        handle();
+        if (mq.addEventListener) mq.addEventListener('change', handle); else mq.addListener(handle);
+      })();
+    });
+
+    // Ο ΜΗΔΕΝΙΣΜΟΣ ΤΟΥ FORCED REFLOW - Χρήση IntersectionObserver ΑΠΟΛΥΤΩΣ
+    window.addEventListener('load', function() {
+      var slider = document.getElementById('testimonialSlider');
+      var dots = document.querySelectorAll('.slider-dots .dot');
+      var cards = document.querySelectorAll('.test-card');
+      if (!slider || dots.length === 0) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            const index = Array.from(cards).indexOf(entry.target);
-            dots.forEach(d => d.classList.remove('active'));
+            var index = Array.prototype.indexOf.call(cards, entry.target);
+            dots.forEach(function(d) { d.classList.remove('active'); });
             if (dots[index]) dots[index].classList.add('active');
           }
         });
-      }, { root: slider, threshold: 0.6 });
+      }, {
+        root: slider,
+        threshold: 0.6 
+      });
 
-      cards.forEach(card => observer.observe(card));
+      cards.forEach(function(card) {
+        observer.observe(card);
+      });
     });
-
-    function toggleMenu() {
-      document.getElementById("topNav").classList.toggle("active");
-    }
   </script>
+
 </body>
 </html>
