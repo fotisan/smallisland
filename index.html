@@ -6,16 +6,13 @@
   <title>Small Island Transfer</title>
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
 
-  <!-- Preload LCP hero images -->
   <link rel="preload" as="image" href="hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
   <link rel="preload" as="image" href="hero.webp" media="(min-width: 768px)" fetchpriority="high">
 
-  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <!-- CRITICAL INLINE CSS -->
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html,body{width:100%;height:100%;font-family:"Roboto",sans-serif;background-color:#f6f4f0;overflow-x:hidden;color:#111;scroll-behavior:smooth}
@@ -103,16 +100,15 @@
     }
   </style>
 
-  <!-- Non-critical CSS — all async -->
   <link rel="stylesheet" href="styles.css?v=20" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="styles.css?v=20"></noscript>
 
-  <!-- Google Fonts — async -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap"></noscript>
 
-  <!-- Font Awesome — LOCAL με font-display:swap (αντί CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <link rel="stylesheet" href="fa-custom.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="fa-custom.css"></noscript>
 </head>
@@ -193,10 +189,7 @@
 
         <article class="why-item scroll-animate delay-2">
           <div class="why-media">
-            <img src="why-on-time.webp"
-              srcset="why-on-time-600.webp 600w, why-on-time.webp 1200w"
-              sizes="(min-width: 768px) 50vw, 100vw"
-              alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900"/>
+            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-regular fa-clock"></i></div>
@@ -207,10 +200,7 @@
 
         <article class="why-item scroll-animate delay-3">
           <div class="why-media">
-            <img src="why-fleet.webp"
-              srcset="why-fleet-600.webp 600w, why-fleet.webp 1200w"
-              sizes="(min-width: 768px) 50vw, 100vw"
-              alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900"/>
+            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-car-side"></i></div>
@@ -221,10 +211,7 @@
 
         <article class="why-item scroll-animate delay-4">
           <div class="why-media">
-            <img src="why-payment.webp"
-              srcset="why-payment-600.webp 600w, why-payment.webp 1200w"
-              sizes="(min-width: 768px) 50vw, 100vw"
-              alt="Card payment in a vehicle" loading="lazy" width="1200" height="900"/>
+            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-credit-card"></i></div>
@@ -235,10 +222,7 @@
 
         <article class="why-item scroll-animate delay-5">
           <div class="why-media">
-            <img src="why-5stars.webp"
-              srcset="why-5stars-600.webp 600w, why-5stars.webp 1200w"
-              sizes="(min-width: 768px) 50vw, 100vw"
-              alt="Five star service" loading="lazy" width="1200" height="900"/>
+            <img src="why-5stars.webp" alt="Five star service" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
@@ -302,18 +286,9 @@
       <h2 class="section-title scroll-animate delay-1" id="destTitle">Explore Our Destinations</h2>
       <div class="dest-grid">
 
-        <!-- ΣΗΜΕΙΩΣΗ: Δημιούργησε τις -320 εκδόσεις με:
-             cwebp -q 82 -resize 320 320 dest-symi.webp -o dest-symi-320.webp
-             (επανέλαβε για κάθε dest-*.webp)
-             Και τις -600 για τα why-*.webp:
-             cwebp -q 82 -resize 600 450 why-on-time.webp -o why-on-time-600.webp -->
-
         <article class="dest-card scroll-animate delay-2">
           <div class="dest-media">
-            <img src="dest-symi.webp"
-              srcset="dest-symi-320.webp 320w, dest-symi.webp 400w"
-              sizes="(min-width: 768px) 300px, 38vw"
-              alt="Symi harbour" loading="lazy" width="400" height="400">
+            <img src="dest-symi.webp" alt="Symi harbour" loading="lazy" width="400" height="400">
           </div>
           <div class="dest-info">
             <h3 class="dest-name">Symi<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Rhodes Harbour)</span></h3>
@@ -328,10 +303,7 @@
 
         <article class="dest-card scroll-animate delay-3">
           <div class="dest-media">
-            <img src="dest-kastellorizo.webp"
-              srcset="dest-kastellorizo-320.webp 320w, dest-kastellorizo.webp 400w"
-              sizes="(min-width: 768px) 300px, 38vw"
-              alt="Kastellorizo harbour" loading="lazy" width="400" height="400">
+            <img src="dest-kastellorizo.webp" alt="Kastellorizo harbour" loading="lazy" width="400" height="400">
           </div>
           <div class="dest-info">
             <h3 class="dest-name">Kastellorizo<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Rhodes Harbour)</span></h3>
@@ -346,10 +318,7 @@
 
         <article class="dest-card scroll-animate delay-4">
           <div class="dest-media">
-            <img src="dest-rhodes.webp"
-              srcset="dest-rhodes-320.webp 320w, dest-rhodes.webp 400w"
-              sizes="(min-width: 768px) 300px, 38vw"
-              alt="Rhodes Old Town Castle" loading="lazy" width="400" height="400">
+            <img src="dest-rhodes.webp" alt="Rhodes Old Town Castle" loading="lazy" width="400" height="400">
           </div>
           <div class="dest-info">
             <h3 class="dest-name">Rhodes<br><span style="font-size:13px;font-weight:500;color:#555;">(Airport, City & Tours)</span></h3>
@@ -364,10 +333,7 @@
 
         <article class="dest-card scroll-animate delay-5">
           <div class="dest-media">
-            <img src="dest-halki.webp"
-              srcset="dest-halki-320.webp 320w, dest-halki.webp 400w"
-              sizes="(min-width: 768px) 300px, 38vw"
-              alt="Halki coastal view" loading="lazy" width="400" height="400">
+            <img src="dest-halki.webp" alt="Halki coastal view" loading="lazy" width="400" height="400">
           </div>
           <div class="dest-info">
             <h3 class="dest-name">Halki<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Kamiros Skala)</span></h3>
@@ -382,10 +348,7 @@
 
         <article class="dest-card scroll-animate delay-6">
           <div class="dest-media">
-            <img src="dest-tilos.webp"
-              srcset="dest-tilos-320.webp 320w, dest-tilos.webp 400w"
-              sizes="(min-width: 768px) 300px, 38vw"
-              alt="Tilos coastal view" loading="lazy" width="400" height="400">
+            <img src="dest-tilos.webp" alt="Tilos coastal view" loading="lazy" width="400" height="400">
           </div>
           <div class="dest-info">
             <h3 class="dest-name">Tilos<br><span style="font-size:13px;font-weight:500;color:#555;">(Via Kamiros Skala)</span></h3>
