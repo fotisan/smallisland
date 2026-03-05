@@ -140,7 +140,7 @@
   <section class="hero-section" id="home">
     <picture class="hero-picture-wrapper">
       <source media="(min-width: 768px)" srcset="hero.webp">
-      <img src="hero-mobile.webp" alt="Private transfer in Rhodes" class="hero-main-img" fetchpriority="high" decoding="sync">
+      <img src="hero-mobile.webp" alt="Private transfer in Rhodes" class="hero-main-img" fetchpriority="high">
     </picture>
     <main class="hero-content">
       <div class="top-content">
@@ -581,7 +581,9 @@
       if (nav.classList.contains("active") && !nav.contains(e.target) && !ham.contains(e.target)) toggleMenu();
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
+    // ΑΛΛΑΓΗ ΕΔΩ: Χρησιμοποιούμε 'load' αντί για 'DOMContentLoaded'. 
+    // Αυτό εγγυάται ότι η JS δεν θα διακόψει τη "ζωγραφιά" (paint) της σελίδας!
+    window.addEventListener('load', function() {
       /* FAQ */
       var faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(function(item) {
@@ -598,7 +600,7 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.scroll-animate').forEach(function(el) { obs.observe(el); });
 
-      /* Slider dots — Fix Forced Reflow by delaying offsetWidth calculation */
+      /* Slider dots — Λύση για το Forced Reflow */
       var slider = document.getElementById('testimonialSlider');
       var dotsContainer = document.getElementById('sliderDots');
       if (slider && dotsContainer) {
@@ -612,9 +614,8 @@
         var dots = dotsContainer.querySelectorAll('.dot');
         var cachedW = 0;
         
-        setTimeout(function() {
-          if (cards[0]) cachedW = cards[0].offsetWidth + 16;
-        }, 500);
+        // Αφού έχει ήδη τρέξει το 'load', είναι ασφαλές να πάρουμε το offsetWidth!
+        if (cards[0]) cachedW = cards[0].offsetWidth + 16;
 
         var rt;
         window.addEventListener('resize', function() { 
@@ -631,26 +632,26 @@
           if (dots[idx]) dots[idx].classList.add('active');
         });
       }
-    });
 
-    /* Floating CTA */
-    (function() {
-      var hero = document.getElementById("heroCtaGroup");
-      var fl = document.getElementById("floatingCta");
-      if (!hero || !fl) return;
-      var mq = window.matchMedia("(max-width: 767px)");
-      var io = null;
-      function set(v) { fl.classList[v ? 'add' : 'remove']("is-active"); }
-      function teardown() { set(false); if (io) { io.disconnect(); io = null; } }
-      function setup() {
-        teardown();
-        io = new IntersectionObserver(function(e) { set(!e[0].isIntersecting); }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" });
-        io.observe(hero);
-      }
-      function handle() { if (mq.matches) setup(); else teardown(); }
-      handle();
-      if (mq.addEventListener) mq.addEventListener('change', handle); else mq.addListener(handle);
-    })();
+      /* Floating CTA */
+      (function() {
+        var hero = document.getElementById("heroCtaGroup");
+        var fl = document.getElementById("floatingCta");
+        if (!hero || !fl) return;
+        var mq = window.matchMedia("(max-width: 767px)");
+        var io = null;
+        function set(v) { fl.classList[v ? 'add' : 'remove']("is-active"); }
+        function teardown() { set(false); if (io) { io.disconnect(); io = null; } }
+        function setup() {
+          teardown();
+          io = new IntersectionObserver(function(e) { set(!e[0].isIntersecting); }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" });
+          io.observe(hero);
+        }
+        function handle() { if (mq.matches) setup(); else teardown(); }
+        handle();
+        if (mq.addEventListener) mq.addEventListener('change', handle); else mq.addListener(handle);
+      })();
+    });
   </script>
 
 </body>
