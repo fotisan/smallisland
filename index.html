@@ -614,7 +614,8 @@
       if (nav.classList.contains("active") && !nav.contains(e.target) && !ham.contains(e.target)) toggleMenu();
     });
 
-    window.addEventListener('load', function() {
+    // 1. Αυτά εκτελούνται αμέσως για να δουλεύουν τα animations! (ΟΛΑ τα .scroll-animate)
+    document.addEventListener("DOMContentLoaded", function() {
       /* FAQ */
       var faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(function(item) {
@@ -625,43 +626,11 @@
         });
       });
 
-      /* Scroll animations */
+      /* Scroll animations - ΑΥΤΟ ΛΥΝΕΙ ΤΟ ΠΡΟΒΛΗΜΑ ΜΕ ΤΙΣ ΕΙΚΟΝΕΣ */
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
       }, { threshold: 0.1 });
       document.querySelectorAll('.scroll-animate').forEach(function(el) { obs.observe(el); });
-
-      /* Slider dots */
-      var slider = document.getElementById('testimonialSlider');
-      var dotsContainer = document.getElementById('sliderDots');
-      if (slider && dotsContainer) {
-        var cards = slider.querySelectorAll('.test-card');
-        cards.forEach(function(_, i) {
-          var dot = document.createElement('span');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dotsContainer.appendChild(dot);
-        });
-        var dots = dotsContainer.querySelectorAll('.dot');
-        var cachedW = 0;
-        
-        if (cards[0]) cachedW = cards[0].offsetWidth + 16;
-
-        var rt;
-        window.addEventListener('resize', function() { 
-          clearTimeout(rt); 
-          rt = setTimeout(function() { 
-            if (cards[0]) cachedW = cards[0].offsetWidth + 16; 
-          }, 150); 
-        });
-        
-        slider.addEventListener('scroll', function() {
-          if (cachedW === 0) return;
-          var idx = Math.min(Math.round(slider.scrollLeft / cachedW), dots.length - 1);
-          dots.forEach(function(d) { d.classList.remove('active'); });
-          if (dots[idx]) dots[idx].classList.add('active');
-        });
-      }
 
       /* Floating CTA */
       (function() {
@@ -681,6 +650,43 @@
         handle();
         if (mq.addEventListener) mq.addEventListener('change', handle); else mq.addListener(handle);
       })();
+    });
+
+    // 2. ΑΥΤΟ καθυστερεί για να μην έχουμε Forced Reflow.
+    window.addEventListener('load', function() {
+      /* Slider dots */
+      var slider = document.getElementById('testimonialSlider');
+      var dotsContainer = document.getElementById('sliderDots');
+      if (slider && dotsContainer) {
+        var cards = slider.querySelectorAll('.test-card');
+        cards.forEach(function(_, i) {
+          var dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (i === 0) dot.classList.add('active');
+          dotsContainer.appendChild(dot);
+        });
+        var dots = dotsContainer.querySelectorAll('.dot');
+        var cachedW = 0;
+        
+        requestAnimationFrame(function() {
+           if (cards[0]) cachedW = cards[0].offsetWidth + 16;
+        });
+
+        var rt;
+        window.addEventListener('resize', function() { 
+          clearTimeout(rt); 
+          rt = setTimeout(function() { 
+            if (cards[0]) cachedW = cards[0].offsetWidth + 16; 
+          }, 150); 
+        });
+        
+        slider.addEventListener('scroll', function() {
+          if (cachedW === 0) return;
+          var idx = Math.min(Math.round(slider.scrollLeft / cachedW), dots.length - 1);
+          dots.forEach(function(d) { d.classList.remove('active'); });
+          if (dots[idx]) dots[idx].classList.add('active');
+        });
+      }
     });
   </script>
 
