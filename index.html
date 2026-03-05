@@ -11,6 +11,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <style>
@@ -103,10 +105,6 @@
   <link rel="stylesheet" href="styles.css?v=20" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="styles.css?v=20"></noscript>
 
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap"></noscript>
-
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -144,10 +142,10 @@
     </picture>
     <main class="hero-content">
       <div class="top-content">
-        <h1 class="main-title animate-entry delay-1">
+        <h1 class="main-title">
           Your Private Transfer<span class="mobile-space"> </span><br class="desktop-br">across<br>Rhodes & The Islands.
         </h1>
-        <p class="hero-description animate-entry delay-2">
+        <p class="hero-description">
           <span class="highlight-text">One message and it's sorted.</span><br>
           Anywhere in Rhodes and the Dodecanese<span class="mobile-dash"> </span><span class="desktop-comma">,</span><br class="desktop-br-desc">
           with a driver who knows every harbour, every ferry, every island.
@@ -598,7 +596,7 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.scroll-animate').forEach(function(el) { obs.observe(el); });
 
-      /* Slider dots — no forced reflow */
+      /* Slider dots — Fix Forced Reflow by delaying offsetWidth calculation */
       var slider = document.getElementById('testimonialSlider');
       var dotsContainer = document.getElementById('sliderDots');
       if (slider && dotsContainer) {
@@ -610,10 +608,22 @@
           dotsContainer.appendChild(dot);
         });
         var dots = dotsContainer.querySelectorAll('.dot');
-        var cachedW = cards[0].offsetWidth + 16;
+        var cachedW = 0;
+        
+        setTimeout(function() {
+          if (cards[0]) cachedW = cards[0].offsetWidth + 16;
+        }, 500);
+
         var rt;
-        window.addEventListener('resize', function() { clearTimeout(rt); rt = setTimeout(function() { cachedW = cards[0].offsetWidth + 16; }, 150); });
+        window.addEventListener('resize', function() { 
+          clearTimeout(rt); 
+          rt = setTimeout(function() { 
+            if (cards[0]) cachedW = cards[0].offsetWidth + 16; 
+          }, 150); 
+        });
+        
         slider.addEventListener('scroll', function() {
+          if (cachedW === 0) return;
           var idx = Math.min(Math.round(slider.scrollLeft / cachedW), dots.length - 1);
           dots.forEach(function(d) { d.classList.remove('active'); });
           if (dots[idx]) dots[idx].classList.add('active');
