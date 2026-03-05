@@ -248,6 +248,7 @@ html, body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
+/* Η ΣΩΣΤΗ ΛΥΣΗ ΓΙΑ ΤΙΣ ΕΙΚΟΝΕΣ */
 .dest-media {
   width: 38%;
   flex-shrink: 0;
