@@ -25,7 +25,15 @@
       --serif: "Playfair Display", serif;
     }
     *{margin:0;padding:0;box-sizing:border-box}
-    html,body{width:100%;height:100%;font-family:var(--font);background-color:var(--bg);overflow-x:hidden;color:var(--text);scroll-behavior:smooth}
+    html{scroll-behavior:smooth}
+    /* ΕΔΩ προστέθηκε το gradient για να μην υπάρχει LCP Layout Shift */
+    body{
+      width:100%;height:100%;margin:0;
+      font-family:var(--font);
+      background-color:var(--bg);
+      background-image: radial-gradient(circle at 10% 20%, rgba(94, 140, 133, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(214, 180, 152, 0.1) 0%, transparent 40%);
+      overflow-x:hidden;color:var(--text);line-height:1.6;
+    }
     @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .animate-entry{opacity:0;animation:fadeInUp 0.8s ease-out forwards}
     .scroll-animate{opacity:0}
@@ -41,7 +49,7 @@
     .nav-item{text-decoration:none;color:#555;font-size:15px;font-weight:500;padding:12px 20px;text-align:center;border-bottom:1px solid rgba(0,0,0,.05);transition:background-color .2s,color .2s}
     .nav-item:last-child{border-bottom:none}
     .nav-item.active,.nav-item:hover{color:var(--text);font-weight:600;background-color:rgba(0,0,0,.03)}
-    .hero-section{display:block;width:100%;background-color:var(--bg)!important;position:relative}
+    .hero-section{display:block;width:100%;background-color:transparent!important;position:relative}
     .hero-picture-wrapper{display:block;width:100%;position:relative;z-index:1}
     @media(max-width:767px){.hero-picture-wrapper{height:68svh}}
     .hero-main-img{width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block}
@@ -110,8 +118,8 @@
     }
   </style>
 
-  <link rel="stylesheet" href="styles.css?v=21" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="styles.css?v=21"></noscript>
+  <link rel="stylesheet" href="styles.css?v=23" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles.css?v=23"></noscript>
 
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -183,11 +191,6 @@
         </a>
       </div>
     </main>
-    <div class="shape-divider" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path fill="#faf9f6" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z"/>
-      </svg>
-    </div>
   </section>
 
   <section class="why" id="services" aria-labelledby="whyTitle">
@@ -587,7 +590,7 @@
       if (nav.classList.contains("active") && !nav.contains(e.target) && !ham.contains(e.target)) toggleMenu();
     });
 
-    // Φορτώνει τα animations και τα εφέ κύλισης αμέσως.
+    // Αυτά πρέπει να εκτελεστούν αμέσως για να φαίνονται οι εικόνες!
     document.addEventListener("DOMContentLoaded", function() {
       var faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(function(item) {
@@ -622,39 +625,35 @@
       })();
     });
 
-    // Καθυστερεί ΜΟΝΟ τον υπολογισμό των κουκκίδων του slider για να μην ρίχνει το σκορ.
+    // Εδώ εξαλείφουμε τελείως το "Forced Reflow" (Lazy evaluation)
     window.addEventListener('load', function() {
       var slider = document.getElementById('testimonialSlider');
       var dotsContainer = document.getElementById('sliderDots');
       if (slider && dotsContainer) {
         var cards = slider.querySelectorAll('.test-card');
-        cards.forEach(function(_, i) {
-          var dot = document.createElement('span');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dotsContainer.appendChild(dot);
-        });
         var dots = dotsContainer.querySelectorAll('.dot');
         var cachedW = 0;
-        
-        requestAnimationFrame(function() {
-           if (cards[0]) cachedW = cards[0].offsetWidth + 16;
-        });
+
+        function getCardWidth() {
+          if (cachedW === 0 && cards[0]) {
+            cachedW = cards[0].offsetWidth + 16;
+          }
+          return cachedW;
+        }
 
         var rt;
-        window.addEventListener('resize', function() { 
-          clearTimeout(rt); 
-          rt = setTimeout(function() { 
-            if (cards[0]) cachedW = cards[0].offsetWidth + 16; 
-          }, 150); 
-        });
-        
+        window.addEventListener('resize', function() {
+          clearTimeout(rt);
+          rt = setTimeout(function() { cachedW = 0; }, 150); 
+        }, { passive: true });
+
         slider.addEventListener('scroll', function() {
-          if (cachedW === 0) return;
-          var idx = Math.min(Math.round(slider.scrollLeft / cachedW), dots.length - 1);
+          var cw = getCardWidth();
+          if (cw === 0) return;
+          var idx = Math.min(Math.round(slider.scrollLeft / cw), dots.length - 1);
           dots.forEach(function(d) { d.classList.remove('active'); });
           if (dots[idx]) dots[idx].classList.add('active');
-        });
+        }, { passive: true });
       }
     });
   </script>
