@@ -199,10 +199,7 @@
 
         <article class="why-item scroll-animate delay-2">
           <div class="why-media">
-            <img src="why-on-time.webp"
-              srcset="why-on-time-600.webp 600w, why-on-time.webp 1200w"
-              sizes="(max-width: 767px) 100vw, 50vw"
-              alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900"/>
+            <img src="why-on-time.webp" alt="Luxury watch symbolizing on-time service" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-regular fa-clock"></i></div>
@@ -213,10 +210,7 @@
 
         <article class="why-item scroll-animate delay-3">
           <div class="why-media">
-            <img src="why-fleet.webp"
-              srcset="why-fleet-600.webp 600w, why-fleet.webp 1200w"
-              sizes="(max-width: 767px) 100vw, 50vw"
-              alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900"/>
+            <img src="why-fleet.webp" alt="Car interior representing premium fleet" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-car-side"></i></div>
@@ -227,10 +221,7 @@
 
         <article class="why-item scroll-animate delay-4">
           <div class="why-media">
-            <img src="why-payment.webp"
-              srcset="why-payment-600.webp 600w, why-payment.webp 1200w"
-              sizes="(max-width: 767px) 100vw, 50vw"
-              alt="Card payment in a vehicle" loading="lazy" width="1200" height="900"/>
+            <img src="why-payment.webp" alt="Card payment in a vehicle" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-credit-card"></i></div>
@@ -241,10 +232,7 @@
 
         <article class="why-item scroll-animate delay-5">
           <div class="why-media">
-            <img src="why-5stars.webp"
-              srcset="why-5stars-600.webp 600w, why-5stars.webp 1200w"
-              sizes="(max-width: 767px) 100vw, 50vw"
-              alt="Five star service" loading="lazy" width="1200" height="900"/>
+            <img src="why-5stars.webp" alt="Five star service" loading="lazy" width="1200" height="900"/>
           </div>
           <div class="why-copy">
             <div class="why-icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
@@ -616,8 +604,8 @@
       if (nav.classList.contains("active") && !nav.contains(e.target) && !ham.contains(e.target)) toggleMenu();
     });
 
+    // Αυτά πρέπει να εκτελεστούν αμέσως για να φαίνονται τα animations
     document.addEventListener("DOMContentLoaded", function() {
-      /* FAQ */
       var faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(function(item) {
         item.querySelector('.faq-question').addEventListener('click', function() {
@@ -627,13 +615,11 @@
         });
       });
 
-      /* Scroll animations */
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
       }, { threshold: 0.1 });
       document.querySelectorAll('.scroll-animate').forEach(function(el) { obs.observe(el); });
 
-      /* Floating CTA */
       (function() {
         var hero = document.getElementById("heroCtaGroup");
         var fl = document.getElementById("floatingCta");
@@ -653,7 +639,7 @@
       })();
     });
 
-    // ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ SLIDER (Μηδενίζει το Forced Reflow)
+    // IntersectionObserver για το Slider για να μην έχουμε καθόλου Forced Reflow!
     window.addEventListener('load', function() {
       var slider = document.getElementById('testimonialSlider');
       var dotsContainer = document.getElementById('sliderDots');
@@ -662,7 +648,6 @@
       var cards = slider.querySelectorAll('.test-card');
       var dots = dotsContainer.querySelectorAll('.dot');
 
-      // Χρησιμοποιούμε IntersectionObserver αντί για offsetWidth!
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
@@ -673,7 +658,7 @@
         });
       }, {
         root: slider,
-        threshold: 0.6 // Ενεργοποιείται όταν η κάρτα φαίνεται κατά 60%
+        threshold: 0.6 
       });
 
       cards.forEach(function(card) {
