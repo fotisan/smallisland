@@ -7,8 +7,8 @@
   <meta name="description" content="Private transfers across Rhodes & the Dodecanese. One message and it's sorted." />
 
   <!-- Preload LCP hero images -->
-  <link rel="preload" as="image" href="hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
-  <link rel="preload" as="image" href="hero.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-mobile.webp" imagesrcset="hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="hero.webp" imagesrcset="hero.webp" media="(min-width: 768px)" fetchpriority="high">
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,7 +108,7 @@
   <noscript><link rel="stylesheet" href="styles.css?v=20"></noscript>
 
   <!-- Google Fonts — async -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Roboto:wght@400;500;600;700&display=swap"></noscript>
 
@@ -141,8 +141,9 @@
 
   <section class="hero-section" id="home">
     <picture class="hero-picture-wrapper">
-      <source media="(min-width: 768px)" srcset="hero.webp">
-      <img src="hero-mobile.webp" alt="Private transfer in Rhodes" class="hero-main-img" fetchpriority="high" decoding="sync">
+      <source media="(min-width: 768px)" srcset="hero.webp" type="image/webp">
+      <source media="(max-width: 767px)" srcset="hero-mobile.webp" type="image/webp">
+      <img src="hero-mobile.webp" alt="Private transfer in Rhodes" class="hero-main-img" fetchpriority="high" loading="eager" decoding="async" width="800" height="600">
     </picture>
     <main class="hero-content">
       <div class="top-content">
@@ -287,7 +288,7 @@
               <span class="btn-text">Get in Touch via WhatsApp</span>
               <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
             </a>
-            <a href="mailto:info@smallislandtransfer.com" class="ghost-btn">
+            <a href="/cdn-cgi/l/email-protection#fa93949c95ba89979b96969389969b949e8e889b94899c9f88d4999597" class="ghost-btn">
               <span class="btn-text">Send us an Email</span>
               <span class="icon-circle email-bg" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
             </a>
@@ -443,7 +444,7 @@
           <span class="btn-text">Get in Touch via WhatsApp</span>
           <span class="icon-circle wa-bg" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>
         </a>
-        <a href="mailto:info@smallislandtransfer.com" class="ghost-btn">
+        <a href="/cdn-cgi/l/email-protection#d6bfb8b0b996a5bbb7bababfa5bab7b8b2a2a4b7b8a5b0b3a4f8b5b9bb" class="ghost-btn">
           <span class="btn-text">Send us an Email</span>
           <span class="icon-circle email-bg" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
         </a>
@@ -590,7 +591,7 @@
     </a>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function openWhatsApp() {
       var p = "306900000000";
       var m = encodeURIComponent("Hello! I'm interested in checking the route and price for a private transfer.");
@@ -670,11 +671,4 @@
         io = new IntersectionObserver(function(e) { set(!e[0].isIntersecting); }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" });
         io.observe(hero);
       }
-      function handle() { if (mq.matches) setup(); else teardown(); }
-      handle();
-      if (mq.addEventListener) mq.addEventListener('change', handle); else mq.addListener(handle);
-    })();
-  </script>
-
-</body>
-</html>
+      function
